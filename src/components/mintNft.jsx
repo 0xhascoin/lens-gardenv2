@@ -3,7 +3,7 @@ import { ethers } from 'ethers';
 import { abi } from '../../constants/abi';
 import LoadingSpinner from './loadingSpinner';
 
-const CONTRACT_ADDRESS = "0x2514E1C1c9530DABdCDadfB5B2429193A3AE986F";
+const CONTRACT_ADDRESS = "0x7c96FA931896815DCC2e62AeE79216d7762B3175";
 
 
 const MintNft = ({ address }) => {
