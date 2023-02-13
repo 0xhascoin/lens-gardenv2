@@ -1,0 +1,42 @@
+.hero {
+    /* border: 1px solid black; */
+    display: flex;
+    place-items: center;
+    height: 40vh;
+}
+
+.hero .hero-container {
+    /* border: 1px solid red; */
+    margin: auto;
+    width: 80%;
+    text-align: center;
+}
+
+.hero .hero-container .hero-title {
+    /* border: 1px solid black; */
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.hero .hero-container .hero-description {
+    /* border: 1px solid black; */
+    margin: auto;
+    width: 70%;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    color: rgb(183, 183, 183);
+}
+
+.hero .hero-container .hero-button {
+    /* border: 1px solid black; */
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: border-color 0.25s;
+}

@@ -1,14 +1,15 @@
 #root {
   /* max-width: 1280px; */
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
   text-align: center;
   /* margin: 0; */
   display: flex;
-  place-items: center;
+  /* place-items: center; */
   justify-content: center;
   /* min-width: 320px; */
   min-height: 100vh; 
+  border: 1px solid black;
 }
 
 .logo {
@@ -45,4 +46,16 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.App {
+  /* border: 1px solid black; */
+  width: 100%;
+}
+
+.App .content {
+  /* border: 1px solid red; */
+  margin: auto;
+  width: 90%;
+  margin-top: 2rem;
 }

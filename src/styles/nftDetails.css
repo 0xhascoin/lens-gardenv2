@@ -1,0 +1,77 @@
+.details {
+    border: 1px solid black;
+    text-align: center;
+    padding: 2rem;
+    background-color: #0000009d;
+    margin: auto;
+    width: 90%;
+}
+
+.spacing {
+    /* border: 1px solid black; */
+    height: 100px;
+}
+
+.details .details-title {
+    font-size: 3rem;
+    font-weight: 300;
+    color: white;
+}
+
+.details .details-row {
+    /* border: 1px solid black; */
+    display: flex;
+    margin-top: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.details .details-row .details-col {
+    /* border: 1px solid black; */
+    width: 60%;
+    display: flex;
+    align-items: top;
+}
+
+.details .details-row .details-col .image {
+    /* border: 1px solid black; */
+    margin-right: 10px;
+}
+.details .details-row .details-col .image img {
+    height: 300px;
+    border-radius: 6px;
+}
+
+.details .details-row .details-col .nft-details {
+    /* border: 1px solid black; */
+    text-align: left;
+    /* border: 1px solid white; */
+    margin: auto;
+}
+
+.details .details-row .details-col .nft-details.right {
+    /* border: 1px solid black; */
+    text-align: right;
+    /* border: 1px solid white; */
+    margin-right: 10px;
+}
+
+.details .details-row .details-col .nft-details .name {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: white;
+}
+
+.details .details-row .details-col .nft-details .level {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    font-weight: 400;
+    color: white;
+}
+.details .details-row .details-col .nft-details .exp {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    font-weight: 400;
+    color: white;
+}
