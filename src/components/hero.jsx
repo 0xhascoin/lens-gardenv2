@@ -1,28 +1,67 @@
 import React from 'react'
 import '../styles/hero.css'
 
-const Hero = () => {
+// Components
+import LoadingSpinner from './loadingSpinner';
+
+
+
+const startUrl = "https://lens.infura-ipfs.io/ipfs/";
+
+const Hero = ({ loadingProfile, profileFound, profile, connecting, connectWallet, currentAccount }) => {
+
+  const renderConnected = () => {
+    if (connecting) {
+      return (
+        <div className="flex justify-center my-3"><LoadingSpinner /></div>
+      )
+    } else {
+      if (currentAccount === "") {
+        return <button onClick={connectWallet} className="hero-button">Connect Wallet</button>
+      } else {
+        return (
+          <>
+            {renderProfile()}
+          </>
+        )
+      }
+    }
+  }
+
+  const renderProfile = () => {
+    if (loadingProfile) {
+      return (
+        <div className="flex justify-center my-3"><LoadingSpinner /></div>
+      )
+    } else {
+      if (!profileFound) {
+        return <p className='hero-button'>No Lens Profile Found</p>
+      } else {
+        return (
+          <button className='hero-button'>
+            Mint NFT
+          </button>
+        )
+      }
+    }
+  };
+
   return (
     <div className='hero'>
       {/* Container */}
       <div className="hero-container">
         {/* Title */}
         <h3 className="hero-title">
-          Title goes here
+          Welcome to Lens Garden
         </h3>
         {/* Description */}
         <p className="hero-description">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-          Dolor error beatae quos nisi impedit repudiandae perspiciatis 
-          delectus fugiat eaque esse.
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-          Dolor error beatae quos nisi impedit repudiandae perspiciatis 
-          delectus fugiat eaque esse.
+          Lens Garden is the first NFT collection on Lens. <br />
+          Your NFT is connected to your activity on the Lens Protocol ecosystem. <br />
+          Level up your NFT by using the protocol.
         </p>
         {/* Button */}
-        <button className="hero-button">
-          Connect wallet
-        </button>
+        {renderConnected()}
       </div>
     </div>
   )

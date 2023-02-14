@@ -24,8 +24,8 @@
     margin: auto;
     width: 70%;
     font-weight: 300;
-    margin-bottom: 1rem;
-    color: rgb(183, 183, 183);
+    margin-bottom: 1.5rem;
+    color: rgb(221, 221, 221);
 }
 
 .hero .hero-container .hero-button {
@@ -40,3 +40,4 @@
     cursor: pointer;
     transition: border-color 0.25s;
 }
+

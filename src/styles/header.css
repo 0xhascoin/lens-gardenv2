@@ -62,3 +62,25 @@
     cursor: pointer;
     transition: border-color 0.25s;
 }
+
+.header .header-links .nav-button .connected-button {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.3em 1em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header .header-links .nav-button .connected-button img {
+    /* border: 1px solid black; */
+    height: 35px;
+    width: 35px;
+    margin-right: 10px;
+}
