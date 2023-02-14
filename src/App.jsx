@@ -2,6 +2,9 @@ import './App.css'
 import { useState, useEffect } from 'react';
 import GetLensProfile from './components/getLensProfile';
 import LoadingSpinner from './components/loadingSpinner';
+import lensgarden1 from '/src/images/lensgarden1.jpeg';
+import MintNft from './components/mintNft';
+
 
 function App() {
   const [connecting, setConnecting] = useState(false);
@@ -73,9 +76,16 @@ function App() {
   const renderConnected = () => {
     if (connecting) {
       return <LoadingSpinner />
+   
     } else {
-      if (currentAccount === "") {
-        return <button onClick={connectWallet} className="bg-zinc-800	text-white outline-none focus:outline-red-400 transition-all">Connect Wallet</button>
+      if (currentAccount === "")  {
+        return (
+        <div>
+        <button onClick={connectWallet} className="flex items-center justify-center mx-auto	text-white bg-gradient-to-r from-green-600 to-green-300 hover:ring-4 ring-green-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center mr-2 mb-2">Connect Wallet</button>
+      </div>
+        )
+        
+      
       } else {
         return (
           <GetLensProfile

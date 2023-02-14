@@ -93,12 +93,12 @@ const MintNft = ({ address }) => {
                             <p className="text-green-400">NFT Minted Succesfully</p>
                         </div>
 
-                        <button onClick={askContractToMintNft} className='my-3 bg-zinc-800 text-white focus:outline-red-400 transition-all'>Mint an NFT</button>
+                        <button onClick={askContractToMintNft} className='my-3 bg-green-600 text-white focus:outline-red-400 transition-all'>Mint an NFT</button>
                     </>
                 )
             } else {
                 return (
-                    <button onClick={askContractToMintNft} className='my-3 bg-zinc-800 text-white focus:outline-red-400 transition-all'>Mint an NFT</button>
+                    <button onClick={askContractToMintNft} className='flex items-center justify-center mx-auto	text-white bg-gradient-to-r from-green-600 to-green-300 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center my-2 focus:outline-green-400 transition-all'>Mint an NFT</button>
                 )
             }
         }

@@ -1,15 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 #root {
   /* max-width: 1280px; */
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  height: 100vh;
   /* margin: 0; */
   display: flex;
   place-items: center;
   justify-content: center;
-  /* min-width: 320px; */
-  min-height: 100vh; 
+  background-image: url("/src/images/garden2.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
+
+
+
+
 
 .logo {
   height: 6em;
