@@ -1,24 +1,6 @@
-.main {
-    border: 1px solid black;
-    background: linear-gradient(
-        rgba(0, 0, 0, 0.25), 
-        rgba(0, 0, 0, 0.65)
-      ), url('https://cdn.midjourney.com/3439d6e8-9981-42a7-964f-a9e8ce18af84/grid_0.png') no-repeat;
-    background-size: cover;
-    background-position: top;
-    position: relative;
-}
 
-.nft-details-bg {
-    border: 1px solid black;
-    background: linear-gradient(
-        rgba(0, 0, 0, 0.25), 
-        rgba(0, 0, 0, 0.65)
-      ), url('https://cdn.midjourney.com/6bb83815-1576-42f1-9279-297cf0f7f731/grid_0.png') no-repeat;
-    background-size: cover;
-    background-position: top;
-    position: relative;
-}
+
+
 
 /* .main .layer {
     background-color: rgba(103, 103, 103, 0.28);

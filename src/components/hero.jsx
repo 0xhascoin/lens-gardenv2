@@ -13,11 +13,11 @@ const Hero = ({ loadingProfile, profileFound, profile, connecting, connectWallet
   const renderConnected = () => {
     if (connecting) {
       return (
-        <div className="flex justify-center my-3"><LoadingSpinner /></div>
+        <div className="flex justify-center my-3 bg-red-900"><LoadingSpinner /></div>
       )
     } else {
       if (currentAccount === "") {
-        return <button onClick={connectWallet} className="hero-button">Connect Wallet</button>
+        return <button onClick={connectWallet} className="bg-green-100 hero-button">Connect Wallet</button>
       } else {
         return (
           <>
@@ -47,23 +47,17 @@ const Hero = ({ loadingProfile, profileFound, profile, connecting, connectWallet
   };
 
   return (
-    <div className='hero'>
-      {/* Container */}
-      <div className="hero-container">
-        {/* Title */}
-        <h3 className="hero-title">
-          Welcome to Lens Garden
-        </h3>
-        {/* Description */}
-        <p className="hero-description">
-          Lens Garden is the first NFT collection on Lens. <br />
-          Your NFT is connected to your activity on the Lens Protocol ecosystem. <br />
-          Level up your NFT by using the protocol.
-        </p>
-        {/* Button */}
-        {renderConnected()}
-      </div>
-    </div>
+    <div>
+   <div className='relative font-bold text-white items-center text-3xl justify-between mx-auto' style={{flexDirection: "row"}}>
+  <p>Welcome to Lens Garden</p>
+  <p className='text-lg'>Lens Garden is the first NFT collection on Lens.</p>
+  <p className='text-lg'>Your NFT is connected to your activity on the Lens Protocol ecosystem.</p>
+  <p className='text-lg'>Level up your NFT by using the protocol.</p>
+</div>
+</div>
+
+
+  
   )
 }
 
