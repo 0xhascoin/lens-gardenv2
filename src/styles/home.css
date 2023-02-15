@@ -12,3 +12,20 @@
 } */
 
 /* https://cdn.midjourney.com/3439d6e8-9981-42a7-964f-a9e8ce18af84/grid_0.png */
+
+.home {
+    border: 3px solid red;
+    background: url('https://cdn.midjourney.com/3439d6e8-9981-42a7-964f-a9e8ce18af84/grid_0.png');
+    background-size: cover;
+}
+
+.nfts {
+    border: 3px solid blue;
+    margin: auto;
+    width: 90%;
+}
+
+.nfts .grid {
+    border: 3px solid red !important;
+    /* justify-content: center; */
+}

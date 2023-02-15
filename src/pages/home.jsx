@@ -106,40 +106,56 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
-      <div className="flex items-center justify-center mx-auto bg-pink-400">
+    <div className="home">
 
-      <div className="w-full max-h-screen ">
+      {/* <div className="w-full max-h-screen ">
         <img src={garden} className="w-full  bg-no-repeat bg-cover bg-center h-screen sm:h-auto md:h-screen" />
-        </div>
+        </div> */}
+
+
+
+      <Header
+        connectWallet={connectWallet}
+        connecting={connecting}
+        currentAccount={currentAccount}
+        loadingProfile={loadingProfile}
+        profileFound={profileFound}
+        profile={profile}
+      />
+      <Hero />
+      {/* <div className='bg-black py-6 nfts'>
+          <h1 className='text-white text-center mb-10 text-3xl'>NFTs</h1>
+          <div className='flex justify-between m-auto mb-10 border border-white' >
+            <ImageCard className="" imageSrc={logo1} imageText="1" />
+            <ImageCard className="" imageSrc={logo1} imageText="2" />
+            <ImageCard className="" imageSrc={logo1} imageText="3" />
+          </div>
+        </div> */}
+      <div className="nfts py-6 flex justify-center">
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="w-5/6 m-auto">
+            <img src={logo1} alt="" />
+          </div>
+          <div className="w-5/6 m-auto">
+            <img src={logo1} alt="" />
+          </div>
+          <div className="w-5/6 m-auto">
+            <img src={logo1} alt="" />
+          </div>
+          <div className="w-5/6 m-auto">
+            <img src={logo1} alt="" />
+          </div>
+          <div className="w-5/6 m-auto">
+            <img src={logo1} alt="" />
+          </div>
+          <div className="w-5/6 m-auto">
+            <img src={logo1} alt="" />
+          </div>
+
   
-     
-      
-        <Header
-          connectWallet={connectWallet}
-          connecting={connecting}
-          currentAccount={currentAccount}
-          loadingProfile={loadingProfile}
-          profileFound={profileFound}
-          profile={profile}
-        />
-     <div className='absolute mb-48 '>
-        <Hero />
+        </div>
       </div>
-      <div className='flex absolute justify-between w-full flex-wrap'>
-     <div className='absolute flex w-3/4 h-1/2 justify-between ml-44' >
-     <ImageCard className="" imageSrc={logo1} imageText="1" />
-     <ImageCard className="" imageSrc={logo1} imageText="2" />
-     <ImageCard className="" imageSrc={logo1} imageText="3" />
-     </div>
-     
-     </div>
-      </div>
-      
-      </div>
-    
-   
-    
+    </div>
   )
 }
 
