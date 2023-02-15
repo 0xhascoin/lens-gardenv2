@@ -139,7 +139,7 @@ const ProfileDetails = ({ profile }) => {
                         <p>XP to level {LEVEL.level + 1}: {LEVEL.experienceToNextLevel}</p>
                         <p>Total XP: {XP}</p>
                         <div className="w-full bg-zinc-800 rounded-full h-2.5  mt-5">
-                            <div className="bg-red-500 h-2.5 rounded-full" style={{ width: `${Math.floor((XP / (LEVEL.experienceToNextLevel + XP)) * 100)}%` }}></div>
+                            <div className="bg-yellow-500 h-2.5 rounded-full" style={{ width: `${Math.floor((XP / (LEVEL.experienceToNextLevel + XP)) * 100)}%` }}></div>
                         </div>
                     </>
                 )

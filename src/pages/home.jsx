@@ -2,10 +2,14 @@ import '../styles/home.css'
 import { useState, useEffect } from 'react';
 import { client, myStats } from '../../api/lensApi';
 
+import ProfileDetails from '../components/profileDetails';
 // Components
 import Header from '../components/header'
 import Hero from '../components/hero'
 import NftDetails from '../components/nftDetails'
+import garden from '../styles/images/garden.png';
+import ImageCard from '../components/ImageCard';
+import logo1 from '../styles/images/logo1.png';
 
 const Home = () => {
 
@@ -102,8 +106,15 @@ const Home = () => {
   }, []);
 
   return (
-    <div className='home'>
-      <div className="main">
+    <div>
+      <div className="flex items-center justify-center mx-auto bg-pink-400">
+
+      <div className="w-full max-h-screen ">
+        <img src={garden} className="w-full  bg-no-repeat bg-cover bg-center h-screen sm:h-auto md:h-screen" />
+        </div>
+  
+     
+      
         <Header
           connectWallet={connectWallet}
           connecting={connecting}
@@ -112,19 +123,23 @@ const Home = () => {
           profileFound={profileFound}
           profile={profile}
         />
-        <Hero
-          connectWallet={connectWallet}
-          loadingProfile={loadingProfile}
-          currentAccount={currentAccount}
-          profileFound={profileFound}
-          profile={profile}
-          connecting={connecting}
-        />
+     <div className='absolute mb-48 '>
+        <Hero />
       </div>
-      {/* <div className="nft-details-bg">
-        <NftDetails />
-      </div> */}
-    </div>
+      <div className='flex absolute justify-between w-full flex-wrap'>
+     <div className='absolute flex w-3/4 h-1/2 justify-between ml-44' >
+     <ImageCard className="" imageSrc={logo1} imageText="1" />
+     <ImageCard className="" imageSrc={logo1} imageText="2" />
+     <ImageCard className="" imageSrc={logo1} imageText="3" />
+     </div>
+     
+     </div>
+      </div>
+      
+      </div>
+    
+   
+    
   )
 }
 
