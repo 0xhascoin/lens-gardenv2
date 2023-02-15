@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/connectWallet.css';
+import LoadingSpinner from './loadingSpinner';
 
 const ConnectWallet = ({ currentAccount, connectWallet, loadingProfile, profileFound, profile }) => {
   const startUrl = 'https://lens.infura-ipfs.io/ipfs/';

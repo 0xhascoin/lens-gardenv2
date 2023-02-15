@@ -42,6 +42,7 @@ export default function Header({ currentAccount, connectWallet, loadingProfile, 
             profileFound={profileFound}
             profile={profile}
           />
+          
           <button
             data-collapse-toggle="navbar-sticky"
             type="button"
