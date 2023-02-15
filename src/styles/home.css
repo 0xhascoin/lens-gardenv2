@@ -15,17 +15,13 @@
 
 .home {
     border: 3px solid red;
-    background: url('https://cdn.midjourney.com/3439d6e8-9981-42a7-964f-a9e8ce18af84/grid_0.png');
+    background: linear-gradient( rgba(0,0,0,.5), rgba(0,0,0,.5) ), url('https://cdn.midjourney.com/3439d6e8-9981-42a7-964f-a9e8ce18af84/grid_0.png');
     background-size: cover;
 }
 
 .nfts {
-    border: 3px solid blue;
+    /* border: 3px solid blue; */
     margin: auto;
-    width: 90%;
+    width: 100%;
 }
 
-.nfts .grid {
-    border: 3px solid red !important;
-    /* justify-content: center; */
-}

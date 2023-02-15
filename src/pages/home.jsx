@@ -131,28 +131,13 @@ const Home = () => {
             <ImageCard className="" imageSrc={logo1} imageText="3" />
           </div>
         </div> */}
-      <div className="nfts py-6 flex justify-center">
-        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <div className="w-5/6 m-auto">
-            <img src={logo1} alt="" />
-          </div>
-          <div className="w-5/6 m-auto">
-            <img src={logo1} alt="" />
-          </div>
-          <div className="w-5/6 m-auto">
-            <img src={logo1} alt="" />
-          </div>
-          <div className="w-5/6 m-auto">
-            <img src={logo1} alt="" />
-          </div>
-          <div className="w-5/6 m-auto">
-            <img src={logo1} alt="" />
-          </div>
-          <div className="w-5/6 m-auto">
-            <img src={logo1} alt="" />
-          </div>
-
-  
+      <div className="nfts flex justify-center">
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 py-3">
+          <ImageCard imageSrc={'https://cdn.midjourney.com/029fea47-52b8-448e-9533-e6ad9b850e7f/grid_0.png'}/>
+          <ImageCard imageSrc={'https://cdn.midjourney.com/a99a2afd-2c68-46b2-b0fc-60252eb5d408/grid_0.png'}/>
+          <ImageCard imageSrc={'https://cdn.midjourney.com/feac2f1f-422d-44b4-97c7-b16a2b2707ca/grid_0.png'}/>
+          <ImageCard imageSrc={'https://cdn.midjourney.com/262dd3af-4b2e-47f7-afdb-41b683a366c2/grid_0.png'} />
+          <ImageCard imageSrc={'https://cdn.midjourney.com/b4fa6557-3bb7-492d-8667-86d21494bee1/grid_0.png'} />
         </div>
       </div>
     </div>

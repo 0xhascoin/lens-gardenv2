@@ -12,12 +12,12 @@ export default function Header({ currentAccount, connectWallet, loadingProfile, 
 
   return (
 
-    <nav className={`px-4 sm:px-4 py-2.5 dark:bg-black-900 w-full border-black-200 dark:border-black-600`}>
+    <nav className={`px-4 sm:px-4 py-2.5 w-full`}>
       <div className="container flex  flex-wrap items-center justify-between bg-transparent mx-auto bg-red-600">
         <a href="#home" className="flex items-center">
 
           <img src={logo1} className="rounded shrink w-20 object-contain" alt="Lens-garden logo" />
-          <span className="text-2xl ml-8 font-bold whitespace-nowrap hover:text-green-500 text-white">Lens Garden</span>
+          <span className="text-2xl ml-8 font-bold whitespace-nowrap hover:text-green-500 text-white font-sans">Lens Garden</span>
         </a>
         {/* <div className="flex md:order-4">
       <ConnectWallet 
@@ -71,12 +71,12 @@ export default function Header({ currentAccount, connectWallet, loadingProfile, 
             }`}
           id="navbar-sticky"
         >
-          <ul className="flex flex-col p-4 mt-4 border border-black-100 rounded-lg bg-black-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-black dark:bg-black-800 md:dark:bg-transparent dark:border-red-700">
+          <ul className="flex flex-col p-4 py-3 mt-4 border border-black-100 rounded-xl bg-zinc-700 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-black dark:bg-black-800 md:dark:bg-transparent dark:border-red-700">
 
             <li>
               <a
                 href="#"
-                className="underline block py-2 pl-3 pr-4 text-white rounded md:p-0 text-white-400 text-xl font-bold hover:text-green-500 transition-all"
+                className="block py-2 pl-3 pr-4 text-white rounded md:p-0 text-white-400 text-lg font-bold hover:text-green-400 transition-all font-sans font-light text-slate-50"
               >
                 View Garden
               </a>
@@ -84,7 +84,7 @@ export default function Header({ currentAccount, connectWallet, loadingProfile, 
             <li>
               <a
                 href="#"
-                className="underline block py-2 pl-3 pr-4 text-white-700 rounded md:p-0 text-white text-xl font-bold hover:text-green-500 transition-all"
+                className="block py-2 pl-3 pr-4 text-white-700 rounded md:p-0 text-white text-lg font-bold hover:text-green-400 transition-all font-sans font-light text-slate-50"
               >
                 Mint Nft
               </a>
