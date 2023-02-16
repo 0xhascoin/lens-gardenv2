@@ -1,6 +1,8 @@
 import React, { useState, useRef } from "react";
 import logo1 from "../styles/images/logo1.png";
 import ConnectWallet from "./connectWallet";
+import Garden from "../pages/garden";
+
 
 
 export default function Header({ currentAccount, connectWallet, loadingProfile, profileFound, profile }) {
@@ -14,24 +16,12 @@ export default function Header({ currentAccount, connectWallet, loadingProfile, 
 
     <nav className={`px-4 sm:px-4 py-2.5 w-full`}>
       <div className="container flex  flex-wrap items-center justify-between bg-transparent mx-auto bg-red-600">
-        <a href="#home" className="flex items-center">
+        <a href="/" className="flex items-center">
 
           <img src={logo1} className="rounded shrink w-20 object-contain" alt="Lens-garden logo" />
           <span className="text-2xl ml-8 font-bold whitespace-nowrap hover:text-green-500 text-white font-sans">Lens Garden</span>
         </a>
-        {/* <div className="flex md:order-4">
-      <ConnectWallet 
-        connectWallet={connectWallet}
-        currentAccount={currentAccount} 
-        loadingProfile={loadingProfile}
-        profileFound={profileFound}
-        profile={profile}
-        />
-      <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
-        <span className="sr-only">Open main menu</span>
-        <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-    </button> 
-  </div> */}
+     
 
         <div className="flex md:order-2">
 
@@ -75,8 +65,8 @@ export default function Header({ currentAccount, connectWallet, loadingProfile, 
 
             <li>
               <a
-                href="#"
-                className="block py-2 pl-3 pr-4 text-white rounded md:p-0 text-white-400 text-lg font-bold hover:text-green-400 transition-all font-sans font-light text-slate-50"
+                href="/Garden"
+                className="block py-2 pl-3 pr-4  rounded md:p-0 text-white-400 text-lg hover:text-green-400 transition-all font-sans font-light text-slate-50"
               >
                 View Garden
               </a>
@@ -84,7 +74,7 @@ export default function Header({ currentAccount, connectWallet, loadingProfile, 
             <li>
               <a
                 href="#"
-                className="block py-2 pl-3 pr-4 text-white-700 rounded md:p-0 text-white text-lg font-bold hover:text-green-400 transition-all font-sans font-light text-slate-50"
+                className="block py-2 pl-3 pr-4 text-white-700 rounded md:p-0  text-lg  hover:text-green-400 transition-all font-sans font-light text-slate-50"
               >
                 Mint Nft
               </a>
