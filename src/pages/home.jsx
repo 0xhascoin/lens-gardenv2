@@ -124,22 +124,14 @@ const Home = () => {
         profile={profile}
       />
       <Hero />
-      {/* <div className='bg-black py-6 nfts'>
-          <h1 className='text-white text-center mb-10 text-3xl'>NFTs</h1>
-          <div className='flex justify-between m-auto mb-10 border border-white' >
-            <ImageCard className="" imageSrc={logo1} imageText="1" />
-            <ImageCard className="" imageSrc={logo1} imageText="2" />
-            <ImageCard className="" imageSrc={logo1} imageText="3" />
-          </div>
-        </div> */}
       <div className="nfts flex justify-center">
        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 py-3">
           <ImageCard imageSrc={'https://cdn.midjourney.com/029fea47-52b8-448e-9533-e6ad9b850e7f/grid_0.png'} imageTitle={"Lens Garden NFT #1: Seed"} imageText={"Unlocks at level 0"} imageDesc={"0 XP points needed to unlock this"}/>
-          <ImageCard imageSrc={'https://cdn.midjourney.com/a99a2afd-2c68-46b2-b0fc-60252eb5d408/grid_0.png'} imageTitle={"Lens Garden NFT #2: Sprout"} imageText={"Unlocks at level 6"} imageDesc={"20,000 XP points needed to unlock this"}/>
-          <ImageCard imageSrc={'https://cdn.midjourney.com/feac2f1f-422d-44b4-97c7-b16a2b2707ca/grid_0.png'} imageTitle={"Lens Garden NFT #3: Plant"} imageText={"Unlocks at level 12"} imageDesc={"80,000 XP points needed to unlock this"}/>
-          <ImageCard imageSrc={'https://cdn.midjourney.com/262dd3af-4b2e-47f7-afdb-41b683a366c2/grid_0.png'} imageTitle={"Lens Garden NFT #4: Charm"} imageText={"Unlocks at level 20"} imageDesc={"120,000 XP points needed to unlock this"}/>
-          <ImageCard imageSrc={'https://cdn.midjourney.com/b4fa6557-3bb7-492d-8667-86d21494bee1/grid_0.png'} imageTitle={"Lens Garden NFT #5: Baby tree"} imageText={"Unlocks at level 40"} imageDesc={"250,000 XP points needed to unlock this"}/>
-          <ImageCard imageSrc={Tree} imageTitle={"Lens Garden NFT #6: Tree"} imageText={"Unlocks at level 60"} imageDesc={"480,000 XP points needed to unlock this"} />
+          <ImageCard imageSrc={'https://cdn.midjourney.com/a99a2afd-2c68-46b2-b0fc-60252eb5d408/grid_0.png'} imageTitle={"Lens Garden NFT #2: Sprout"} imageText={"Unlocks at level 5"} imageDesc={"8,000 XP points needed to unlock this"}/>
+          <ImageCard imageSrc={'https://cdn.midjourney.com/feac2f1f-422d-44b4-97c7-b16a2b2707ca/grid_0.png'} imageTitle={"Lens Garden NFT #3: Plant"} imageText={"Unlocks at level 10"} imageDesc={"256,000 XP points needed to unlock this"}/>
+          <ImageCard imageSrc={'https://cdn.midjourney.com/262dd3af-4b2e-47f7-afdb-41b683a366c2/grid_0.png'} imageTitle={"Lens Garden NFT #4: Charm"} imageText={"Unlocks at level 15"} imageDesc={"8,200,000 XP points needed to unlock this"}/>
+          <ImageCard imageSrc={'https://cdn.midjourney.com/b4fa6557-3bb7-492d-8667-86d21494bee1/grid_0.png'} imageTitle={"Lens Garden NFT #5: Baby tree"} imageText={"Unlocks at level 20"} imageDesc={"262,416,000 XP points needed to unlock this"}/>
+          <ImageCard imageSrc={Tree} imageTitle={"Lens Garden NFT #6: Lens Tree"} imageText={"Unlocks at level 25"} imageDesc={"8,397,344,000 XP points needed to unlock this"} />
         </div>
       </div>
     </div>
