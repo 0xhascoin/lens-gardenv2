@@ -6,7 +6,7 @@ function ImageCard({ imageSrc, imageText, imageTitle, imageDesc }) {
   const audioRef = useRef(null);
 
   const playFlipSound = () => {
-    audioRef.current.play();
+    // audioRef.current.play();
   };
 
   return (

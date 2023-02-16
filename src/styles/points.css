@@ -1,0 +1,28 @@
+.points {
+    /* color: black; */
+    /* background-color: white; */
+    margin: auto;
+    width: 90%;
+    padding: 1rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.points h1 {
+    font-size: 2rem;
+    margin: auto;
+    width: 80%;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    background: linear-gradient( rgba(0,0,0,.8), rgba(0,0,0,.1) ), url('https://cdn.midjourney.com/3087fd3f-8bdd-4ae2-bee3-81bdd7c9ea74/grid_0.png');
+    background-size: cover;
+    color: white;
+}
+
+.point-card {
+    /* border: 1px solid red; */
+    background: linear-gradient( rgba(0,0,0,.8), rgba(255,255,255,.1) ), url('https://cdn.midjourney.com/3087fd3f-8bdd-4ae2-bee3-81bdd7c9ea74/grid_0.png');
+    background-size: cover;
+    /* padding-top: 2rem;
+    padding-bottom: 2rem; */
+}
