@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import logo1 from '../styles/images/logo1.png';
-import flipSound from '../styles/sounds/flipsound.mp3';
+// import flipSound from '../styles/sounds/flipsound.mp3';
 
 function ImageCard({ imageSrc, imageText, imageTitle, imageDesc }) {
   const audioRef = useRef(null);
