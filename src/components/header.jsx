@@ -5,7 +5,7 @@ import Garden from "../pages/garden";
 
 
 
-export default function Header({ currentAccount, connectWallet, loadingProfile, profileFound, profile }) {
+export default function Header({ currentAccount, connecting, connectWallet, loadingProfile, profileFound, profile }) {
   const [navMenuVisible, setNavMenuVisible] = useState(false);
   // Define the toggleNavMenu function
   const toggleNavMenu = () => {
@@ -31,6 +31,7 @@ export default function Header({ currentAccount, connectWallet, loadingProfile, 
             loadingProfile={loadingProfile}
             profileFound={profileFound}
             profile={profile}
+            connecting={connecting}
           />
           
           <button
@@ -42,7 +43,7 @@ export default function Header({ currentAccount, connectWallet, loadingProfile, 
             onClick={toggleNavMenu}
           >
             <svg
-              className="w-6 h-6"
+              className="w-6 h-6 text-white"
               aria-hidden="true"
               fill="currentColor"
               viewBox="0 0 20 20"
