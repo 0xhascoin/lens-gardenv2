@@ -30,7 +30,7 @@ function ImageCard({ imageSrc, imageText, imageTitle, imageDesc }) {
             <p className="text-base">{imageDesc}</p>
           </div>
         </div>
-        <audio ref={audioRef} src={flipSound} />
+        {/* <audio ref={audioRef} src={flipSound} /> */}
       </div>
     </div>
   );
