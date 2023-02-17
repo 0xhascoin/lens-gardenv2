@@ -4,9 +4,9 @@ import '../styles/points.css'
 const Points = ({ title, xp, percentage }) => {
     let perc = Math.floor((xp / 50) * 100);
     return (
-        <div className='w-full mb-5 point-card p-3 rounded-lg shadow-xl shadow-black/40'>
-            <div className="bg-zinc-900 flex justify-between items-center w-full p-4 py-6 rounded-lg">
-                <h2 className='mr-10 text-lg w-1/5 text-gray-50'>{title}</h2>
+        <div className='w-full mb-5 point-card p-3 rounded-lg shadow-xl border-red-700 border-4 shadow-black/40'>
+            <div className="bg-red-900 flex justify-between items-center w-full p-4 py-6 rounded-lg">
+                <h2 className='mr-10 text-lg w-1/5 text-gray-50 bg-green-600'>{title}</h2>
                 <div class="w-1/2 h-8 bg-zinc-700 rounded-lg mr-10">
                     <div class="h-8 bg-gradient-to-r from-cyan-500 rounded-lg" style={{ width: `${perc}%` }}></div>
                 </div>
@@ -25,7 +25,7 @@ const Points = ({ title, xp, percentage }) => {
 
 const PointsCalculation = () => {
     return (
-        <div className='points'>
+        <div className='points border-4 border-blue-400'>
             <h1 className='mb-10 bg-white p-4'>Points Calculation</h1>
             <div className="flex justify-center items-center">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 p-3 w-full">

@@ -11,11 +11,11 @@ const ConnectWallet = ({ connecting, currentAccount, connectWallet, loadingProfi
         return <LoadingSpinner />
       } else {
         return (
-          <div className="flex connect-button1 bg-gradient-to-r from-emerald-500 to-green-300 rounded-lg mr-2">
+          
             <button onClick={connectWallet} className="text-white focus:ring-4 focus:outline-none focus:ring-green-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 md:mr-0 dark:bg-green-700 dark:hover:bg-green-600">
               Connect Wallet
             </button>
-          </div>
+          
         );
       }
     } else {
