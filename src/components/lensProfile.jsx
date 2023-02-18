@@ -29,49 +29,69 @@ const LensProfile = ({ profile }) => {
                         <p className='text-sm'>{profile.ownedBy.slice(0, 6)}...{profile.ownedBy.slice(-6)}</p>
                     </div>
                 </div>
-                <div class="grid grid-cols-3 gap-4">
-                    <div className='border border-black text-center p-4'>
-                        <div className="flex justify-center mb-2">
-                            <SlUserFollowing className='h-20 w-20' />
+                <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
+
+                    <div className='p-2 bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg border border-black text-center flex justify-center place-items-center bg-cover bg-center' style={{backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)'}}>
+                        <div className='bg-white w-full h-full rounded-lg p-2 border border-emerald-900 py-8'>
+                            <div className="flex w-1/3 justify-center py-8 mb-2 rounded-full m-auto bg-cover bg-center" style={{backgroundImage: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)'}}>
+                                <SlUserFollowing className='h-8 w-8 text-white' />
+                            </div>
+                            <h2 className='text-xl'>Following</h2>
+                            <p>{profile.stats.totalFollowing}</p>
                         </div>
-                        <h2 className='text-xl'>Following</h2>
-                        <p>{profile.stats.totalFollowing}</p>
                     </div>
-                    <div className='border border-black text-center p-4'>
-                        <div className="flex justify-center mb-2">
-                            <BiGroup className='h-20 w-20' />
+
+                    <div className='p-2 bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg border border-black text-center flex justify-center place-items-center bg-cover bg-center' style={{backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)'}}>
+                        <div className='bg-white w-full h-full rounded-lg p-2 border border-emerald-900 py-8'>
+                            <div className="flex w-1/3 justify-center py-8 mb-2 rounded-full m-auto bg-cover bg-center" style={{backgroundImage: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)'}}>
+                                <BiGroup className='h-8 w-8 text-white' />
+                            </div>
+                            <h2 className='text-xl'>Followers</h2>
+                            <p>{profile.stats.totalFollowers}</p>
                         </div>
-                        <h2 className='text-xl'>Followers</h2>
-                        <p>{profile.stats.totalFollowers}</p>
                     </div>
-                    <div className='border border-black text-center p-4'>
-                        <div className="flex justify-center mb-2">
-                            <FiSend className='h-20 w-20' />
+
+                    <div className='p-2 bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg border border-black text-center flex justify-center place-items-center bg-cover bg-center' style={{backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)'}}>
+                        <div className='bg-white w-full h-full rounded-lg p-2 border border-emerald-900 py-8'>
+                            <div className="flex w-1/3 justify-center py-8 mb-2 rounded-full m-auto bg-cover bg-center" style={{backgroundImage: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)'}}>
+                                <FiSend className='h-8 w-8 text-white' />
+                            </div>
+                            <h2 className='text-xl'>Posts</h2>
+                            <p>{profile.stats.totalPosts}</p>
                         </div>
-                        <h2 className='text-xl'>Posts</h2>
-                        <p>{profile.stats.totalPosts}</p>
                     </div>
-                    <div className='border border-black text-center p-4'>
-                        <div className="flex justify-center mb-2">
-                            <BiCommentDots className='h-20 w-20' />
+
+                    <div className='p-2 bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg border border-black text-center flex justify-center place-items-center bg-cover bg-center' style={{backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)'}}>
+                        <div className='bg-white w-full h-full rounded-lg p-2 border border-emerald-900 py-8'>
+                            <div className="flex w-1/3 justify-center py-8 mb-2 rounded-full m-auto bg-cover bg-center" style={{backgroundImage: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)'}}>
+                                <BiCommentDots className='h-8 w-8 text-white' />
+                            </div>
+                            <h2 className='text-xl'>Comments</h2>
+                            <p>{profile.stats.totalComments}</p>
                         </div>
-                        <h2 className='text-xl'>Comments</h2>
-                        <p>{profile.stats.totalComments}</p>
                     </div>
-                    <div className='border border-black text-center p-4'>
-                        <div className="flex justify-center mb-2">
-                            <BiCollection className='h-20 w-20' />
+
+                    <div className='p-2 bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg border border-black text-center flex justify-center place-items-center bg-cover bg-center' style={{backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)'}}>
+                        <div className='bg-white w-full h-full rounded-lg p-2 border border-emerald-900 py-8'>
+                            <div className="flex w-1/3 justify-center py-8 mb-2 rounded-full m-auto bg-cover bg-center" style={{backgroundImage: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)'}}>
+                                <BiCollection className='h-8 w-8 text-white' />
+                            </div>
+                            <h2 className='text-xl'>Collects</h2>
+                            <p>{profile.stats.totalCollects}</p>
                         </div>
-                        <h2 className='text-xl'>Collects</h2>
-                        <p>{profile.stats.totalCollects}</p>
                     </div>
-                    <div className='border border-black text-center p-4'>
-                        <div className="flex justify-center mb-2">
-                            <VscMirror className='h-20 w-20' />
+
+                    <div className='p-2 bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg border border-black text-center flex justify-center place-items-center bg-cover bg-center' style={{backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)'}}>
+                        <div className='bg-white w-full h-full rounded-lg p-2 border border-emerald-900 py-8'>
+                            <div className="flex w-1/3 justify-center py-8 mb-2 rounded-full m-auto bg-cover bg-center" style={{backgroundImage: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)'}}>
+                                <VscMirror className='h-8 w-8 text-white' />
+                            </div>
+                            <h2 className='text-xl'>Mirrors</h2>
+                            <p>{profile.stats.totalMirrors}</p>
                         </div>
-                        <h2 className='text-xl'>Mirrors</h2>
-                        <p>{profile.stats.totalMirrors}</p>
                     </div>
+
+
                 </div>
             </div>
         </div>

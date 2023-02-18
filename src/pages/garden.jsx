@@ -113,7 +113,7 @@ const Garden = () => {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-cover bg-center" style={{ backgroundImage: `url(${bggarden2})` }}>
+    <div className="relative min-h-screen bg-cover bg-center" style={{ backgroundImage: 'linear-gradient( rgba(0,0,0,.5), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/3439d6e8-9981-42a7-964f-a9e8ce18af84/grid_0.png)' }}>
       <Header
         connectWallet={connectWallet}
         connecting={connecting}
