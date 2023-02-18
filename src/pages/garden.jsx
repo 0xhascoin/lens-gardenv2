@@ -14,6 +14,7 @@ import mirrors from '../styles/images/stats/mirrors.png';
 
 import { useState, useEffect } from 'react';
 import { client, myStats } from '../../api/lensApi';
+import LensProfileStats from '../components/lensProfileStats';
 
 
 const Garden = () => {
@@ -120,7 +121,21 @@ const Garden = () => {
         profileFound={profileFound}
         profile={profile}
       />
-      <div className="relative">
+
+      <LensProfileStats
+        connectWallet={connectWallet}
+        connecting={connecting}
+        currentAccount={currentAccount}
+        loadingProfile={loadingProfile}
+        profileFound={profileFound}
+        profile={profile}
+      />
+
+
+
+
+
+      {/* <div className="relative">
 
         <div className="fixed bottom-0 left-0 right-0 text-center">
           <Points imageSrc={posts} imageTitle={"30 XP"} />
@@ -134,7 +149,7 @@ const Garden = () => {
           <Points imageSrc={collects} imageTitle={"20 XP"} />
           <Points imageSrc={mirrors} imageTitle={"30 XP"} />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
