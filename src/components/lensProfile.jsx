@@ -11,10 +11,10 @@ const LensProfile = ({ profile }) => {
     console.log(profile);
 
     return (
-        <div className="border border-black w-full p-4">
-            <div className="border border-black w-full rounded-lg p-2">
+        <div className="w-full md:w-1/2 p-4">
+            <div className="w-full rounded-lg p-2">
                 {/* Header */}
-                <div className="border border-black w-full flex p-2 mb-6">
+                <div className="w-full flex p-2 mb-6">
                     {/* Profile Image */}
                     <img
                         className="rounded-lg w-26 h-24 border border-white mr-2"
@@ -22,14 +22,14 @@ const LensProfile = ({ profile }) => {
                         alt="profile-image"
                     />
                     {/* Names */}
-                    <div className="border border-red-500 text-left">
+                    <div className="text-left">
                         {/* Lens Name */}
                         <h2 className='text-xl mb-3 bolded'>{profile.handle}</h2>
                         {/* Address */}
                         <p className='text-sm'>{profile.ownedBy.slice(0, 6)}...{profile.ownedBy.slice(-6)}</p>
                     </div>
                 </div>
-                <div class="grid grid-cols-3 gap-4 border border-red-600">
+                <div class="grid grid-cols-3 gap-4">
                     <div className='border border-black text-center p-4'>
                         <div className="flex justify-center mb-2">
                             <SlUserFollowing className='h-20 w-20' />

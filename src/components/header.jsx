@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import logo1 from "../styles/images/logo1.png";
 import ConnectWallet from "./connectWallet";
-import Garden from "../pages/garden";
 
 
 

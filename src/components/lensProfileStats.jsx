@@ -40,14 +40,14 @@ const LensProfileStats = ({ currentAccount, connecting, connectWallet, loadingPr
                 navigate("/"); 
             } else {
                 return (
-                    <div className='bg-white text-center py-4'>
+                    <div className='bg-white text-center py-8'>
                         <h1 className="text-2xl">{profile.handle} Profile Stats</h1>
 
-                        <div className="border border-black md:flex md:justify-center md:items-center m-auto w-11/12 mt-10 block">
+                        <div className="border border-black md:flex md:justify-center md:items-start m-auto w-11/12 mt-10 block">
                             {/* Profile */}
                             <LensProfile profile={profile} />
                             {/* Pie chart */}
-                            <LensChart />
+                            <LensChart stats={profile.stats}/>
                         </div>
                     </div>
                 );
