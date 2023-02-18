@@ -15,6 +15,7 @@ import mirrors from '../styles/images/stats/mirrors.png';
 import { useState, useEffect } from 'react';
 import { client, myStats } from '../../api/lensApi';
 import LensProfileStats from '../components/lensProfileStats';
+import Footer from '../components/footer';
 
 
 const Garden = () => {
@@ -133,7 +134,7 @@ const Garden = () => {
 
 
 
-
+      <Footer />
 
       {/* <div className="relative">
 
