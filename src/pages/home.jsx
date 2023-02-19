@@ -126,7 +126,7 @@ const Home = () => {
       <Hero />
       <NftDetails />
       <div className="mb-20"></div>
-      <PointsCalculation />
+      {/* <PointsCalculation /> */}
       <Footer />
     </div>
   )

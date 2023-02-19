@@ -65,7 +65,15 @@ export default function Header({ currentAccount, connecting, connectWallet, load
 
             <li>
               <a
-                href="/Garden"
+                href="/"
+                className="block py-2 pl-3 pr-4  rounded md:p-0 text-white-400 text-lg hover:text-green-400 transition-all font-sans font-light text-slate-50"
+              >
+                Home
+              </a>
+            </li>
+            <li>
+              <a
+                href="/garden"
                 className="block py-2 pl-3 pr-4  rounded md:p-0 text-white-400 text-lg hover:text-green-400 transition-all font-sans font-light text-slate-50"
               >
                 View Garden
@@ -73,7 +81,7 @@ export default function Header({ currentAccount, connecting, connectWallet, load
             </li>
             <li>
               <a
-                href="#"
+                href="/mint"
                 className="block py-2 pl-3 pr-4 text-white-700 rounded md:p-0  text-lg  hover:text-green-400 transition-all font-sans font-light text-slate-50"
               >
                 Mint Nft
