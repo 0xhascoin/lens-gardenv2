@@ -6,9 +6,20 @@ import { VscMirror } from 'react-icons/vsc'
 
 const startUrl = 'https://lens.infura-ipfs.io/ipfs/';
 
+const Badge = ({text}) => {
+    console.log("Text: ", text)
+    return (
+    <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
+        {text}
+    </span>
+    )
+}
+
+
+
 const LensProfile = ({ profile }) => {
 
-    console.log(profile);
+    console.log(profile.stats.totalMirrors);
 
     return (
         <div className="w-full md:w-1/2 p-4">
@@ -29,68 +40,70 @@ const LensProfile = ({ profile }) => {
                         <p className='text-sm'>{profile.ownedBy.slice(0, 6)}...{profile.ownedBy.slice(-6)}</p>
                     </div>
                 </div>
-                <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
 
-                    <div className='p-2 bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg border border-black text-center flex justify-center place-items-center bg-cover bg-center' style={{backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)'}}>
-                        <div className='bg-white w-full h-full rounded-lg p-2 border border-emerald-900 py-8'>
-                            <div className="flex w-1/3 justify-center py-8 mb-2 rounded-full m-auto bg-cover bg-center" style={{backgroundImage: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)'}}>
+                    <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg border border-black text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+                        <div className='bg-white w-full h-full rounded-lg pb-4'>
+                            <div className="flex w-full justify-center py-8 mb-2 m-auto bg-transparent rounded-t-lg	" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                                 <SlUserFollowing className='h-8 w-8 text-white' />
                             </div>
-                            <h2 className='text-xl'>Following</h2>
-                            <p>{profile.stats.totalFollowing}</p>
+                            <h2 className='text-lg text-zinc-800 mb-2'>Following</h2>
+                            <Badge text={profile.stats.totalFollowing} />
+
                         </div>
                     </div>
 
-                    <div className='p-2 bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg border border-black text-center flex justify-center place-items-center bg-cover bg-center' style={{backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)'}}>
-                        <div className='bg-white w-full h-full rounded-lg p-2 border border-emerald-900 py-8'>
-                            <div className="flex w-1/3 justify-center py-8 mb-2 rounded-full m-auto bg-cover bg-center" style={{backgroundImage: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)'}}>
+                    <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg border border-black text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+                        <div className='bg-white w-full h-full rounded-lg pb-4'>
+                            <div className="flex w-full justify-center py-8 rounded-t-lg mb-2 m-auto bg-transparent" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                                 <BiGroup className='h-8 w-8 text-white' />
                             </div>
-                            <h2 className='text-xl'>Followers</h2>
-                            <p>{profile.stats.totalFollowers}</p>
+                            <h2 className='text-lg text-zinc-800 mb-2'>Followers</h2>
+                            <Badge text={profile.stats.totalFollowers} />
+
                         </div>
                     </div>
 
-                    <div className='p-2 bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg border border-black text-center flex justify-center place-items-center bg-cover bg-center' style={{backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)'}}>
-                        <div className='bg-white w-full h-full rounded-lg p-2 border border-emerald-900 py-8'>
-                            <div className="flex w-1/3 justify-center py-8 mb-2 rounded-full m-auto bg-cover bg-center" style={{backgroundImage: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)'}}>
+                    <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg border border-black text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+                        <div className='bg-white w-full h-full rounded-lg pb-4'>
+                            <div className="flex w-full justify-center rounded-t-lg	py-8 mb-2 m-auto bg-transparent" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                                 <FiSend className='h-8 w-8 text-white' />
                             </div>
-                            <h2 className='text-xl'>Posts</h2>
-                            <p>{profile.stats.totalPosts}</p>
+                            <h2 className='text-lg text-zinc-800 mb-2'>Posts</h2>
+                            <Badge text={profile.stats.totalPosts} />
                         </div>
                     </div>
 
-                    <div className='p-2 bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg border border-black text-center flex justify-center place-items-center bg-cover bg-center' style={{backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)'}}>
-                        <div className='bg-white w-full h-full rounded-lg p-2 border border-emerald-900 py-8'>
-                            <div className="flex w-1/3 justify-center py-8 mb-2 rounded-full m-auto bg-cover bg-center" style={{backgroundImage: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)'}}>
+                    <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg border border-black text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+                        <div className='bg-white w-full h-full rounded-lg pb-4'>
+                            <div className="flex w-full justify-center rounded-t-lg	py-8 mb-2 m-auto bg-transparent" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                                 <BiCommentDots className='h-8 w-8 text-white' />
                             </div>
-                            <h2 className='text-xl'>Comments</h2>
-                            <p>{profile.stats.totalComments}</p>
+                            <h2 className='text-lg text-zinc-800 mb-2'>Comments</h2>
+                            <Badge text={profile.stats.totalComments} />
                         </div>
                     </div>
 
-                    <div className='p-2 bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg border border-black text-center flex justify-center place-items-center bg-cover bg-center' style={{backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)'}}>
-                        <div className='bg-white w-full h-full rounded-lg p-2 border border-emerald-900 py-8'>
-                            <div className="flex w-1/3 justify-center py-8 mb-2 rounded-full m-auto bg-cover bg-center" style={{backgroundImage: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)'}}>
+                    <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg border border-black text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+                        <div className='bg-white w-full h-full rounded-lg pb-4'>
+                            <div className="flex w-full justify-center rounded-t-lg	py-8 mb-2 m-auto bg-transparent" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                                 <BiCollection className='h-8 w-8 text-white' />
                             </div>
-                            <h2 className='text-xl'>Collects</h2>
-                            <p>{profile.stats.totalCollects}</p>
+                            <h2 className='text-lg text-zinc-800 mb-2'>Collects</h2>
+                            <Badge text={profile.stats.totalCollects} />
+
                         </div>
                     </div>
 
-                    <div className='p-2 bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg border border-black text-center flex justify-center place-items-center bg-cover bg-center' style={{backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)'}}>
-                        <div className='bg-white w-full h-full rounded-lg p-2 border border-emerald-900 py-8'>
-                            <div className="flex w-1/3 justify-center py-8 mb-2 rounded-full m-auto bg-cover bg-center" style={{backgroundImage: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)'}}>
+                    <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg border border-black text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+                        <div className='bg-white w-full h-full rounded-lg pb-4'>
+                            <div className="flex w-full justify-center rounded-t-lg	py-8 mb-2 m-auto bg-transparent" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                                 <VscMirror className='h-8 w-8 text-white' />
                             </div>
-                            <h2 className='text-xl'>Mirrors</h2>
-                            <p>{profile.stats.totalMirrors}</p>
+                            <h2 className='text-lg text-zinc-800 mb-2'>Mirrors</h2>
+                            <Badge text={profile.stats.totalMirrors} />
                         </div>
                     </div>
-
 
                 </div>
             </div>
