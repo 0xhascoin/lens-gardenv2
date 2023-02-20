@@ -31,13 +31,13 @@ const ConnectWallet = ({ connecting, currentAccount, connectWallet, loadingProfi
         return <p className="bg-white flex justify-center items-center rounded-lg p-1 px-2 mr-5">No Lens Profile Found</p>;
       } else {
         return (
-          <div className="sm:flex sm:justify-center sm:items-center mr-5 p-1 px-2 bg-white rounded-lg">
+          <div className="flex bg-transparent rounded-lg">
             <img
-              className="rounded-lg w-20 ml-auto border border-white mr-2"
+              className="rounded-lg w-20 ml-auto mr-2"
               src={`${startUrl}${profile.picture.original.url.slice(7)}`}
               alt="profile-image"
             />
-            <p>{profile.handle}</p>
+            <p className='text-white items-center flex'>{profile.handle}</p>
           </div>
         );
       }

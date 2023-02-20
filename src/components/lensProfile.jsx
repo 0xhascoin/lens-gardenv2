@@ -11,7 +11,7 @@ const startUrl = 'https://lens.infura-ipfs.io/ipfs/';
 const Badge = ({ text }) => {
     console.log("Text: ", text)
     return (
-        <span className="text-center bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
+        <span className="text-center mr-auto bg-green-100 ml-12 text-green-800 text-xs font-medium rounded dark:bg-gray-700 dark:text-green-400">
             {text}
         </span>
     )
@@ -24,10 +24,10 @@ const ExpProgress = ({ LEVEL, XP }) => {
     const total = LEVEL.experienceToNextLevel + XP;
     const perc = Math.floor((XP/total) * 100);
     return (
-        <div className="w-full flex items-center justify-between">
+        <div className="flex w-full justify-center items-center">
 
-            <div class="w-4/5 bg-zinc-800 rounded-full h-2.5 dark:bg-gray-700 mr-1">
-                <div class="bg-emerald-400 h-2.5 rounded-full" style={{width: `${perc}%`}}></div>
+            <div className=" w-28 bg-zinc-800 rounded-full h-2.5 dark:bg-gray-700">
+                <div className="bg-emerald-400 h-2.5 rounded-full" style={{width: `${perc}%`}}></div>
             </div>
             <Badge text={`Level ${LEVEL.level + 1}`} />
         </div>
@@ -111,23 +111,26 @@ const LensProfile = ({ profile }) => {
     }, [])
 
     return (
-        <div className="w-full md:w-1/2 p-4">
-            <div className="w-full rounded-lg p-2">
+        <div className="w-full h-full md:w-1/2 ">
+            <div className="w-full rounded-lg h-full">
                 {/* Header */}
-                <div className="w-full md:flex p-2 mb-6 md:items-center">
+                <div className="w-full h-60 grid grid-rows-2 items-center  justify-center md:grid md:items-center">
                     {/* Profile Image */}
                     <img
-                        className="rounded-lg w-26 h-24 border border-white mr-2"
+                        className="rounded w-22 h-24"
                         src={`${startUrl}${profile.picture.original.url.slice(7)}`}
                         alt="profile-image"
                     />
                     {/* Names */}
-                    <div className="text-left w-full">
+                    <div className="">
                         {/* Lens Name */}
-                        <h2 className='text-xl mb-3 bolded'>{profile.handle}</h2>
+                        <div className='w-1/3 text-xl ml-14 font-semibold'>
+                        <h2 className='mx-auto'>@{profile.handle}</h2>
+                        </div>
                         {/* Address */}
-                        <p className='text-sm'>{profile.ownedBy.slice(0, 6)}...{profile.ownedBy.slice(-6)}</p>
-
+                        <div className='w-1/3 flex text-xl font-semibold bolded ml-9'>
+                        <h2 className='mx-auto'>{profile.ownedBy.slice(0, 6)}...{profile.ownedBy.slice(-6)}</h2>
+                        </div>
                         {loadingStats ? (
                             <p>Loading...</p>
                         ) : (
@@ -139,22 +142,22 @@ const LensProfile = ({ profile }) => {
                         )}
                     </div>
                 </div>
+<div className='h-20'><h2>empty div</h2></div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
 
-
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-
-                    <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg border border-black text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+                    <div className='bg-emerald-500 border border-gray-900 rounded-lg cursor-pointer transition-all hover:shadow-lg text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                         <div className='bg-white w-full h-full rounded-lg pb-4'>
                             <div className="flex w-full justify-center py-8 mb-2 m-auto bg-transparent rounded-t-lg	" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                                 <SlUserFollowing className='h-8 w-8 text-white' />
                             </div>
                             <h2 className='text-lg text-zinc-800 mb-2'>Following</h2>
-                            <Badge text={profile.stats.totalFollowing} />
-
+                            <div className=''>
+                            <Badge text={profile.stats.totalFollowing}  />
+                            </div>
                         </div>
                     </div>
 
-                    <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg border border-black text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+                    <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg  text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                         <div className='bg-white w-full h-full rounded-lg pb-4'>
                             <div className="flex w-full justify-center py-8 rounded-t-lg mb-2 m-auto bg-transparent" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                                 <BiGroup className='h-8 w-8 text-white' />
@@ -165,7 +168,7 @@ const LensProfile = ({ profile }) => {
                         </div>
                     </div>
 
-                    <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg border border-black text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+                    <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg  text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                         <div className='bg-white w-full h-full rounded-lg pb-4'>
                             <div className="flex w-full justify-center rounded-t-lg	py-8 mb-2 m-auto bg-transparent" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                                 <FiSend className='h-8 w-8 text-white' />
@@ -174,8 +177,8 @@ const LensProfile = ({ profile }) => {
                             <Badge text={profile.stats.totalPosts} />
                         </div>
                     </div>
-
-                    <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg border border-black text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+                                              
+                    <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg  text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                         <div className='bg-white w-full h-full rounded-lg pb-4'>
                             <div className="flex w-full justify-center rounded-t-lg	py-8 mb-2 m-auto bg-transparent" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                                 <BiCommentDots className='h-8 w-8 text-white' />
@@ -185,7 +188,7 @@ const LensProfile = ({ profile }) => {
                         </div>
                     </div>
 
-                    <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg border border-black text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+                    <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg  text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                         <div className='bg-white w-full h-full rounded-lg pb-4'>
                             <div className="flex w-full justify-center rounded-t-lg	py-8 mb-2 m-auto bg-transparent" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                                 <BiCollection className='h-8 w-8 text-white' />
@@ -196,7 +199,7 @@ const LensProfile = ({ profile }) => {
                         </div>
                     </div>
 
-                    <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg border border-black text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+                    <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg  text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                         <div className='bg-white w-full h-full rounded-lg pb-4'>
                             <div className="flex w-full justify-center rounded-t-lg	py-8 mb-2 m-auto bg-transparent" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                                 <VscMirror className='h-8 w-8 text-white' />

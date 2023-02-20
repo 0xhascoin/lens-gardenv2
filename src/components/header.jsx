@@ -13,18 +13,20 @@ export default function Header({ currentAccount, connecting, connectWallet, load
 
   return (
 
-    <nav className={`px-4 sm:px-4 py-2.5 w-full`}>
-      <div className="container flex  flex-wrap items-center justify-between bg-transparent mx-auto bg-red-600">
-        <a href="/" className="flex items-center">
+    <nav className={` sm:px-4 w-full`}>
+      <div className="container flex sm:flex-wrap flex-wrap items-center justify-between bg-transparent mx-auto bg-red-600">
+        <a href="/" className="flex mt-2 items-center">
 
           <img src={logo1} className="rounded shrink w-20 object-contain" alt="Lens-garden logo" />
-          <span className="text-2xl ml-8 font-bold whitespace-nowrap hover:text-green-500 text-white font-sans">Lens Garden</span>
+          <span className="font-bold hover:text-green-500 ml-4 text-white font-sans hidden md:block">Lens Garden</span>
+
         </a>
      
 
-        <div className="flex md:order-2">
+        <div className="flex sm:block md:order-2 right-0">
 
           <ConnectWallet
+          
             connectWallet={connectWallet}
             currentAccount={currentAccount}
             loadingProfile={loadingProfile}
@@ -57,7 +59,7 @@ export default function Header({ currentAccount, connecting, connectWallet, load
           </button>
         </div>
         <div
-          className={`items-center justify-between w-full md:flex md:w-auto  md:order-1 ${navMenuVisible ? "block" : "hidden"
+          className={`items-center justify-center mx-auto w-full md:flex md:w-auto  md:order-1 ${navMenuVisible ? "block" : "hidden"
             }`}
           id="navbar-sticky"
         >
