@@ -1,37 +1,57 @@
-import React from "react";
-import ImageCard from "./ImageCard";
-import bggarden2 from '../styles/images/bggarden2.jpeg';
-import { useRef } from 'react';
+import React from 'react';
+import { SlUserFollowing } from 'react-icons/sl'
+import { BiGroup, BiCommentDots, BiCollection } from 'react-icons/bi'
+import { FiSend } from 'react-icons/fi'
+import { VscMirror } from 'react-icons/vsc'
 
-function Points({ imageSrc, imageText, imageTitle, imageDesc, width, height }) {
-    
-
-    return (
-<div className="group w-[120px] h-[120px] m-auto rounded-lg cursor-pointer"  style={{ width: `${width}px`, height: `${height}px` }}>
-      <div
-        className="w-full h-full shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] relative"
-        
-      >
-        <div className="absolute inset-0" >
-          <img
-           
-            className="h-full w-full rounded-xl object-cover shadow-xl shadow-black/40"
-            src={imageSrc}
-            alt=""
-            
-          />
-        </div>
-        <div className="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]" >
-          <div className="flex min-h-full flex-col items-center justify-center">
-            <h1 className="text-3xl font-bold">{imageTitle}</h1>
-            <p className="text-lg">{imageText}</p>
-            <p className="text-base">{imageDesc}</p>
+const Points = () => {
+  return (
+    <div className='bg-slate-800 rounded'>
+      <h2 className="text-2xl text-center text-emerald-600 mb-4 mt-6">Points Calculation</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+        <div className="w-full h-2/3 flex justify-between items-center border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg">
+          <div className="h-full w-1/2 rounded-l-lg p-4 md:p-2 bg-cover bg-center" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+            <SlUserFollowing className=' text-white h-full w-full' />
           </div>
+          <h2 className='text-lg text-emerald-800 text-center w-1/2'>+10 XP</h2>
         </div>
-        {/* <audio ref={audioRef} src={flipSound} /> */}
-      </div>
-    </div>
-
-    )
+        <div className="w-full h-2/3  flex justify-between items-center border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg">
+          <div className="h-full w-1/2 rounded-l-lg p-4 md:p-2 bg-cover bg-center" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+            <BiGroup className=' text-white h-full w-full' />
+          </div>
+          <h2 className='text-lg text-emerald-800 text-center w-1/2'>+50 XP</h2>
+        </div>
+        <div className="w-full h-2/3  flex justify-between items-center border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg">
+          <div className="h-full w-1/2 rounded-l-lg p-4 md:p-2 bg-cover bg-center" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+            <FiSend className=' text-white h-full w-full' />
+          </div>
+          <h2 className='text-lg text-emerald-800 text-center w-1/2'>+30 XP</h2>
+        </div>
+        <div className="w-full h-2/3  flex justify-between items-center border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg">
+          <div className="h-full w-1/2 rounded-l-lg p-4 md:p-2 bg-cover bg-center" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+            <BiCommentDots className=' text-white h-full w-full' />
+          </div>
+          <h2 className='text-lg text-emerald-800 text-center w-1/2'>+20 XP</h2>
+        </div>
+        <div className="w-full h-2/3  flex justify-between items-center  border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg">
+          <div className="h-full w-1/2 rounded-l-lg p-4 md:p-2 bg-cover bg-center" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+            <BiCollection className=' text-white h-full w-full' />
+          </div>
+          <h2 className='text-lg text-emerald-800 text-center w-1/2'>+20 XP</h2>
+        </div>
+        <div className="w-full h-2/3  flex justify-between items-center border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg">
+          <div className="h-full w-1/2 rounded-l-lg p-4 md:p-2 bg-cover bg-center" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+            <VscMirror className='text-white h-full w-full' />
+          </div>
+          <h2 className='text-lg text-emerald-800 text-center w-1/2'>+30 XP</h2>
+        </div> 
+        </div>
+        </div>
+        );
 }
+
 export default Points;
+
+
+
+
