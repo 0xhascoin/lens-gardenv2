@@ -23,13 +23,13 @@ const ProfileDetails = ({ profile }) => {
 
     const calculateLevel = (experience) => {
         let level = 1;
-        let threshold = 1000;
+        let threshold = 100;
         let experienceToNextLevel = threshold;
         while (experience >= threshold) {
             level += 1;
-            threshold *= 2;
+            threshold *= 1.5;
         }
-        experienceToNextLevel = threshold - experience;
+        experienceToNextLevel = Math.floor(threshold - experience);
 
         return { level, experienceToNextLevel };
     }
@@ -66,34 +66,34 @@ const ProfileDetails = ({ profile }) => {
         }
 
 
-        let image1 = images[0]; // < 2
-        let image2 = images[1]; // 2 => && < 6
-        let image3 = images[2]; // 6 => && < 10
-        let image4 = images[3]; // 10 => && < 15
-        let image5 = images[4]; // 15 => && < 18
-        let image6 = images[5]; // 18 => && < 21
-        let image7 = images[6]; // 21 => && < 27
-        let image8 = images[7]; // 27 => && < 35
-        let image9 = images[8]; // 35 =>
+        let image1 = images[0]; // < 7
+        let image2 = images[1]; // 7 => && < 12
+        let image3 = images[2]; // 12 => && < 17
+        let image4 = images[3]; // 17 => && < 22
+        let image5 = images[4]; // 22 => && < 27
+        let image6 = images[5]; // 27 => && < 32
+        let image7 = images[6]; // 32 => && < 35
+        let image8 = images[7]; // 35 => && < 37
+        let image9 = images[8]; // 37 =>
 
 
-        if (obj.attributes[0].value < 2) {
+        if (obj.attributes[0].value < 7) {
             obj = { ...obj, image: image1, name: names[0] }
-        } else if (obj.attributes[0].value <= 2 || obj.attributes[0].value < 6) {
+        } else if (obj.attributes[0].value <= 7 || obj.attributes[0].value < 12) {
             obj = { ...obj, image: image2, name: names[1] }
-        } else if (obj.attributes[0].value <= 6 || obj.attributes[0].value < 10) {
+        } else if (obj.attributes[0].value <= 12 || obj.attributes[0].value < 17) {
             obj = { ...obj, image: image3, name: names[2] }
-        } else if (obj.attributes[0].value <= 10 || obj.attributes[0].value < 15) {
+        } else if (obj.attributes[0].value <= 17 || obj.attributes[0].value < 22) {
             obj = { ...obj, image: image4, name: names[3] }
-        } else if (obj.attributes[0].value <= 15 || obj.attributes[0].value < 18) {
+        } else if (obj.attributes[0].value <= 22 || obj.attributes[0].value < 27) {
             obj = { ...obj, image: image5, name: names[4] }
-        } else if (obj.attributes[0].value <= 18 || obj.attributes[0].value < 21) {
+        } else if (obj.attributes[0].value <= 27 || obj.attributes[0].value < 32) {
             obj = { ...obj, image: image6, name: names[5] }
-        } else if (obj.attributes[0].value <= 21 || obj.attributes[0].value < 27) {
+        } else if (obj.attributes[0].value <= 32 || obj.attributes[0].value < 35) {
             obj = { ...obj, image: image7, name: names[6] }
-        } else if (obj.attributes[0].value <= 27 || obj.attributes[0].value < 35) {
+        } else if (obj.attributes[0].value <= 35 || obj.attributes[0].value < 37) {
             obj = { ...obj, image: image8, name: names[7] }
-        } else if (obj.attributes[0].value >= 35) {
+        } else if (obj.attributes[0].value >= 37) {
             obj = { ...obj, image: image9, name: names[8] }
         }
 

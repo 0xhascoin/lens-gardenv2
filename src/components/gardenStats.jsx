@@ -45,15 +45,15 @@ const GardenStats = ({ profile }) => {
         return (following * 10) + (followers * 50) + (posts * 30) + (collects * 20) + (mirrors * 30) + (comments * 20);
     }
 
-    const calculateLevel = (experience) => {
+const calculateLevel = (experience) => {
         let level = 1;
-        let threshold = 1000;
+        let threshold = 100;
         let experienceToNextLevel = threshold;
         while (experience >= threshold) {
             level += 1;
-            threshold *= 2;
+            threshold *= 1.5;
         }
-        experienceToNextLevel = threshold - experience;
+        experienceToNextLevel = Math.floor(threshold - experience);
 
         return { level, experienceToNextLevel };
     }
@@ -91,34 +91,34 @@ const GardenStats = ({ profile }) => {
         }
 
 
-        let image1 = images[0]; // < 2
-        let image2 = images[1]; // 2 => && < 6
-        let image3 = images[2]; // 6 => && < 10
-        let image4 = images[3]; // 10 => && < 15
-        let image5 = images[4]; // 15 => && < 18
-        let image6 = images[5]; // 18 => && < 21
-        let image7 = images[6]; // 21 => && < 27
-        let image8 = images[7]; // 27 => && < 35
-        let image9 = images[8]; // 35 =>
+        let image1 = images[0]; // < 7
+        let image2 = images[1]; // 7 => && < 12
+        let image3 = images[2]; // 12 => && < 17
+        let image4 = images[3]; // 17 => && < 22
+        let image5 = images[4]; // 22 => && < 27
+        let image6 = images[5]; // 27 => && < 32
+        let image7 = images[6]; // 32 => && < 35
+        let image8 = images[7]; // 35 => && < 37
+        let image9 = images[8]; // 37 =>
 
 
-        if (obj.attributes[0].value < 2) {
+        if (obj.attributes[0].value < 7) {
             obj = { ...obj, image: image1, name: names[0] }
-        } else if (obj.attributes[0].value <= 2 || obj.attributes[0].value < 6) {
+        } else if (obj.attributes[0].value <= 7 || obj.attributes[0].value < 12) {
             obj = { ...obj, image: image2, name: names[1] }
-        } else if (obj.attributes[0].value <= 6 || obj.attributes[0].value < 10) {
+        } else if (obj.attributes[0].value <= 12 || obj.attributes[0].value < 17) {
             obj = { ...obj, image: image3, name: names[2] }
-        } else if (obj.attributes[0].value <= 10 || obj.attributes[0].value < 15) {
+        } else if (obj.attributes[0].value <= 17 || obj.attributes[0].value < 22) {
             obj = { ...obj, image: image4, name: names[3] }
-        } else if (obj.attributes[0].value <= 15 || obj.attributes[0].value < 18) {
+        } else if (obj.attributes[0].value <= 22 || obj.attributes[0].value < 27) {
             obj = { ...obj, image: image5, name: names[4] }
-        } else if (obj.attributes[0].value <= 18 || obj.attributes[0].value < 21) {
+        } else if (obj.attributes[0].value <= 27 || obj.attributes[0].value < 32) {
             obj = { ...obj, image: image6, name: names[5] }
-        } else if (obj.attributes[0].value <= 21 || obj.attributes[0].value < 27) {
+        } else if (obj.attributes[0].value <= 32 || obj.attributes[0].value < 35) {
             obj = { ...obj, image: image7, name: names[6] }
-        } else if (obj.attributes[0].value <= 27 || obj.attributes[0].value < 35) {
+        } else if (obj.attributes[0].value <= 35 || obj.attributes[0].value < 37) {
             obj = { ...obj, image: image8, name: names[7] }
-        } else if (obj.attributes[0].value >= 35) {
+        } else if (obj.attributes[0].value >= 37) {
             obj = { ...obj, image: image9, name: names[8] }
         }
 
@@ -141,39 +141,39 @@ const GardenStats = ({ profile }) => {
                 <div className='w-full h-full md:flex md:justify-between md:items-center bg-slate-800 p-4 shadow-xl  shadow-black/80 rounded-lg'>
                     {/* Points calculation */}
                     <div className="w-full text-center">
-                        <h1 className='text-white'>Points calculation</h1>
+                        <h1 className='text-white text-xl mb-4 underline'>Points calculation</h1>
                         <div class="grid grid-cols-2 md:grid-cols-2 gap-2 p-2">
-                            <div className="w-full h-2/3 flex justify-between items-center border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg">
+                            <div className="bg-white w-full h-2/3 flex justify-between items-center border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg">
                                 <div className="h-full w-1/2 rounded-l-lg p-4 md:p-2 bg-cover bg-center" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                                     <SlUserFollowing className=' text-white h-full w-full' />
                                 </div>
                                 <h2 className='text-sm text-emerald-800 text-center w-1/2'>+10 XP</h2>
                             </div>
-                            <div className="w-full h-2/3  flex justify-between items-center border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg">
+                            <div className="bg-white w-full h-2/3  flex justify-between items-center border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg">
                                 <div className="h-full w-1/2 rounded-l-lg p-4 md:p-2 bg-cover bg-center" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                                     <BiGroup className=' text-white h-full w-full' />
                                 </div>
                                 <h2 className='text-sm text-emerald-800 text-center w-1/2'>+50 XP</h2>
                             </div>
-                            <div className="w-full h-2/3  flex justify-between items-center border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg">
+                            <div className="bg-white w-full h-2/3  flex justify-between items-center border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg">
                                 <div className="h-full w-1/2 rounded-l-lg p-4 md:p-2 bg-cover bg-center" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                                     <FiSend className=' text-white h-full w-full' />
                                 </div>
                                 <h2 className='text-sm text-emerald-800 text-center w-1/2'>+30 XP</h2>
                             </div>
-                            <div className="w-full h-2/3  flex justify-between items-center border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg">
+                            <div className="bg-white w-full h-2/3  flex justify-between items-center border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg">
                                 <div className="h-full w-1/2 rounded-l-lg p-4 md:p-2 bg-cover bg-center" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                                     <BiCommentDots className=' text-white h-full w-full' />
                                 </div>
                                 <h2 className='text-sm text-emerald-800 text-center w-1/2'>+20 XP</h2>
                             </div>
-                            <div className="w-full h-2/3  flex justify-between items-center  border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg">
+                            <div className="bg-white w-full h-2/3  flex justify-between items-center  border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg">
                                 <div className="h-full w-1/2 rounded-l-lg p-4 md:p-2 bg-cover bg-center" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                                     <BiCollection className=' text-white h-full w-full' />
                                 </div>
                                 <h2 className='text-sm text-emerald-800 text-center w-1/2'>+20 XP</h2>
                             </div>
-                            <div className="w-full h-2/3  flex justify-between items-center border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg">
+                            <div className=" bg-white w-full h-2/3  flex justify-between items-center border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg">
                                 <div className="h-full w-1/2 rounded-l-lg p-4 md:p-2 bg-cover bg-center" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                                     <VscMirror className='text-white h-full w-full' />
                                 </div>
@@ -187,7 +187,16 @@ const GardenStats = ({ profile }) => {
                     </div>
                     {/* NFT Details */}
                     <div className="w-full md:w-4/5 h-full p-2">
-                    <div className='h-1/2 mt-auto rounded-lg cursor-pointer transition-all hover:shadow-lg text-center flex justify-center place-items-center bg-cover bg-center mb-3' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+                    <div className='mb-3 bg-emerald-500 h-1/2 mt-auto rounded-lg cursor-pointer transition-all hover:shadow-lg text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+                        <div className='bg-white w-full h-full rounded-lg pb-4 border border-white'>
+                            <div className="flex w-full justify-center rounded-t-lg	py-8 mb-2 m-auto bg-transparent" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+                                <h1 className="text-xl font-bold text-slate-50">{data.name}</h1>
+
+                            </div>
+                            <Badge text={`Level: ${LEVEL.level}`} />
+                        </div>
+                    </div>
+                    <div className='h-1/2 mt-auto rounded-lg cursor-pointer transition-all hover:shadow-lg text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                         <div className=' w-full h-full rounded-lg bg-white border border-white'>
                             <div className="flex w-full justify-center rounded-t-lg	py-8 mb-2 m-auto bg-transparent" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                                 <h1 className="text-xl font-bold text-slate-50">Experience to next level</h1>
@@ -199,15 +208,7 @@ const GardenStats = ({ profile }) => {
 
                         </div>
                     </div>
-                    <div className='bg-emerald-500 h-1/2 mt-auto rounded-lg cursor-pointer transition-all hover:shadow-lg text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
-                        <div className='bg-white w-full h-full rounded-lg pb-4 border border-white'>
-                            <div className="flex w-full justify-center rounded-t-lg	py-8 mb-2 m-auto bg-transparent" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
-                                <h1 className="text-xl font-bold text-slate-50">{data.name}</h1>
-
-                            </div>
-                            <Badge text={`Level: ${LEVEL.level}`} />
-                        </div>
-                    </div>
+                    
                     </div>
                 </div>
             )
