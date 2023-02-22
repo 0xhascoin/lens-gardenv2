@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { BiCollection, BiCommentDots, BiGroup } from 'react-icons/bi';
+import { FiSend } from 'react-icons/fi';
+import { SlUserFollowing } from 'react-icons/sl';
+import { VscMirror } from 'react-icons/vsc';
 import { getUser } from '../../api/firebase';
-import { images } from '../../constants/nftMetadata';
+import { images, names } from '../../constants/nftMetadata';
 
 const Badge = ({ text }) => {
     console.log("Text: ", text)
@@ -17,7 +21,7 @@ const ExpProgress = ({ LEVEL, XP }) => {
     const total = LEVEL.experienceToNextLevel + XP;
     const perc = Math.floor((XP / total) * 100);
     return (
-        <div className="w-full flex items-center justify-between border-4 border-violet-800">
+        <div className="w-full flex items-center justify-between pb-2">
 
             <div class="w-4/5 bg-zinc-800 rounded-full h-2.5 dark:bg-gray-700 mr-4">
                 <div class="bg-emerald-400 h-2.5 rounded-full" style={{ width: `${perc}%` }}></div>
@@ -98,26 +102,26 @@ const GardenStats = ({ profile }) => {
         let image9 = images[8]; // 35 =>
 
 
-        if (obj.attributes[0].value < 2) { 
-            obj = {...obj, image: image1}
+        if (obj.attributes[0].value < 2) {
+            obj = { ...obj, image: image1, name: names[0] }
         } else if (obj.attributes[0].value <= 2 || obj.attributes[0].value < 6) {
-            obj = {...obj, image: image2}
+            obj = { ...obj, image: image2, name: names[1] }
         } else if (obj.attributes[0].value <= 6 || obj.attributes[0].value < 10) {
-            obj = {...obj, image: image3}
+            obj = { ...obj, image: image3, name: names[2] }
         } else if (obj.attributes[0].value <= 10 || obj.attributes[0].value < 15) {
-            obj = {...obj, image: image4}
+            obj = { ...obj, image: image4, name: names[3] }
         } else if (obj.attributes[0].value <= 15 || obj.attributes[0].value < 18) {
-            obj = {...obj, image: image5}
+            obj = { ...obj, image: image5, name: names[4] }
         } else if (obj.attributes[0].value <= 18 || obj.attributes[0].value < 21) {
-            obj = {...obj, image: image6}
+            obj = { ...obj, image: image6, name: names[5] }
         } else if (obj.attributes[0].value <= 21 || obj.attributes[0].value < 27) {
-            obj = {...obj, image: image7}
+            obj = { ...obj, image: image7, name: names[6] }
         } else if (obj.attributes[0].value <= 27 || obj.attributes[0].value < 35) {
-            obj = {...obj, image: image8}
+            obj = { ...obj, image: image8, name: names[7] }
         } else if (obj.attributes[0].value >= 35) {
-            obj = {...obj, image: image9}
+            obj = { ...obj, image: image9, name: names[8] }
         }
-        
+
 
         const data = await getUser(profile.ownedBy, obj);
         setData(data);
@@ -129,45 +133,91 @@ const GardenStats = ({ profile }) => {
         calculateStats();
     }, [])
 
-    const renderGarden = () => {
+
+
+    const renderNFTGarden = () => {
         if (updatedDB) {
             return (
-                <div className=' sm:flex grid border-blue-800 border-4 justify-between w-full h-full'>
-                    <div className='border-2 h-full rounded border-red-500'>
-                    <img src={data.image} alt="" className='h-full md:h-[100%] md:mb-0 w-96 rounded-lg shadow-xl mb-10 shadow-black/40 cursor-pointer' />
-                    </div>
-                    
-                        
-                        <div className='bg-emerald-500 border-2 h-1/2 mt-auto border-yellow-500 rounded-lg cursor-pointer transition-all hover:shadow-lg text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
-                            <div className=' w-full h-full rounded-lg border-2 border-red-900 bg-white'>
-                                <div className="flex w-full justify-center rounded-t-lg	py-8 mb-2 m-auto bg-transparent" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
-                                    <h1 className="text-2xl font-bold text-slate-50">Experience to next level</h1>
+                <div className='w-full h-full md:flex md:justify-between md:items-center bg-slate-800 p-4 shadow-xl  shadow-black/80 rounded-lg'>
+                    {/* Points calculation */}
+                    <div className="w-full text-center">
+                        <h1 className='text-white'>Points calculation</h1>
+                        <div class="grid grid-cols-2 md:grid-cols-2 gap-2 p-2">
+                            <div className="w-full h-2/3 flex justify-between items-center border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg">
+                                <div className="h-full w-1/2 rounded-l-lg p-4 md:p-2 bg-cover bg-center" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+                                    <SlUserFollowing className=' text-white h-full w-full' />
                                 </div>
-                                <div className="px-2">
-
-                                    <ExpProgress LEVEL={LEVEL} XP={XP} />
+                                <h2 className='text-sm text-emerald-800 text-center w-1/2'>+10 XP</h2>
+                            </div>
+                            <div className="w-full h-2/3  flex justify-between items-center border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg">
+                                <div className="h-full w-1/2 rounded-l-lg p-4 md:p-2 bg-cover bg-center" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+                                    <BiGroup className=' text-white h-full w-full' />
                                 </div>
-                            
-                        </div>
-                    </div>
-                    <div className='bg-emerald-500 border-4 h-1/2 mt-auto border-violet-700 rounded-lg cursor-pointer transition-all hover:shadow-lg text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
-                            <div className='bg-white w-full h-full rounded-lg pb-4'>
-                                <div className="flex w-full justify-center rounded-t-lg	py-8 mb-2 m-auto bg-transparent" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
-                                    <h1 className="text-2xl font-bold text-slate-50">{data.name}</h1>
-
+                                <h2 className='text-sm text-emerald-800 text-center w-1/2'>+50 XP</h2>
+                            </div>
+                            <div className="w-full h-2/3  flex justify-between items-center border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg">
+                                <div className="h-full w-1/2 rounded-l-lg p-4 md:p-2 bg-cover bg-center" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+                                    <FiSend className=' text-white h-full w-full' />
                                 </div>
-                                <Badge text={`Level: ${LEVEL.level}`} />
+                                <h2 className='text-sm text-emerald-800 text-center w-1/2'>+30 XP</h2>
+                            </div>
+                            <div className="w-full h-2/3  flex justify-between items-center border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg">
+                                <div className="h-full w-1/2 rounded-l-lg p-4 md:p-2 bg-cover bg-center" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+                                    <BiCommentDots className=' text-white h-full w-full' />
+                                </div>
+                                <h2 className='text-sm text-emerald-800 text-center w-1/2'>+20 XP</h2>
+                            </div>
+                            <div className="w-full h-2/3  flex justify-between items-center  border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg">
+                                <div className="h-full w-1/2 rounded-l-lg p-4 md:p-2 bg-cover bg-center" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+                                    <BiCollection className=' text-white h-full w-full' />
+                                </div>
+                                <h2 className='text-sm text-emerald-800 text-center w-1/2'>+20 XP</h2>
+                            </div>
+                            <div className="w-full h-2/3  flex justify-between items-center border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg">
+                                <div className="h-full w-1/2 rounded-l-lg p-4 md:p-2 bg-cover bg-center" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+                                    <VscMirror className='text-white h-full w-full' />
+                                </div>
+                                <h2 className='text-sm text-emerald-800 text-center w-1/2'>+30 XP</h2>
                             </div>
                         </div>
+                    </div>
+                    {/* NFT Image */}
+                    <div className="p-2">
+                        <img src={data.image} alt="" className='rounded-lg min-h-80 md:h-full m-auto' />
+                    </div>
+                    {/* NFT Details */}
+                    <div className="w-full md:w-4/5 h-full p-2">
+                    <div className='h-1/2 mt-auto rounded-lg cursor-pointer transition-all hover:shadow-lg text-center flex justify-center place-items-center bg-cover bg-center mb-3' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+                        <div className=' w-full h-full rounded-lg bg-white border border-white'>
+                            <div className="flex w-full justify-center rounded-t-lg	py-8 mb-2 m-auto bg-transparent" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+                                <h1 className="text-xl font-bold text-slate-50">Experience to next level</h1>
+                            </div>
+                            <div className="px-2">
+
+                                <ExpProgress LEVEL={LEVEL} XP={XP} />
+                            </div>
+
+                        </div>
+                    </div>
+                    <div className='bg-emerald-500 h-1/2 mt-auto rounded-lg cursor-pointer transition-all hover:shadow-lg text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+                        <div className='bg-white w-full h-full rounded-lg pb-4 border border-white'>
+                            <div className="flex w-full justify-center rounded-t-lg	py-8 mb-2 m-auto bg-transparent" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+                                <h1 className="text-xl font-bold text-slate-50">{data.name}</h1>
+
+                            </div>
+                            <Badge text={`Level: ${LEVEL.level}`} />
+                        </div>
+                    </div>
+                    </div>
                 </div>
             )
         }
     }
 
     return (
-        <div className='m-auto w-11/12 bg-transparent h-96 flex justify-center my-6 border-yellow-400 border-4 rounded'>
-            
-            {renderGarden()}
+        <div className='m-auto w-11/12 bg-transparent flex justify-center my-6 rounded'>
+
+            {renderNFTGarden()}
         </div>
     )
 }

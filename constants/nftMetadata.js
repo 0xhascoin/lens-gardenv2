@@ -15,3 +15,14 @@ export const images = [
 ]
 
 
+export const names = [
+    "NFT #1: Seed",
+    "NFT #2: Seedling",
+    "NFT #3: Sprout",
+    "NFT #4: Plant",
+    "NFT #5: Bush",
+    "NFT #6: Baby tree",
+    "NFT #7: Baby Oak",
+    "NFT #8: Oak",
+    "NFT #9: Grandpa Oak"
+]

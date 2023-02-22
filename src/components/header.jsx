@@ -13,9 +13,9 @@ export default function Header({ currentAccount, connecting, connectWallet, load
 
   return (
 
-    <nav className={` sm:px-4 w-full`}>
-      <div className="container flex sm:flex-wrap flex-wrap items-center justify-between bg-transparent mx-auto bg-red-600">
-        <a href="/" className="flex mt-2 items-center">
+    <nav className={`px-4 w-full`}>
+      <div className="container pt-2 flex sm:flex-wrap flex-wrap items-center justify-between bg-transparent mx-auto bg-red-600">
+        <a href="/" className="flex items-center">
 
           <img src={logo1} className="rounded shrink w-20 object-contain" alt="Lens-garden logo" />
           <span className="font-bold hover:text-green-500 ml-4 text-white font-sans hidden md:block">Lens Garden</span>
@@ -23,7 +23,7 @@ export default function Header({ currentAccount, connecting, connectWallet, load
         </a>
      
 
-        <div className="flex sm:block md:order-2 right-0">
+        <div className="flex md:order-2 right-0">
 
           <ConnectWallet
           
@@ -38,7 +38,7 @@ export default function Header({ currentAccount, connecting, connectWallet, load
           <button
             data-collapse-toggle="navbar-sticky"
             type="button"
-            className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            className="inline-flex items-center mx-2 p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
             aria-controls="navbar-sticky"
             aria-expanded="false"
             onClick={toggleNavMenu}

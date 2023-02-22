@@ -4,7 +4,7 @@ import { BiGroup, BiCommentDots, BiCollection } from 'react-icons/bi'
 import { FiSend } from 'react-icons/fi'
 import { VscMirror } from 'react-icons/vsc'
 import { getUser } from '../../api/firebase';
-import { images } from '../../constants/nftMetadata';
+import { images, names } from '../../constants/nftMetadata';
 
 const startUrl = 'https://lens.infura-ipfs.io/ipfs/';
 
@@ -104,26 +104,26 @@ const LensProfile = ({ profile }) => {
         let image9 = images[8]; // 35 =>
 
 
-        if (obj.attributes[0].value < 2) { 
-            obj = {...obj, image: image1}
+        if (obj.attributes[0].value < 2) {
+            obj = { ...obj, image: image1, name: names[0] }
         } else if (obj.attributes[0].value <= 2 || obj.attributes[0].value < 6) {
-            obj = {...obj, image: image2}
+            obj = { ...obj, image: image2, name: names[1] }
         } else if (obj.attributes[0].value <= 6 || obj.attributes[0].value < 10) {
-            obj = {...obj, image: image3}
+            obj = { ...obj, image: image3, name: names[2] }
         } else if (obj.attributes[0].value <= 10 || obj.attributes[0].value < 15) {
-            obj = {...obj, image: image4}
+            obj = { ...obj, image: image4, name: names[3] }
         } else if (obj.attributes[0].value <= 15 || obj.attributes[0].value < 18) {
-            obj = {...obj, image: image5}
+            obj = { ...obj, image: image5, name: names[4] }
         } else if (obj.attributes[0].value <= 18 || obj.attributes[0].value < 21) {
-            obj = {...obj, image: image6}
+            obj = { ...obj, image: image6, name: names[5] }
         } else if (obj.attributes[0].value <= 21 || obj.attributes[0].value < 27) {
-            obj = {...obj, image: image7}
+            obj = { ...obj, image: image7, name: names[6] }
         } else if (obj.attributes[0].value <= 27 || obj.attributes[0].value < 35) {
-            obj = {...obj, image: image8}
+            obj = { ...obj, image: image8, name: names[7] }
         } else if (obj.attributes[0].value >= 35) {
-            obj = {...obj, image: image9}
+            obj = { ...obj, image: image9, name: names[8] }
         }
-        
+
 
         const data = await getUser(profile.ownedBy, obj);
         setData(data);
@@ -174,8 +174,8 @@ const LensProfile = ({ profile }) => {
                                 <SlUserFollowing className='h-8 w-8 text-white' />
                             </div>
                             <h2 className='text-lg text-zinc-800 mb-2'>Following</h2>
-                            <Badge text={profile.stats.totalFollowing} />
-
+                            <Badge text={profile.stats.totalFollowing} /> <br />
+                            <Badge text={`${profile.stats.totalFollowing * 10} XP`} />
                         </div>
                     </div>
 
@@ -185,7 +185,8 @@ const LensProfile = ({ profile }) => {
                                 <BiGroup className='h-8 w-8 text-white' />
                             </div>
                             <h2 className='text-lg text-zinc-800 mb-2'>Followers</h2>
-                            <Badge text={profile.stats.totalFollowers} />
+                            <Badge text={profile.stats.totalFollowers} /> <br />
+                            <Badge text={`${profile.stats.totalFollowers * 50} XP`} />
 
                         </div>
                     </div>
@@ -196,7 +197,9 @@ const LensProfile = ({ profile }) => {
                                 <FiSend className='h-8 w-8 text-white' />
                             </div>
                             <h2 className='text-lg text-zinc-800 mb-2'>Posts</h2>
-                            <Badge text={profile.stats.totalPosts} />
+                            <Badge text={profile.stats.totalPosts} /> <br />
+                            <Badge text={`${profile.stats.totalPosts * 30} XP`} />
+
                         </div>
                     </div>
 
@@ -206,7 +209,9 @@ const LensProfile = ({ profile }) => {
                                 <BiCommentDots className='h-8 w-8 text-white' />
                             </div>
                             <h2 className='text-lg text-zinc-800 mb-2'>Comments</h2>
-                            <Badge text={profile.stats.totalComments} />
+                            <Badge text={profile.stats.totalComments} /> <br />
+                            <Badge text={`${profile.stats.totalComments * 20} XP`} />
+
                         </div>
                     </div>
 
@@ -216,7 +221,9 @@ const LensProfile = ({ profile }) => {
                                 <BiCollection className='h-8 w-8 text-white' />
                             </div>
                             <h2 className='text-lg text-zinc-800 mb-2'>Collects</h2>
-                            <Badge text={profile.stats.totalCollects} />
+                            <Badge text={profile.stats.totalCollects} /> <br />
+                            <Badge text={`${profile.stats.totalCollects * 20} XP`} />
+
 
                         </div>
                     </div>
@@ -227,7 +234,9 @@ const LensProfile = ({ profile }) => {
                                 <VscMirror className='h-8 w-8 text-white' />
                             </div>
                             <h2 className='text-lg text-zinc-800 mb-2'>Mirrors</h2>
-                            <Badge text={profile.stats.totalMirrors} />
+                            <Badge text={profile.stats.totalMirrors} /> <br />
+                            <Badge text={`${profile.stats.totalMirrors * 30} XP`} />
+
                         </div>
                     </div>
 

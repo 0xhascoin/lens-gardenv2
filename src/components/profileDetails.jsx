@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getUser } from '../../api/firebase';
-import { images } from '../../constants/nftMetadata';
+import { images, names } from '../../constants/nftMetadata';
 
 import LoadingSpinner from './loadingSpinner';
 import MintNft from './mintNft';
@@ -77,26 +77,26 @@ const ProfileDetails = ({ profile }) => {
         let image9 = images[8]; // 35 =>
 
 
-        if (obj.attributes[0].value < 2) { 
-            obj = {...obj, image: image1}
+        if (obj.attributes[0].value < 2) {
+            obj = { ...obj, image: image1, name: names[0] }
         } else if (obj.attributes[0].value <= 2 || obj.attributes[0].value < 6) {
-            obj = {...obj, image: image2}
+            obj = { ...obj, image: image2, name: names[1] }
         } else if (obj.attributes[0].value <= 6 || obj.attributes[0].value < 10) {
-            obj = {...obj, image: image3}
+            obj = { ...obj, image: image3, name: names[2] }
         } else if (obj.attributes[0].value <= 10 || obj.attributes[0].value < 15) {
-            obj = {...obj, image: image4}
+            obj = { ...obj, image: image4, name: names[3] }
         } else if (obj.attributes[0].value <= 15 || obj.attributes[0].value < 18) {
-            obj = {...obj, image: image5}
+            obj = { ...obj, image: image5, name: names[4] }
         } else if (obj.attributes[0].value <= 18 || obj.attributes[0].value < 21) {
-            obj = {...obj, image: image6}
+            obj = { ...obj, image: image6, name: names[5] }
         } else if (obj.attributes[0].value <= 21 || obj.attributes[0].value < 27) {
-            obj = {...obj, image: image7}
+            obj = { ...obj, image: image7, name: names[6] }
         } else if (obj.attributes[0].value <= 27 || obj.attributes[0].value < 35) {
-            obj = {...obj, image: image8}
+            obj = { ...obj, image: image8, name: names[7] }
         } else if (obj.attributes[0].value >= 35) {
-            obj = {...obj, image: image9}
+            obj = { ...obj, image: image9, name: names[8] }
         }
-        
+
 
         const data = await getUser(profile.ownedBy, obj);
         setData(data);

@@ -20,7 +20,6 @@ const LensProfileStats = ({ profile }) => {
                     <LensChart stats={profile.stats} />
                     
                 </div>
-                <div><Points /></div>
             </div>
     )
 }
