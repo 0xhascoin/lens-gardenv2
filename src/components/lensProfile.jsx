@@ -62,7 +62,6 @@ const LensProfile = ({ profile }) => {
     }
 
     const calculateStats = async () => {
-        console.log("Started Calc")
         setLoadingStats(true);
         const { totalFollowing, totalFollowers, totalPosts, totalCollects, totalMirrors, totalComments } = profile.stats;
         const exp = calculateExperience(totalFollowing, totalFollowers, totalPosts, totalCollects, totalMirrors, totalComments);
@@ -92,17 +91,43 @@ const LensProfile = ({ profile }) => {
             name: "Lens Garden NFT",
             description: "Lens Garden NFT is a dynamic NFT collection that reflects your usage of the Lens Protocol in your NFT."
         }
-        if (obj.attributes[0].value <= 5) {
-            obj = { ...obj, image: images[0] }
-        } else if (obj.attributes[0].value > 5 && obj.attributes[0].value < 11) {
-            obj = { ...obj, image: images[1] }
-        } else if (obj.attributes[0].value >= 11 && obj.attributes[0].value <= 15) {
-            obj = { ...obj, image: images[2] }
+
+
+        let image1 = images[0]; // < 2
+        let image2 = images[1]; // 2 => && < 6
+        let image3 = images[2]; // 6 => && < 10
+        let image4 = images[3]; // 10 => && < 15
+        let image5 = images[4]; // 15 => && < 18
+        let image6 = images[5]; // 18 => && < 21
+        let image7 = images[6]; // 21 => && < 27
+        let image8 = images[7]; // 27 => && < 35
+        let image9 = images[8]; // 35 =>
+
+
+        if (obj.attributes[0].value < 2) { 
+            obj = {...obj, image: image1}
+        } else if (obj.attributes[0].value <= 2 || obj.attributes[0].value < 6) {
+            obj = {...obj, image: image2}
+        } else if (obj.attributes[0].value <= 6 || obj.attributes[0].value < 10) {
+            obj = {...obj, image: image3}
+        } else if (obj.attributes[0].value <= 10 || obj.attributes[0].value < 15) {
+            obj = {...obj, image: image4}
+        } else if (obj.attributes[0].value <= 15 || obj.attributes[0].value < 18) {
+            obj = {...obj, image: image5}
+        } else if (obj.attributes[0].value <= 18 || obj.attributes[0].value < 21) {
+            obj = {...obj, image: image6}
+        } else if (obj.attributes[0].value <= 21 || obj.attributes[0].value < 27) {
+            obj = {...obj, image: image7}
+        } else if (obj.attributes[0].value <= 27 || obj.attributes[0].value < 35) {
+            obj = {...obj, image: image8}
+        } else if (obj.attributes[0].value >= 35) {
+            obj = {...obj, image: image9}
         }
+        
 
         const data = await getUser(profile.ownedBy, obj);
+        setData(data);
         setUpdatedDB(true);
-        console.log(data);
 
     }
 

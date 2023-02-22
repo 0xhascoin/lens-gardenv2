@@ -31,6 +31,8 @@ export const getUser = async (address, obj) => {
     const ref = doc(db, "users", address);
     const snap = await getDoc(ref);
 
+    console.log("DATATATATTATA: ", snap.data())
+
     return snap.data();
 }
 
