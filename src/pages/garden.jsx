@@ -165,7 +165,7 @@ const Garden = () => {
             <LensProfileStats
               profile={profile}
             />
-
+            
             <GardenStats
               profile={profile}
             />

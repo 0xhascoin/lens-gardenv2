@@ -17,7 +17,7 @@ const ExpProgress = ({ LEVEL, XP }) => {
     const total = LEVEL.experienceToNextLevel + XP;
     const perc = Math.floor((XP / total) * 100);
     return (
-        <div className="w-full flex items-center justify-between">
+        <div className="w-full flex items-center justify-between border-4 border-violet-800">
 
             <div class="w-4/5 bg-zinc-800 rounded-full h-2.5 dark:bg-gray-700 mr-4">
                 <div class="bg-emerald-400 h-2.5 rounded-full" style={{ width: `${perc}%` }}></div>
@@ -132,10 +132,25 @@ const GardenStats = ({ profile }) => {
     const renderGarden = () => {
         if (updatedDB) {
             return (
-                <div className='text-center md:flex md:justify-center md:items-center border border-white'>
-                    <img src={data.image} alt="" className='h-80 md:h-[100%] md:mb-0 w-80 rounded-lg shadow-xl mb-6 shadow-black/40 cursor-pointer md:mr-6' />
-                    <div className="border border-white mb:w-full">
-                        <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+                <div className=' sm:flex grid border-blue-800 border-4 justify-between w-full h-full'>
+                    <div className='border-2 h-full rounded border-red-500'>
+                    <img src={data.image} alt="" className='h-full md:h-[100%] md:mb-0 w-96 rounded-lg shadow-xl mb-10 shadow-black/40 cursor-pointer' />
+                    </div>
+                    
+                        
+                        <div className='bg-emerald-500 border-2 h-1/2 mt-auto border-yellow-500 rounded-lg cursor-pointer transition-all hover:shadow-lg text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+                            <div className=' w-full h-full rounded-lg border-2 border-red-900 bg-white'>
+                                <div className="flex w-full justify-center rounded-t-lg	py-8 mb-2 m-auto bg-transparent" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+                                    <h1 className="text-2xl font-bold text-slate-50">Experience to next level</h1>
+                                </div>
+                                <div className="px-2">
+
+                                    <ExpProgress LEVEL={LEVEL} XP={XP} />
+                                </div>
+                            
+                        </div>
+                    </div>
+                    <div className='bg-emerald-500 border-4 h-1/2 mt-auto border-violet-700 rounded-lg cursor-pointer transition-all hover:shadow-lg text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                             <div className='bg-white w-full h-full rounded-lg pb-4'>
                                 <div className="flex w-full justify-center rounded-t-lg	py-8 mb-2 m-auto bg-transparent" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                                     <h1 className="text-2xl font-bold text-slate-50">{data.name}</h1>
@@ -144,25 +159,14 @@ const GardenStats = ({ profile }) => {
                                 <Badge text={`Level: ${LEVEL.level}`} />
                             </div>
                         </div>
-                        <div className='bg-emerald-500 border mt-6 border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
-                            <div className='bg-white w-full h-full rounded-lg pb-4'>
-                                <div className="flex w-full justify-center rounded-t-lg	py-8 mb-2 m-auto bg-transparent" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
-                                    <h1 className="text-2xl font-bold text-slate-50">Experience to next level</h1>
-                                </div>
-                                <div className="px-2">
-
-                                    <ExpProgress LEVEL={LEVEL} XP={XP} />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             )
         }
     }
 
     return (
-        <div className='m-auto w-11/12 bg-transparent flex justify-center my-10 py-10 border border-white'>
+        <div className='m-auto w-11/12 bg-transparent h-96 flex justify-center my-6 border-yellow-400 border-4 rounded'>
+            
             {renderGarden()}
         </div>
     )
