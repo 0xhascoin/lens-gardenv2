@@ -214,6 +214,25 @@ body {
     top: -100%;
     left: 200%;
   }
+
+  .chart {
+    
+   
+    transition: .5s all;
+  }
+  
+  .chart:hover {
+   
+    box-shadow:#000000aa;
+    transform: scale(1.015);
+    filter: brightness(1.1);
+  }
+  
+  .chart:hover::before {
+    filter: brightness(.5);
+    top: -100%;
+    left: 200%;
+  }
   
       
   

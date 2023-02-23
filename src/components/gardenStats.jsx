@@ -172,7 +172,7 @@ const calculateLevel = (experience) => {
         if (updatedDB) {
             return (
             
-                <div className='w-full md:flex md:justify-between md:items-center p-4 rounded-lg border border-red-500 bg-slate-800'>
+                <div className='nft w-full md:flex md:justify-between md:items-center p-4 rounded-lg bg-slate-800'>
                     {/* Points calculation */}
                     <div className="nft rounded-lg w-full bg-[#14243d] text-center">
                         <h1 className='text-white text-xl mb-4 underline'>Points calculation</h1>
@@ -216,11 +216,11 @@ const calculateLevel = (experience) => {
                         </div>
                     </div>
                     {/* NFT Image */}
-                    <main class="card-wrapper p-2 rounded">
+                    <main class="card-wrapper p-2 rounded-lg">
                         
-    <div class="card nft">
+    <div class="card nft rounded-lg">
     <div className='text-center text-white pb-1 underline mx-auto text-xl'><p>{data.name}</p></div>
-      <div class="card-img nft">
+      <div class="card-img nft rounded-lg">
         <img src={data.image} class="card-img-top" alt="" aria-hidden="true" />
       </div>   
       <div class="level flex">
@@ -256,9 +256,9 @@ const calculateLevel = (experience) => {
                     <div className="w-full md:w-4/5 h-full p-2">
                     <main class="card-wrapper p-2 rounded">
                         
-                        <div class="card nft">
+                        <div class="card nft rounded-lg">
                         <div className='text-center text-white pb-1 underline mx-auto text-xl'><p>{nextNFT.name}</p></div>
-                          <div class="card-img nft">
+                          <div class="card-img nft rounded-lg">
                             <img src={nextNFT.imageUrl} class="card-img-top" alt="" aria-hidden="true" />
                           </div>   
                           <div class="level flex">

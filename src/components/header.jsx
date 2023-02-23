@@ -4,6 +4,7 @@ import ConnectWallet from "./connectWallet";
 
 
 
+
 export default function Header({ currentAccount, connecting, connectWallet, loadingProfile, profileFound, profile }) {
   const [navMenuVisible, setNavMenuVisible] = useState(false);
   // Define the toggleNavMenu function
@@ -17,8 +18,8 @@ export default function Header({ currentAccount, connecting, connectWallet, load
       <div className="container pt-2 flex sm:flex-wrap flex-wrap items-center justify-between bg-transparent mx-auto bg-red-600">
         <a href="/" className="flex items-center">
 
-          <img src={logo1} className="rounded shrink w-20 object-contain" alt="Lens-garden logo" />
-          <span className="font-bold hover:text-green-500 ml-4 text-white font-sans hidden md:block">Lens Garden</span>
+          <img src={logo1} className="nft rounded shrink w-20 object-contain" alt="Lens-garden logo" />
+          <span className="chart font-bold hover:text-green-500 ml-4 text-white font-sans hidden md:block">Lens Garden</span>
 
         </a>
      
@@ -81,14 +82,7 @@ export default function Header({ currentAccount, connecting, connectWallet, load
                 View Garden
               </a>
             </li>
-            <li>
-              <a
-                href="/mint"
-                className="block py-2 pl-3 pr-4 text-white-700 rounded md:p-0  text-lg  hover:text-green-400 transition-all font-sans font-light text-slate-50"
-              >
-                Mint Nft
-              </a>
-            </li>
+           
 
           </ul>
         </div>
