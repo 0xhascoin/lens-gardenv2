@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { client, myStats } from '../../api/lensApi';
 import LoadingSpinner from './loadingSpinner';
-import ProfileDetails from './profileDetails';
+
 
 const GetLensProfile = ({ currentAccount, setProfile, profile, setProfileFound, profileFound, setLoadingProfile, loadingProfile }) => {
   const startUrl = "https://lens.infura-ipfs.io/ipfs/";
@@ -36,7 +36,11 @@ const GetLensProfile = ({ currentAccount, setProfile, profile, setProfileFound, 
       if (!profileFound) {
         return <p>No Lens Profile Found</p>
       } else {
-        return <ProfileDetails profile={profile} />
+        return 
+        
+        <ProfileDetails profile={profile} />
+      
+        
       }
     }
   };

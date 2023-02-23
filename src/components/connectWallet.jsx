@@ -1,5 +1,4 @@
 import React from 'react';
-import '../styles/connectWallet.css';
 import LoadingSpinner from './loadingSpinner';
 
 const ConnectWallet = ({ connecting, currentAccount, connectWallet, loadingProfile, profileFound, profile }) => {
