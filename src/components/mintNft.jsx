@@ -29,6 +29,8 @@ const MintNft = ({ address }) => {
                 console.log("Mining...please wait.")
                 await nftTxn.wait();
 
+                
+
                 // setLoadingMint(false);
                 console.log(`Mined, see transaction: https://goerli.etherscan.io/tx/${nftTxn.hash}`);
 

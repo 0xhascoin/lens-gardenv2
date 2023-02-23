@@ -37,49 +37,49 @@ export const nftData = [
     {
         name: names[1],
         unlocksAtLevel: 7,
-        xpNeededtoUnlock: 3116,
+        xpNeededtoUnlock: 1139,
         imageUrl: images[1]
     },
     {
         name: names[2],
         unlocksAtLevel: 12,
-        xpNeededtoUnlock: 20840,
+        xpNeededtoUnlock: 5766,
         imageUrl: images[2]
     },
     {
         name: names[3],
         unlocksAtLevel: 17,
-        xpNeededtoUnlock: 134905,
+        xpNeededtoUnlock: 43789,
         imageUrl: images[3]
     },
     {
         name: names[4],
         unlocksAtLevel: 22,
-        xpNeededtoUnlock: 1001112,
+        xpNeededtoUnlock: 332525,
         imageUrl: images[4]
     },
     {
         name: names[5],
         unlocksAtLevel: 27,
-        xpNeededtoUnlock: 7578883,
+        xpNeededtoUnlock: 2525116,
         imageUrl: images[5]
     },
     {
         name: names[6],
         unlocksAtLevel: 32,
-        xpNeededtoUnlock: 57528847,
+        xpNeededtoUnlock: 19175105,
         imageUrl: images[6]
     },
     {
         name: names[7],
         unlocksAtLevel: 35,
-        xpNeededtoUnlock: 194151475,
+        xpNeededtoUnlock: 64715982,
         imageUrl: images[7]
     },
     {
         name: names[8],
         unlocksAtLevel: 37,
-        xpNeededtoUnlock: 436836408,
+        xpNeededtoUnlock: 145610960,
         imageUrl: images[8]
     },
 ]

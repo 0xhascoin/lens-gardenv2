@@ -23,13 +23,14 @@ export const getUser = async (address, obj) => {
     const docSnap = await getDoc(docRef);
     
     if (docSnap.exists()) {
-        await setDoc(doc(db, "users", address), obj);
+        await setDoc(doc(db, "users", address), obj, {merge: true});
     } else {
-        await setDoc(doc(db, "users", address), obj);
+        await setDoc(doc(db, "users", address), obj, {merge: true});
     }
 
     const ref = doc(db, "users", address);
     const snap = await getDoc(ref);
+
 
     console.log("DATATATATTATA: ", snap.data())
 
@@ -37,3 +38,17 @@ export const getUser = async (address, obj) => {
 }
 
 
+export const checkIfMinted = async (address) => {
+    const docRef = doc(db, "users", address);
+    const docSnap = await getDoc(docRef);
+
+    console.log("Address: ", address);
+
+    if(docSnap.exists()) {
+        const data = docSnap.data();
+        console.log("DocSnap.Data()", data);
+    } else {
+        console.log("DOESNT EXIST")
+        return false;
+    }
+}

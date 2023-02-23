@@ -18,6 +18,7 @@ import LensProfileStats from '../components/lensProfileStats';
 import Footer from '../components/footer';
 import GardenStats from '../components/gardenStats';
 import { useNavigate } from 'react-router-dom';
+import MintNft from "../components/mintNft";
 
 
 
@@ -162,6 +163,8 @@ const Garden = () => {
               profileFound={profileFound}
               profile={profile}
             />
+
+            <MintNft />
 
             <LensProfileStats
               profile={profile}

@@ -5,6 +5,7 @@ import { FiSend } from 'react-icons/fi'
 import { VscMirror } from 'react-icons/vsc'
 import { getUser } from '../../api/firebase';
 import { images, names, nftData } from '../../constants/nftMetadata';
+import { checkIfMinted } from '../../api/firebase';
 
 const startUrl = 'https://lens.infura-ipfs.io/ipfs/';
 
@@ -22,7 +23,7 @@ const NextExpProgress = ({ unlocksAtLevel, xpNeededToUnlock, myTotalXp }) => {
     console.log(unlocksAtLevel, xpNeededToUnlock, myTotalXp)
 
     // const total = LEVEL.experienceToNextLevel + XP;
-    const perc = Math.floor((myTotalXp / xpNeededToUnlock) * 100);
+    const perc = Math.floor((myTotalXp / (xpNeededToUnlock + myTotalXp)) * 100);
     return (
         <div className="w-full flex items-center justify-between pb-2">
 
@@ -136,6 +137,7 @@ const LensProfile = ({ profile }) => {
             setNextNFT(nftData[8]);
         }
 
+        await checkIfMinted(profile.ownedBy);
 
         const data = await getUser(profile.ownedBy, obj);
         setData(data);
@@ -170,7 +172,7 @@ const LensProfile = ({ profile }) => {
                         ) : (
                             <>
                                 {LEVEL !== null && XP !== null && (
-                    <NextExpProgress unlocksAtLevel={nextNFT.unlocksAtLevel} xpNeededToUnlock={nextNFT.xpNeededtoUnlock} myTotalXp={XP} />
+                    <NextExpProgress unlocksAtLevel={nextNFT.unlocksAtLevel} xpNeededToUnlock={LEVEL.experienceToNextLevel} myTotalXp={XP} />
                     )}
                             </>
                         )}

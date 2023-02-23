@@ -72,6 +72,7 @@ const Home = () => {
       console.log("Found an authorized account:", account);
       setCurrentAccount(account);
       await fetchLensProfile(account);
+      // await checkIfMinted(account)
       setConnecting(false)
     } else {
       console.log("No authorized account found");
@@ -93,6 +94,7 @@ const Home = () => {
 
       console.log("Connected", accounts[0]);
       setCurrentAccount(accounts[0]);
+      // await checkIfMinted(accounts[0]);
       await fetchLensProfile(accounts[0]);
       setConnecting(false);
 
