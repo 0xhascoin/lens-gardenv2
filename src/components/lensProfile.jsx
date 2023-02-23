@@ -4,7 +4,7 @@ import { BiGroup, BiCommentDots, BiCollection } from 'react-icons/bi'
 import { FiSend } from 'react-icons/fi'
 import { VscMirror } from 'react-icons/vsc'
 import { getUser } from '../../api/firebase';
-import { images, names } from '../../constants/nftMetadata';
+import { images, names, nftData } from '../../constants/nftMetadata';
 
 const startUrl = 'https://lens.infura-ipfs.io/ipfs/';
 
@@ -18,18 +18,20 @@ const Badge = ({ text }) => {
 }
 
 
-const ExpProgress = ({ LEVEL, XP }) => {
-    console.log("LEVEL: ", LEVEL)
-    console.log("XP: ", XP)
-    const total = LEVEL.experienceToNextLevel + XP;
-    const perc = Math.floor((XP/total) * 100);
-    return (
-        <div className="w-full flex items-center justify-between">
+const NextExpProgress = ({ unlocksAtLevel, xpNeededToUnlock, myTotalXp }) => {
+    console.log(unlocksAtLevel, xpNeededToUnlock, myTotalXp)
 
-            <div class="w-4/5  rounded-full h-2.5 bg-white mr-1">
-                <div class="bg-emerald-400 h-2.5 rounded-full" style={{width: `${perc}%`}}></div>
+    // const total = LEVEL.experienceToNextLevel + XP;
+    const perc = Math.floor((myTotalXp / xpNeededToUnlock) * 100);
+    return (
+        <div className="w-full flex items-center justify-between pb-2">
+
+            <div class="w-4/5 bg-zinc-800 rounded-full h-2.5 dark:bg-gray-700 mr-4">
+                <div class="bg-emerald-400 h-2.5 rounded-full" style={{ width: `${perc}%` }} ></div>
             </div>
-            <Badge text={`Level ${LEVEL.level + 1}`} />
+            <div className='grid mb-7'>
+            <Badge text={`Level ${unlocksAtLevel}`} />
+            </div>
         </div>
     )
 }
@@ -41,6 +43,7 @@ const LensProfile = ({ profile }) => {
     const [LEVEL, setLEVEL] = useState(null);
     const [loadingStats, setLoadingStats] = useState(false);
     const [updatedDB, setUpdatedDB] = useState(false);
+    const [nextNFT, setNextNFT] = useState({});
 
 
     const calculateExperience = (following, followers, posts, collects, mirrors, comments) => {
@@ -106,22 +109,31 @@ const LensProfile = ({ profile }) => {
 
         if (obj.attributes[0].value < 7) {
             obj = { ...obj, image: image1, name: names[0] }
+            setNextNFT(nftData[1]);
         } else if (obj.attributes[0].value <= 7 || obj.attributes[0].value < 12) {
             obj = { ...obj, image: image2, name: names[1] }
+            setNextNFT(nftData[2]);
         } else if (obj.attributes[0].value <= 12 || obj.attributes[0].value < 17) {
             obj = { ...obj, image: image3, name: names[2] }
+            setNextNFT(nftData[3]);
         } else if (obj.attributes[0].value <= 17 || obj.attributes[0].value < 22) {
             obj = { ...obj, image: image4, name: names[3] }
+            setNextNFT(nftData[4]);
         } else if (obj.attributes[0].value <= 22 || obj.attributes[0].value < 27) {
             obj = { ...obj, image: image5, name: names[4] }
+            setNextNFT(nftData[5]);
         } else if (obj.attributes[0].value <= 27 || obj.attributes[0].value < 32) {
             obj = { ...obj, image: image6, name: names[5] }
+            setNextNFT(nftData[6]);
         } else if (obj.attributes[0].value <= 32 || obj.attributes[0].value < 35) {
             obj = { ...obj, image: image7, name: names[6] }
+            setNextNFT(nftData[7]);
         } else if (obj.attributes[0].value <= 35 || obj.attributes[0].value < 37) {
             obj = { ...obj, image: image8, name: names[7] }
+            setNextNFT(nftData[8]);
         } else if (obj.attributes[0].value >= 37) {
             obj = { ...obj, image: image9, name: names[8] }
+            setNextNFT(nftData[8]);
         }
 
 
@@ -158,8 +170,8 @@ const LensProfile = ({ profile }) => {
                         ) : (
                             <>
                                 {LEVEL !== null && XP !== null && (
-                                    <ExpProgress LEVEL={LEVEL} XP={XP} />
-                                )}
+                    <NextExpProgress unlocksAtLevel={nextNFT.unlocksAtLevel} xpNeededToUnlock={nextNFT.xpNeededtoUnlock} myTotalXp={XP} />
+                    )}
                             </>
                         )}
                     </div>

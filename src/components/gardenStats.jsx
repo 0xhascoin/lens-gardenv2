@@ -4,7 +4,7 @@ import { FiSend } from 'react-icons/fi';
 import { SlUserFollowing } from 'react-icons/sl';
 import { VscMirror } from 'react-icons/vsc';
 import { getUser } from '../../api/firebase';
-import { images, names } from '../../constants/nftMetadata';
+import { images, names, nftData } from '../../constants/nftMetadata';
 import '../styles/card.css'
 
 const Badge = ({ text }) => {
@@ -34,6 +34,24 @@ const ExpProgress = ({ LEVEL, XP }) => {
     )
 }
 
+const NextExpProgress = ({ unlocksAtLevel, xpNeededToUnlock, myTotalXp }) => {
+    console.log(unlocksAtLevel, xpNeededToUnlock, myTotalXp)
+
+    // const total = LEVEL.experienceToNextLevel + XP;
+    const perc = Math.floor((myTotalXp / xpNeededToUnlock) * 100);
+    return (
+        <div className="w-full flex items-center justify-between pb-2">
+
+            <div class="w-4/5 bg-zinc-800 rounded-full h-2.5 dark:bg-gray-700 mr-4">
+                <div class="bg-emerald-400 h-2.5 rounded-full" style={{ width: `${perc}%` }} ></div>
+            </div>
+            <div className='grid mb-7'>
+            <Badge text={`Level ${unlocksAtLevel}`} />
+            </div>
+        </div>
+    )
+}
+
 const GardenStats = ({ profile }) => {
 
     const [XP, setXP] = useState(null);
@@ -41,6 +59,9 @@ const GardenStats = ({ profile }) => {
     const [loadingStats, setLoadingStats] = useState(false);
     const [updatedDB, setUpdatedDB] = useState(false);
     const [data, setData] = useState([]);
+    const [nextNFT, setNextNFT] = useState({});
+
+    console.log("Profile: ", profile)
 
 
     const calculateExperience = (following, followers, posts, collects, mirrors, comments) => {
@@ -107,22 +128,31 @@ const calculateLevel = (experience) => {
 
         if (obj.attributes[0].value < 7) {
             obj = { ...obj, image: image1, name: names[0] }
+            setNextNFT(nftData[1]);
         } else if (obj.attributes[0].value <= 7 || obj.attributes[0].value < 12) {
             obj = { ...obj, image: image2, name: names[1] }
+            setNextNFT(nftData[2]);
         } else if (obj.attributes[0].value <= 12 || obj.attributes[0].value < 17) {
             obj = { ...obj, image: image3, name: names[2] }
+            setNextNFT(nftData[3]);
         } else if (obj.attributes[0].value <= 17 || obj.attributes[0].value < 22) {
             obj = { ...obj, image: image4, name: names[3] }
+            setNextNFT(nftData[4]);
         } else if (obj.attributes[0].value <= 22 || obj.attributes[0].value < 27) {
             obj = { ...obj, image: image5, name: names[4] }
+            setNextNFT(nftData[5]);
         } else if (obj.attributes[0].value <= 27 || obj.attributes[0].value < 32) {
             obj = { ...obj, image: image6, name: names[5] }
+            setNextNFT(nftData[6]);
         } else if (obj.attributes[0].value <= 32 || obj.attributes[0].value < 35) {
             obj = { ...obj, image: image7, name: names[6] }
+            setNextNFT(nftData[7]);
         } else if (obj.attributes[0].value <= 35 || obj.attributes[0].value < 37) {
             obj = { ...obj, image: image8, name: names[7] }
+            setNextNFT(nftData[8]);
         } else if (obj.attributes[0].value >= 37) {
             obj = { ...obj, image: image9, name: names[8] }
+            setNextNFT(nftData[8]);
         }
 
 
@@ -142,7 +172,7 @@ const calculateLevel = (experience) => {
         if (updatedDB) {
             return (
             
-                <div className='w-full h-full md:flex md:justify-between md:items-center bg-transparent p-4 rounded-lg'>
+                <div className='w-full md:flex md:justify-between md:items-center p-4 rounded-lg border border-red-500 bg-slate-800'>
                     {/* Points calculation */}
                     <div className="nft rounded-lg w-full bg-[#14243d] text-center">
                         <h1 className='text-white text-xl mb-4 underline'>Points calculation</h1>
@@ -189,7 +219,7 @@ const calculateLevel = (experience) => {
                     <main class="card-wrapper p-2 rounded">
                         
     <div class="card nft">
-    <div className='text-center text-white pb-1 underline mx-auto text-xl'><p>Seedling #3429</p></div>
+    <div className='text-center text-white pb-1 underline mx-auto text-xl'><p>{data.name}</p></div>
       <div class="card-img nft">
         <img src={data.image} class="card-img-top" alt="" aria-hidden="true" />
       </div>   
@@ -227,9 +257,9 @@ const calculateLevel = (experience) => {
                     <main class="card-wrapper p-2 rounded">
                         
                         <div class="card nft">
-                        <div className='text-center text-white pb-1 underline mx-auto text-xl'><p>Sprout #9273</p></div>
+                        <div className='text-center text-white pb-1 underline mx-auto text-xl'><p>{nextNFT.name}</p></div>
                           <div class="card-img nft">
-                            <img src={'https://cdn.midjourney.com/1c2ee78c-0806-457e-9799-ff68cdcdad8b/grid_0.png'} class="card-img-top" alt="" aria-hidden="true" />
+                            <img src={nextNFT.imageUrl} class="card-img-top" alt="" aria-hidden="true" />
                           </div>   
                           <div class="level flex">
                              <p>Locked
@@ -239,12 +269,13 @@ const calculateLevel = (experience) => {
                              </div>
                           <div class="card-details">
                             <p>
-                             Experience to next level
+                             Experience to unlock
                              </p>
                             
                             <div className="">
                     
-                    <ExpProgress LEVEL={LEVEL} XP={XP} />
+                    <NextExpProgress unlocksAtLevel={nextNFT.unlocksAtLevel} xpNeededToUnlock={nextNFT.xpNeededtoUnlock} myTotalXp={XP} />
+                    
                     </div>
                           </div>
                           <div class="card-meta">

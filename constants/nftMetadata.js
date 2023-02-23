@@ -26,3 +26,60 @@ export const names = [
     "NFT #8: Oak",
     "NFT #9: Grandpa Oak"
 ]
+
+export const nftData = [
+    {
+        name: names[0],
+        unlocksAtLevel: 1,
+        xpNeededtoUnlock: 0,
+        imageUrl: images[0]
+    },
+    {
+        name: names[1],
+        unlocksAtLevel: 7,
+        xpNeededtoUnlock: 3116,
+        imageUrl: images[1]
+    },
+    {
+        name: names[2],
+        unlocksAtLevel: 12,
+        xpNeededtoUnlock: 20840,
+        imageUrl: images[2]
+    },
+    {
+        name: names[3],
+        unlocksAtLevel: 17,
+        xpNeededtoUnlock: 134905,
+        imageUrl: images[3]
+    },
+    {
+        name: names[4],
+        unlocksAtLevel: 22,
+        xpNeededtoUnlock: 1001112,
+        imageUrl: images[4]
+    },
+    {
+        name: names[5],
+        unlocksAtLevel: 27,
+        xpNeededtoUnlock: 7578883,
+        imageUrl: images[5]
+    },
+    {
+        name: names[6],
+        unlocksAtLevel: 32,
+        xpNeededtoUnlock: 57528847,
+        imageUrl: images[6]
+    },
+    {
+        name: names[7],
+        unlocksAtLevel: 35,
+        xpNeededtoUnlock: 194151475,
+        imageUrl: images[7]
+    },
+    {
+        name: names[8],
+        unlocksAtLevel: 37,
+        xpNeededtoUnlock: 436836408,
+        imageUrl: images[8]
+    },
+]
