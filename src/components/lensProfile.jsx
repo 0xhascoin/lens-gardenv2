@@ -161,7 +161,7 @@ const LensProfile = ({ profile }) => {
                         alt="profile-image"
                     />
                     {/* Names */}
-                    <div className="text-left w-full">
+                    <div className="text-left w-full pt-8">
                         {/* Lens Name */}
                         <h2 className='text-xl text-white mb-3 bolded'>@{profile.handle}</h2>
                         {/* Address */}
@@ -188,8 +188,8 @@ const LensProfile = ({ profile }) => {
                                 <SlUserFollowing className='h-8 w-8 text-white' />
                             </div>
                             <h2 className='text-lg text-white mb-2'>Following</h2>
-                            <Badge text={profile.stats.totalFollowing} /> <br />
-                            <Badge text={`${profile.stats.totalFollowing * 10} XP`} />
+                            <Badge  text={profile.stats.totalFollowing} /> <br />
+                            <Badge  text={`${profile.stats.totalFollowing * 10} XP`} />
                         </div>
                     </div>
 
