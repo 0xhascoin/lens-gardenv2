@@ -169,22 +169,22 @@ const LensProfile = ({ profile }) => {
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
 
                     <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
-                        <div className='bg-white w-full h-full rounded-lg pb-4'>
+                        <div className='nft bg-[#14243d] w-full h-full rounded-lg pb-4'>
                             <div className="flex w-full justify-center py-8 mb-2 m-auto bg-transparent rounded-t-lg	" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                                 <SlUserFollowing className='h-8 w-8 text-white' />
                             </div>
-                            <h2 className='text-lg text-zinc-800 mb-2'>Following</h2>
+                            <h2 className='text-lg text-white mb-2'>Following</h2>
                             <Badge text={profile.stats.totalFollowing} /> <br />
                             <Badge text={`${profile.stats.totalFollowing * 10} XP`} />
                         </div>
                     </div>
 
                     <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg  text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
-                        <div className='bg-white w-full h-full rounded-lg pb-4'>
+                        <div className='nft bg-[#14243d] w-full h-full rounded-lg pb-4'>
                             <div className="flex w-full justify-center py-8 rounded-t-lg mb-2 m-auto bg-transparent" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                                 <BiGroup className='h-8 w-8 text-white' />
                             </div>
-                            <h2 className='text-lg text-zinc-800 mb-2'>Followers</h2>
+                            <h2 className='text-lg text-white mb-2'>Followers</h2>
                             <Badge text={profile.stats.totalFollowers} /> <br />
                             <Badge text={`${profile.stats.totalFollowers * 50} XP`} />
 
@@ -192,11 +192,11 @@ const LensProfile = ({ profile }) => {
                     </div>
 
                     <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg  text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
-                        <div className='bg-white w-full h-full rounded-lg pb-4'>
+                        <div className='nft bg-[#14243d] w-full h-full rounded-lg pb-4'>
                             <div className="flex w-full justify-center rounded-t-lg	py-8 mb-2 m-auto bg-transparent" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                                 <FiSend className='h-8 w-8 text-white' />
                             </div>
-                            <h2 className='text-lg text-zinc-800 mb-2'>Posts</h2>
+                            <h2 className='text-lg text-white mb-2'>Posts</h2>
                             <Badge text={profile.stats.totalPosts} /> <br />
                             <Badge text={`${profile.stats.totalPosts * 30} XP`} />
 
@@ -204,11 +204,11 @@ const LensProfile = ({ profile }) => {
                     </div>
 
                     <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg  text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
-                        <div className='bg-white w-full h-full rounded-lg pb-4'>
+                        <div className='nft bg-[#14243d] w-full h-full rounded-lg pb-4'>
                             <div className="flex w-full justify-center rounded-t-lg	py-8 mb-2 m-auto bg-transparent" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                                 <BiCommentDots className='h-8 w-8 text-white' />
                             </div>
-                            <h2 className='text-lg text-zinc-800 mb-2'>Comments</h2>
+                            <h2 className='text-lg text-white mb-2'>Comments</h2>
                             <Badge text={profile.stats.totalComments} /> <br />
                             <Badge text={`${profile.stats.totalComments * 20} XP`} />
 
@@ -216,11 +216,11 @@ const LensProfile = ({ profile }) => {
                     </div>
 
                     <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
-                        <div className='bg-white w-full h-full rounded-lg pb-4'>
+                        <div className='nft bg-[#14243d] w-full h-full rounded-lg pb-4'>
                             <div className="flex w-full justify-center rounded-t-lg	py-8 mb-2 m-auto bg-transparent" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                                 <BiCollection className='h-8 w-8 text-white' />
                             </div>
-                            <h2 className='text-lg text-zinc-800 mb-2'>Collects</h2>
+                            <h2 className='text-lg text-white mb-2'>Collects</h2>
                             <Badge text={profile.stats.totalCollects} /> <br />
                             <Badge text={`${profile.stats.totalCollects * 20} XP`} />
 
@@ -229,11 +229,11 @@ const LensProfile = ({ profile }) => {
                     </div>
 
                     <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
-                        <div className='bg-white w-full h-full rounded-lg pb-4'>
+                        <div className='nft bg-[#14243d] w-full h-full rounded-lg pb-4'>
                             <div className="flex w-full justify-center rounded-t-lg	py-8 mb-2 m-auto bg-transparent" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                                 <VscMirror className='h-8 w-8 text-white' />
                             </div>
-                            <h2 className='text-lg text-zinc-800 mb-2'>Mirrors</h2>
+                            <h2 className='text-lg text-white mb-2'>Mirrors</h2>
                             <Badge text={profile.stats.totalMirrors} /> <br />
                             <Badge text={`${profile.stats.totalMirrors * 30} XP`} />
 

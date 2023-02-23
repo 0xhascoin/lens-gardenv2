@@ -1,4 +1,4 @@
-import '../styles/garden.css'
+
 import React from "react";
 import Header from "../components/header";
 import bggarden2 from "../styles/images/bggarden2.jpeg"
@@ -18,6 +18,7 @@ import LensProfileStats from '../components/lensProfileStats';
 import Footer from '../components/footer';
 import GardenStats from '../components/gardenStats';
 import { useNavigate } from 'react-router-dom';
+
 
 
 const Loading = () => (
@@ -169,8 +170,8 @@ const Garden = () => {
             <GardenStats
               profile={profile}
             />
-
-
+            
+            
             <Footer />
 
           </>
@@ -180,53 +181,6 @@ const Garden = () => {
   };
 
   return (
-    // <div className="relative min-h-screen bg-cover bg-center" style={{ backgroundImage: 'linear-gradient( rgba(0,0,0,.5), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/3439d6e8-9981-42a7-964f-a9e8ce18af84/grid_0.png)' }}>
-    //   <Header
-    //     connectWallet={connectWallet}
-    //     connecting={connecting}
-    //     currentAccount={currentAccount}
-    //     loadingProfile={loadingProfile}
-    //     profileFound={profileFound}
-    //     profile={profile}
-    //   />
-
-    //   <LensProfileStats
-    //     connectWallet={connectWallet}
-    //     connecting={connecting}
-    //     currentAccount={currentAccount}
-    //     loadingProfile={loadingProfile}
-    //     profileFound={profileFound}
-    //     profile={profile}
-    //   />
-
-    //   <GardenStats
-    //     connectWallet={connectWallet}
-    //     connecting={connecting}
-    //     currentAccount={currentAccount}
-    //     loadingProfile={loadingProfile}
-    //     profileFound={profileFound}
-    //     profile={profile}
-    //   />
-
-
-    //   <Footer />
-
-    //   {/* <div className="relative">
-
-    //     <div className="fixed bottom-0 left-0 right-0 text-center">
-    //       <Points imageSrc={posts} imageTitle={"30 XP"} />
-    //       <Points imageSrc={comments} imageTitle={"20 XP"} />
-    //     </div>
-    //     <div className="fixed bottom-0 left-0 text-center">
-    //       <Points imageSrc={followings} imageTitle={"10 XP"} />
-    //       <Points imageSrc={followers} imageTitle={"50 XP"} />
-    //     </div>
-    //     <div className="fixed bottom-0 right-0 text-center">
-    //       <Points imageSrc={collects} imageTitle={"20 XP"} />
-    //       <Points imageSrc={mirrors} imageTitle={"30 XP"} />
-    //     </div>
-    //   </div> */}
-    // </div>
     <div className="relative min-h-screen bg-cover bg-center" style={{ backgroundImage: 'linear-gradient( rgba(0,0,0,.5), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/3439d6e8-9981-42a7-964f-a9e8ce18af84/grid_0.png)' }}>
     {renderConnected()}
     </div>

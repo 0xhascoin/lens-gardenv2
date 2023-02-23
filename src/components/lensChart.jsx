@@ -49,8 +49,8 @@ const LensChart = ({ stats }) => {
   
   console.log("Stats: ", stats);
   return (
-    <div className="w-full md:w-1/2">
-      <div className="font-semibold w-full flex justify-end mx-auto mt-12">
+    <div className="w-full md:w-1/2 bg-transparent">
+      <div className="font-semibold w-full flex justify-end mx-auto mt-22">
         <Chart
           chartType="PieChart"
           width="100%"
