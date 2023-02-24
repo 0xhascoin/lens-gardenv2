@@ -15,6 +15,7 @@ export const data = [
 ];
 
 export const options = {
+  
   title: "Total Lens Stats",
   pieHole: 0.5,
   is3D: true,
@@ -26,15 +27,14 @@ export const options = {
   legend: {
     textStyle: {
       fontSize: 11,
-      fontFamily: 'Helvetica Neue, Arial, sans-serif',
-      fontWeight: 'semi-bold',
+     
       color: '#ffffff'
     }
   },
   backgroundColor: "#1e293b",
  
   colors: ['#9f19d7', '#388E3C', '#e5de00', '#3b82f6', '#df2c14', '#df2c14', '#3B3EAC', '#0099C6', '#DD4477', '#66AA00', '#B82E2E', '#316395', '#994499', '#22AA99', '#AAAA11', '#6633CC', '#E67300', '#8B0707', '#329262', '#5574A6', '#3B3EAC']
-  
+
 };
 
 const LensChart = ({ stats }) => {
@@ -52,7 +52,7 @@ const LensChart = ({ stats }) => {
   
   console.log("Stats: ", stats);
   return (
-    <div className="w-full md:w-1/2 h-full rounded-lg sm:pt-32">
+    <div className="w-full md:w-1/2 h-full rounded-lg sm:pt-32 ">
       <div className="chart font-semibold w-full flex justify-end mx-auto p-4 rounded-lg ">
         <Chart
         

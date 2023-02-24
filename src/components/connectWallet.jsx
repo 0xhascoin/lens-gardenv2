@@ -36,7 +36,7 @@ const ConnectWallet = ({ connecting, currentAccount, connectWallet, loadingProfi
               src={`${startUrl}${profile.picture.original.url.slice(7)}`}
               alt="profile-image"
             />
-            <p className='text-white items-center flex'>{profile.handle}</p>
+            <p className='text-white flex-col text-sm sm:text-l items-center flex'>{profile.handle}</p>
           </div>
         );
       }
