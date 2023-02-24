@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { ethers } from 'ethers';
 import { abi } from '../../constants/abi';
 import LoadingSpinner from './loadingSpinner';
+import { mintedNFT } from '../../api/firebase';
 
-const CONTRACT_ADDRESS = "0x7c96FA931896815DCC2e62AeE79216d7762B3175";
+const CONTRACT_ADDRESS = "0xc223b06640073904421854dfe228A629eBd9A443";
 
 
 const MintNft = ({ address }) => {
@@ -22,24 +23,24 @@ const MintNft = ({ address }) => {
                 const connectedContract = new ethers.Contract(CONTRACT_ADDRESS, abi, signer);
 
                 setLoadingMint(true);
-                console.log("Going to pop wallet now to pay gas...")
+                // console.log("Going to pop wallet now to pay gas...")
                 const uri = `https://lg-server.onrender.com/${address}`
                 let nftTxn = await connectedContract.makeAnEpicNFT(uri);
 
-                console.log("Mining...please wait.")
+                // console.log("Mining...please wait.")
                 await nftTxn.wait();
 
                 
 
                 // setLoadingMint(false);
-                console.log(`Mined, see transaction: https://goerli.etherscan.io/tx/${nftTxn.hash}`);
+                // console.log(`Mined, see transaction: https://goerli.etherscan.io/tx/${nftTxn.hash}`);
 
             } else {
-                console.log("Ethereum object doesn't exist!");
+                // console.log("Ethereum object doesn't exist!");
                 setLoadingMint(false);
             }
         } catch (error) {
-            console.log(error);
+            // console.log(error);
             setLoadingMint(false);
         }
     }
@@ -59,20 +60,22 @@ const MintNft = ({ address }) => {
                 // THIS IS THE MAGIC SAUCE.
                 // This will essentially "capture" our event when our contract throws it.
                 // If you're familiar with webhooks, it's very similar to that!
-                connectedContract.on("NewNFTMinted", (from, tokenId) => {
-                    console.log(from, tokenId.toNumber())
+                connectedContract.on("NewNFTMinted", async (from, tokenId) => {
+                    // console.log(from, tokenId.toNumber())
                     setMintedUrl(`https://testnets.opensea.io/assets/${CONTRACT_ADDRESS}/${tokenId.toNumber()}`);
+                    await mintedNFT(address);
+                    window.location.reload();
                     setMinted(true);
                     setLoadingMint(false);
                 });
 
-                console.log("Setup event listener!")
+                // console.log("Setup event listener!")
 
             } else {
-                console.log("Ethereum object doesn't exist!");
+                // console.log("Ethereum object doesn't exist!");
             }
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
     }
 
@@ -87,20 +90,9 @@ const MintNft = ({ address }) => {
                 <div className="flex justify-center my-3"><LoadingSpinner /></div>
             )
         } else {
-            if (minted) {
+            if (!minted) {
                 return (
-                    <>
-                        <div className='my-3'>
-                            <a href={mintedUrl}>{mintedUrl}</a>
-                            <p className="text-green-400">NFT Minted Succesfully</p>
-                        </div>
-
-                        <button onClick={askContractToMintNft} className='my-3 bg-zinc-800 text-white focus:outline-red-400 transition-all'>Mint an NFT</button>
-                    </>
-                )
-            } else {
-                return (
-                    <button onClick={askContractToMintNft} className='nft flex rounded-full text-l whitespace-nowrap my-3 flex-wrap border-2 border-green-600 min-w-1/6 py-2 px-4 justify-center mx-auto bg-green-600 text-white'>Mint an NFT</button>
+                    <button onClick={askContractToMintNft} className='nft flex rounded-full text-l whitespace-nowrap my-3 flex-wrap border-2 border-emerald-600 min-w-1/6 py-2 px-4 justify-center mx-auto bg-emerald-600 text-white'>Mint an NFT</button>
 
                 )
             }
@@ -108,7 +100,10 @@ const MintNft = ({ address }) => {
     }
 
     return (
-        <div>
+        <div className='py-6'>
+            <div className="text-center mt-6">
+                <h2 className='text-white text-2xl mb-3'>Mint your Lens Garden NFT Here</h2>
+            </div>
             {renderMint()}
         </div>
     )

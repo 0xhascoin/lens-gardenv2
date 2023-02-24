@@ -19,6 +19,7 @@ import Footer from '../components/footer';
 import GardenStats from '../components/gardenStats';
 import { useNavigate } from 'react-router-dom';
 import MintNft from "../components/mintNft";
+import { checkIfUserExists } from "../../api/firebase";
 
 
 
@@ -49,18 +50,19 @@ const Garden = () => {
   const fetchLensProfile = async (address) => {
     try {
       setLoadingProfile(true);
-      console.log("Loading Profile....")
+      // console.log("Loading Profile....")
       const { data: { profiles: { items } } } = await client.query(myStats, { "address": address }).toPromise();
-      console.log("Data: ", items[0]);
+      // console.log("Data: ", items[0]);
       if (items[0] == undefined) {
         setProfileFound(false);
       } else {
-        setProfile(items[0]);
+        // setProfile(items[0]);
+        await setupProfileInDB(items[0].ownedBy, items[0]);
+        // console.log("Found Profile.")
         setProfileFound(true);
-        console.log("Found Profile.")
       }
       setLoadingProfile(false);
-      console.log("Finished Loading Profile....")
+      // console.log("Finished Loading Profile....")
 
     } catch (error) {
       console.log(error);
@@ -69,19 +71,27 @@ const Garden = () => {
     }
   };
 
+  const setupProfileInDB = async (address, obj) => {
+    // console.log("Address: ", address);
+    // console.log("obj: ", obj);
+    const user = await checkIfUserExists(address, obj);
+    // console.log("User in db: ", user);
+    setProfile(user);
+  }
+
 
   const checkIfWalletIsConnected = async () => {
     const { ethereum } = window;
 
     if (!ethereum) {
-      console.log("Make sure you have metamask!");
+      // console.log("Make sure you have metamask!");
       return;
     } else {
-      console.log("We have the ethereum object", ethereum);
+      // console.log("We have the ethereum object", ethereum);
     }
 
     let chainId = await ethereum.request({ method: 'eth_chainId' });
-    console.log("Connected to chain " + chainId);
+    // console.log("Connected to chain " + chainId);
 
     // String, hex code of the chainId of the Goerli test network
     const goerliChainId = "0x5";
@@ -95,12 +105,12 @@ const Garden = () => {
 
     if (accounts.length !== 0) {
       const account = accounts[0];
-      console.log("Found an authorized account:", account);
+      // console.log("Found an authorized account:", account);
       setCurrentAccount(account);
       await fetchLensProfile(account);
       setConnecting(false)
     } else {
-      console.log("No authorized account found");
+      // console.log("No authorized account found");
       setConnecting(false);
     }
   };
@@ -117,7 +127,7 @@ const Garden = () => {
       setConnecting(true);
       const accounts = await ethereum.request({ method: "eth_requestAccounts" });
 
-      console.log("Connected", accounts[0]);
+      // console.log("Connected", accounts[0]);
       setCurrentAccount(accounts[0]);
       await fetchLensProfile(accounts[0]);
       setConnecting(false);
@@ -163,18 +173,21 @@ const Garden = () => {
               profileFound={profileFound}
               profile={profile}
             />
-
-            <MintNft />
+            {!profile.alreadyMinted && (
+              <MintNft address={profile.ownedBy} />
+            )}
 
             <LensProfileStats
               profile={profile}
             />
-            
-            <GardenStats
-              profile={profile}
-            />
-            
-            
+
+            {profile.alreadyMinted && (
+              <GardenStats
+                profile={profile}
+              />
+            )}
+
+
             <Footer />
 
           </>
@@ -185,7 +198,7 @@ const Garden = () => {
 
   return (
     <div className="font relative min-h-screen bg-cover bg-center" style={{ backgroundImage: 'linear-gradient( rgba(0,0,0,.5), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/3439d6e8-9981-42a7-964f-a9e8ce18af84/grid_0.png)' }}>
-    {renderConnected()}
+      {renderConnected()}
     </div>
   );
 };

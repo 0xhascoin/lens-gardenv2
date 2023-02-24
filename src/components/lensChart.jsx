@@ -50,7 +50,7 @@ const LensChart = ({ stats }) => {
     ["Mirrors", stats.totalMirrors],
   ]
   
-  console.log("Stats: ", stats);
+  // console.log("Stats: ", stats);
   return (
     <div className="w-full md:w-1/2 h-full rounded-lg sm:pt-32 ">
       <div className="chart font-semibold w-full flex justify-end mx-auto p-4 rounded-lg ">

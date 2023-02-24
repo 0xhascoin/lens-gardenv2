@@ -1,6 +1,15 @@
 import React from 'react';
 import LoadingSpinner from './loadingSpinner';
 
+const Badge = ({ text }) => {
+  // console.log("Text: ", text)
+  return (
+      <span className="text-center bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
+          {text}
+      </span>
+  )
+}
+
 const ConnectWallet = ({ connecting, currentAccount, connectWallet, loadingProfile, profileFound, profile }) => {
   const startUrl = 'https://lens.infura-ipfs.io/ipfs/';
 
@@ -11,7 +20,7 @@ const ConnectWallet = ({ connecting, currentAccount, connectWallet, loadingProfi
       } else {
         return (
           
-            <button onClick={connectWallet} className="text-white focus:ring-4 focus:outline-none focus:ring-green-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 md:mr-0 dark:bg-green-700 dark:hover:bg-green-600">
+            <button onClick={connectWallet} className="text-white focus:ring-4 focus:outline-none focus:ring-green-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 md:mr-0 bg-gradient-to-r from-emerald-600 to-teal-400 dark:bg-emeral-700 dark:hover:bg-green-600">
               Connect Wallet
             </button>
           
@@ -36,7 +45,10 @@ const ConnectWallet = ({ connecting, currentAccount, connectWallet, loadingProfi
               src={`${startUrl}${profile.picture.original.url.slice(7)}`}
               alt="profile-image"
             />
-            <p className='text-white flex-col text-sm sm:text-l items-center flex'>{profile.handle}</p>
+            <div className="">
+              <p className='text-white flex-col text-sm sm:text-l items-center flex'>{profile.handle}</p>
+              <Badge text={`Level ${profile.attributes[0].value}`} />
+            </div>
           </div>
         );
       }

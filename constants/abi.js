@@ -8,19 +8,6 @@ export const abi = [
     "anonymous": false,
     "inputs": [
       {
-        "indexed": false,
-        "internalType": "address",
-        "name": "sender",
-        "type": "address"
-      }
-    ],
-    "name": "AlreadyMinted",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
         "indexed": true,
         "internalType": "address",
         "name": "owner",
@@ -205,25 +192,6 @@ export const abi = [
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "minted",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [],
     "name": "name",
     "outputs": [
@@ -398,4 +366,4 @@ export const abi = [
     "stateMutability": "nonpayable",
     "type": "function"
   }
-];
+]

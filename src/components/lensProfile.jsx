@@ -5,12 +5,11 @@ import { FiSend } from 'react-icons/fi'
 import { VscMirror } from 'react-icons/vsc'
 import { getUser } from '../../api/firebase';
 import { images, names, nftData } from '../../constants/nftMetadata';
-import { checkIfMinted } from '../../api/firebase';
 
 const startUrl = 'https://lens.infura-ipfs.io/ipfs/';
 
 const Badge = ({ text }) => {
-    console.log("Text: ", text)
+    // console.log("Text: ", text)
     return (
         <span className="text-center bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
             {text}
@@ -20,15 +19,15 @@ const Badge = ({ text }) => {
 
 
 const NextExpProgress = ({ unlocksAtLevel, xpNeededToUnlock, myTotalXp }) => {
-    console.log(unlocksAtLevel, xpNeededToUnlock, myTotalXp)
+    // console.log(unlocksAtLevel, xpNeededToUnlock, myTotalXp)
 
     // const total = LEVEL.experienceToNextLevel + XP;
     const perc = Math.floor((myTotalXp / (xpNeededToUnlock + myTotalXp)) * 100);
     return (
         <div className="w-full flex items-center justify-between pb-2">
 
-            <div class="w-4/5 bg-zinc-800 rounded-full h-2.5 dark:bg-gray-700 mr-4">
-                <div class="bg-emerald-400 h-2.5 rounded-full" style={{ width: `${perc}%` }} ></div>
+            <div className="w-4/5 bg-zinc-800 rounded-full h-2.5 dark:bg-gray-700 mr-4">
+                <div className="bg-emerald-400 h-2.5 rounded-full" style={{ width: `${perc}%` }} ></div>
             </div>
             <div className='grid mb-7'>
             <Badge text={`Level ${unlocksAtLevel}`} />
@@ -137,8 +136,6 @@ const LensProfile = ({ profile }) => {
             setNextNFT(nftData[8]);
         }
 
-        await checkIfMinted(profile.ownedBy);
-
         const data = await getUser(profile.ownedBy, obj);
         setData(data);
         setUpdatedDB(true);
@@ -180,7 +177,7 @@ const LensProfile = ({ profile }) => {
                 </div>
 
 
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
 
                     <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                         <div className='nft bg-[#14243d] w-full h-full rounded-lg pb-4'>

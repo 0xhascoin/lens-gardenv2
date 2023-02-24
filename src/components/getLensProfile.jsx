@@ -9,21 +9,21 @@ const GetLensProfile = ({ currentAccount, setProfile, profile, setProfileFound, 
   const fetchLensProfile = async () => {
     try {
       setLoadingProfile(true);
-      console.log("Loading Profile....")
+      // console.log("Loading Profile....")
       const { data: { profiles: { items } } } = await client.query(myStats, { "address": currentAccount }).toPromise();
-      console.log("Data: ", items[0]);
+      // console.log("Data: ", items[0]);
       if (items[0] == undefined) {
         setProfileFound(false);
       } else {
         setProfile(items[0]);
         setProfileFound(true);
-        console.log("Found Profile.")
+        // console.log("Found Profile.")
       }
       setLoadingProfile(false);
-      console.log("Finished Loading Profile....")
+      // console.log("Finished Loading Profile....")
 
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       setProfileFound(false);
       setLoadingProfile(false);
     }
