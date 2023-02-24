@@ -9,7 +9,7 @@ function ImageCard({ imageSrc, imageText, imageTitle, imageDesc, width, height }
   };
 
   return (
-    <div className="group w-[300px] h-[300px] m-auto rounded-lg cursor-pointer"  style={{ width: `${width}px`, height: `${height}px` }}>
+    <div className="font group w-[300px] h-[300px] m-auto rounded-lg cursor-pointer"  style={{ width: `${width}px`, height: `${height}px` }}>
       <div
         className="w-full h-full shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] relative"
         

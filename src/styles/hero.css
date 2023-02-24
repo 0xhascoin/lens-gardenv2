@@ -1,4 +1,29 @@
-.hero {
-    /* border: 1px solid red; */
-    height: 40vh;
+
+.font {
+    font-family: Courier, monospace;
 }
+
+.writer {
+    font-family: Courier, monospace;
+    display: inline-block;
+    }
+    .writer-text {
+        display: inline-block;
+        overflow: hidden;
+        letter-spacing: 1px;
+        animation: typing 3s steps(30, end), blink .75s step-end infinite;
+        white-space: nowrap;
+        
+        box-sizing: border-box;
+    }
+
+    @keyframes typing {
+        from { 
+            width: 0% 
+        }
+        to { 
+            width: 100% 
+        }
+    }
+
+  

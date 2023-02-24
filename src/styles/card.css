@@ -30,7 +30,7 @@ body {
 }
 
 .card {
-    width: 327px;
+    width: 310px;
     height: 530px;
     background: var(--card-bg-blue);
     padding: 24px;
@@ -39,13 +39,14 @@ body {
 }
 
 .card-img {
+    
     margin-bottom: 24px;
-    position: relative;
+    position: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 278px;
-    height: 278px;
+    width: 260px;
+    height: 260px;
 }
 
 .card-img:hover {
