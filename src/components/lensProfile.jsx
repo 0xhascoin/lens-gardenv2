@@ -30,7 +30,7 @@ const NextExpProgress = ({ unlocksAtLevel, xpNeededToUnlock, myTotalXp }) => {
                 <div className="bg-emerald-400 h-2.5 rounded-full" style={{ width: `${perc}%` }} ></div>
             </div>
             <div className='grid mb-7'>
-            <Badge text={`Level ${unlocksAtLevel}`} />
+            <Badge text={`Level ${parseInt(unlocksAtLevel) + 1}`} />
             </div>
         </div>
     )
@@ -169,7 +169,7 @@ const LensProfile = ({ profile }) => {
                         ) : (
                             <>
                                 {LEVEL !== null && XP !== null && (
-                    <NextExpProgress unlocksAtLevel={nextNFT.unlocksAtLevel} xpNeededToUnlock={LEVEL.experienceToNextLevel} myTotalXp={XP} />
+                    <NextExpProgress unlocksAtLevel={profile.attributes[0].value} xpNeededToUnlock={LEVEL.experienceToNextLevel} myTotalXp={XP} />
                     )}
                             </>
                         )}
