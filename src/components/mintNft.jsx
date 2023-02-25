@@ -29,6 +29,10 @@ const MintNft = ({ address }) => {
 
                 // console.log("Mining...please wait.")
                 await nftTxn.wait();
+                
+                await mintedNFT(address);
+                window.location.reload();
+
 
                 
 
@@ -60,14 +64,12 @@ const MintNft = ({ address }) => {
                 // THIS IS THE MAGIC SAUCE.
                 // This will essentially "capture" our event when our contract throws it.
                 // If you're familiar with webhooks, it's very similar to that!
-                connectedContract.on("NewNFTMinted", async (from, tokenId) => {
-                    // console.log(from, tokenId.toNumber())
-                    setMintedUrl(`https://testnets.opensea.io/assets/${CONTRACT_ADDRESS}/${tokenId.toNumber()}`);
-                    await mintedNFT(address);
-                    window.location.reload();
-                    setMinted(true);
-                    setLoadingMint(false);
-                });
+//                 connectedContract.on("NewNFTMinted", async (from, tokenId) => {
+//                     // console.log(from, tokenId.toNumber())
+//                     setMintedUrl(`https://testnets.opensea.io/assets/${CONTRACT_ADDRESS}/${tokenId.toNumber()}`);
+//                     setMinted(true);
+//                     setLoadingMint(false);
+//                 });
 
                 // console.log("Setup event listener!")
 
