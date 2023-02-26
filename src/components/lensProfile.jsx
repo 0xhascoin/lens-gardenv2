@@ -24,13 +24,13 @@ const NextExpProgress = ({ unlocksAtLevel, xpNeededToUnlock, myTotalXp }) => {
     // const total = LEVEL.experienceToNextLevel + XP;
     const perc = Math.floor((myTotalXp / (xpNeededToUnlock + myTotalXp)) * 100);
     return (
-        <div className="w-full flex items-center justify-between pb-2">
+        <div className="w-full flex items-center justify-between">
 
             <div className="w-4/5 bg-zinc-800 rounded-full h-2.5 dark:bg-gray-700 mr-4">
                 <div className="bg-emerald-400 h-2.5 rounded-full" style={{ width: `${perc}%` }} ></div>
             </div>
-            <div className='grid mb-7'>
-            <Badge text={`Level ${parseInt(unlocksAtLevel) + 1}`} />
+            <div className='grid mb-0'>
+                <Badge text={`Level ${parseInt(unlocksAtLevel) + 1}`} />
             </div>
         </div>
     )
@@ -169,8 +169,14 @@ const LensProfile = ({ profile }) => {
                         ) : (
                             <>
                                 {LEVEL !== null && XP !== null && (
-                    <NextExpProgress unlocksAtLevel={profile.attributes[0].value} xpNeededToUnlock={LEVEL.experienceToNextLevel} myTotalXp={XP} />
-                    )}
+                                    <>
+                                        <NextExpProgress unlocksAtLevel={profile.attributes[0].value} xpNeededToUnlock={LEVEL.experienceToNextLevel} myTotalXp={XP} />
+
+                                        <div className="text-white flex justify-center">
+                                            <p className='text-sm'>{XP} / {LEVEL.experienceToNextLevel + XP}</p>
+                                        </div>
+                                    </>
+                                )}
                             </>
                         )}
                     </div>
@@ -185,8 +191,8 @@ const LensProfile = ({ profile }) => {
                                 <SlUserFollowing className='h-8 w-8 text-white' />
                             </div>
                             <h2 className='text-lg text-white mb-2'>Following</h2>
-                            <Badge  text={profile.stats.totalFollowing} /> <br />
-                            <Badge  text={`${profile.stats.totalFollowing * 10} XP`} />
+                            <Badge text={profile.stats.totalFollowing} /> <br />
+                            <Badge text={`${profile.stats.totalFollowing * 10} XP`} />
                         </div>
                     </div>
 
