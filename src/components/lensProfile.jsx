@@ -45,6 +45,17 @@ const LensProfile = ({ profile }) => {
     const [updatedDB, setUpdatedDB] = useState(false);
     const [nextNFT, setNextNFT] = useState({});
 
+    const fixUrl = (url) => {
+        let start = url.slice(5)
+        let final;
+        if(url.slice(0,4) !== "http") {
+          final = startUrl + url.slice(7);
+         } else {
+          final = url
+        }
+        return final;
+      }
+
 
     const calculateExperience = (following, followers, posts, collects, mirrors, comments) => {
         // Following, Followers, Posts, Collects, Mirrors, Comments
@@ -154,7 +165,7 @@ const LensProfile = ({ profile }) => {
                     {/* Profile Image */}
                     <img
                         className="rounded-lg w-26 h-24 border border-white mr-2"
-                        src={`${startUrl}${profile.picture.original.url.slice(7)}`}
+                        src={fixUrl(profile.picture.original.url)}
                         alt="profile-image"
                     />
                     {/* Names */}

@@ -13,6 +13,17 @@ const Badge = ({ text }) => {
 const ConnectWallet = ({ connecting, currentAccount, connectWallet, loadingProfile, profileFound, profile }) => {
   const startUrl = 'https://lens.infura-ipfs.io/ipfs/';
 
+  const fixUrl = (url) => {
+    let start = url.slice(5)
+    let final;
+    if(url.slice(0,4) !== "http") {
+      final = startUrl + url.slice(7);
+     } else {
+      final = url
+    }
+    return final;
+  }
+
   const renderConnected = () => {
     if (currentAccount === '') {
       if (connecting) {
@@ -42,7 +53,7 @@ const ConnectWallet = ({ connecting, currentAccount, connectWallet, loadingProfi
           <div className="flex bg-transparent rounded-lg">
             <img
               className="rounded-lg w-20 ml-auto mr-2"
-              src={`${startUrl}${profile.picture.original.url.slice(7)}`}
+              src={fixUrl(profile.picture.original.url)}
               alt="profile-image"
             />
             <div className="">
