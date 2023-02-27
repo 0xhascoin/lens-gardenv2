@@ -47,16 +47,16 @@ const ConnectWallet = ({ connecting, currentAccount, connectWallet, loadingProfi
       return <LoadingSpinner />;
     } else {
       if (!profileFound) {
-        return <p className="bg-white flex justify-center items-center rounded-lg p-1 px-2 mr-5">No Lens Profile Found</p>;
+        return <p className="bg-green-600 flex justify-center items-center rounded-lg p-1 px-2 mr-5">No Lens Profile Found</p>;
       } else {
         return (
           <div className="flex bg-transparent rounded-lg">
             <img
-              className="rounded-lg w-20 ml-auto mr-2"
+              className="rounded-lg w-12 sm:w-16 ml-auto mr-2"
               src={fixUrl(profile.picture.original.url)}
               alt="profile-image"
             />
-            <div className="">
+            <div className="sm:grid sm:grid-cols-1 sm:gap-y-4">
               <p className='text-white flex-col text-sm sm:text-l items-center flex'>{profile.handle}</p>
               <Badge text={`Level ${profile.attributes[0].value}`} />
             </div>
