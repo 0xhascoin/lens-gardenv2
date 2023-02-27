@@ -97,6 +97,7 @@ const Garden = () => {
     const goerliChainId = "0x5";
     if (chainId !== goerliChainId) {
       alert("You are not connected to the Goerli Test Network!");
+      navigate("/");
     }
 
     setConnecting(true);
