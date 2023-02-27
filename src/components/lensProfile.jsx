@@ -164,7 +164,7 @@ const LensProfile = ({ profile }) => {
                 <div className="w-full md:flex p-2 mb-6 md:items-center">
                     {/* Profile Image */}
                     <img
-                        className="rounded-lg w-26 h-24 border border-white mr-2"
+                        className="rounded-lg  w-26 h-24 border border-white mr-2"
                         src={fixUrl(profile.picture.original.url)}
                         alt="profile-image"
                     />
