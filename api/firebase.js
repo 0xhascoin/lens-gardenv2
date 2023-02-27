@@ -54,7 +54,7 @@ export const checkIfUserExists = async (address, obj) => {
     } else {
         // Doesn't exist in DB
         // Create it and set alreadyMinted to false
-        let data = { ...obj, alreadyMinted: false };
+        let data = { ...obj, alreadyMinted: false, startingSnapshot: { ...obj.stats } };
         console.log("Doesn't exist.")
         console.log("Obj Data: ", data);
 
