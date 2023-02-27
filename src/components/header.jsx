@@ -15,7 +15,7 @@ export default function Header({ currentAccount, connecting, connectWallet, load
   return (
 
     <nav className={`font px-4 w-full`}>
-      <div className="container pt-2 flex sm:flex-wrap flex-wrap items-center justify-between bg-transparent mx-auto bg-red-600">
+      <div className="container pt-2 flex sm:flex-wrap flex-wrap items-center justify-between bg-transparent mx-auto">
         <a href="/" className="flex items-center">
 
           <img src={logo1} className="nft rounded shrink w-12 sm:w-16 object-contain" alt="Lens-garden logo" />
@@ -39,7 +39,7 @@ export default function Header({ currentAccount, connecting, connectWallet, load
           <button
             data-collapse-toggle="navbar-sticky"
             type="button"
-            className="inline-flex items-center mx-2 p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-800 dark:focus:ring-white-600"
+            className="inline-flex items-center mx-2 p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-transparent dark:focus:ring-white-600"
             aria-controls="navbar-sticky"
             aria-expanded="false"
             onClick={toggleNavMenu}
@@ -64,7 +64,7 @@ export default function Header({ currentAccount, connecting, connectWallet, load
             }`}
           id="navbar-sticky"
         >
-          <ul className="bg-slate-800 flex flex-col p-4 py-3 mt-4 border border-black-100 rounded-xl  md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-black dark:bg-black-800 md:dark:bg-transparent dark:border-green-400">
+          <ul className="bg-slate-800 flex flex-col p-4 py-3 mt-4 border border-black-100 rounded-xl  md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:dark:bg-transparent dark:border-green-400">
 
             <li>
               <a
