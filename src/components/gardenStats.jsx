@@ -10,7 +10,7 @@ import '../styles/card.css'
 const Badge = ({ text }) => {
     // console.log("Text: ", text)
     return (
-        <span className="text-center bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
+        <span className="text-center bg-green-100 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-white text-white border border-white">
             {text}
         </span>
     )
@@ -158,11 +158,11 @@ const GardenStats = ({ profile }) => {
                 <div className='nft w-full md:flex md:justify-between md:items-center p-4 rounded-lg bg-slate-800'>
                     {/* Points calculation */}
                     <div className="nft rounded-lg w-full bg-[#14243d] text-center">
-                        <h1 className='text-white text-xl mb-4 underline'>Points calculation</h1>
+                        
                         <div className="grid grid-cols-2 md:grid-cols-2 gap-2 p-2">
                             <div className="nft bg-white w-full h-2/3 flex justify-between items-center border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg">
-                                <div className="h-full w-1/2 rounded-l-lg p-4 md:p-2 bg-cover bg-center" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
-                                    <SlUserFollowing className=' text-white h-full w-full' />
+                                <div className=" h-full w-1/2 rounded-l-lg md:p-2 bg-cover bg-center" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
+                                    <SlUserFollowing className='text-white sm:h-full h-6 w-6 sm:w-full' />
                                 </div>
                                 <h2 className='text-sm text-emerald-800 text-center w-1/2'>+10 XP</h2>
                             </div>
