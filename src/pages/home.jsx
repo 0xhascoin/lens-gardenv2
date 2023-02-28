@@ -11,6 +11,7 @@ import NftDetails from '../components/nftDetails'
 import ImageCard from '../components/ImageCard';
 import Footer from '../components/footer';
 import PointsCalculation from '../components/pointsCalculation';
+import Team from '../components/team';
 
 
 const Home = () => {
@@ -136,6 +137,8 @@ const Home = () => {
       <Hero />
       <NftDetails />
       <div className="mb-20"></div>
+      {/* <Team />
+      <div className="mb-20"></div> */}
       {/* <PointsCalculation /> */}
       <Footer />
     </div>
