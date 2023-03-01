@@ -19,7 +19,7 @@ export default function Header({ currentAccount, connecting, connectWallet, load
         <a href="/" className="flex items-center">
 
           <img src={logo1} className="nft rounded shrink w-12 sm:w-16 object-contain" alt="Lens-garden logo" />
-          <span className="chart font hover:text-green-500 ml-4 text-white text-2xl hidden md:block">Lens Garden</span>
+          <span className="chart font hover:text-green-500 ml-4 text-white text-2xl hidden md:block element-to-hide">Lens Garden</span>
 
         </a>
      

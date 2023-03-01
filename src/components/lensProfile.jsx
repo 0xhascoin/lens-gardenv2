@@ -11,7 +11,7 @@ const startUrl = 'https://lens.infura-ipfs.io/ipfs/';
 const Badge = ({ text }) => {
     // console.log("Text: ", text)
     return (
-        <span className="text-center bg-green-100 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 text-white border border-white">
+        <span className="text-center bg-green-100 text-xs font-medium p-1 rounded dark:bg-gray-700 text-white border border-white">
             {text}
         </span>
     )
@@ -24,14 +24,15 @@ const NextExpProgress = ({ unlocksAtLevel, xpNeededToUnlock, myTotalXp }) => {
     // const total = LEVEL.experienceToNextLevel + XP;
     const perc = Math.floor((myTotalXp / (xpNeededToUnlock + myTotalXp)) * 100);
     return (
-        <div className="w-full flex items-center justify-between">
+        <div className="w-full sm:ml-2 gap-y-2 grid grid-cols-1 sm:flex items-center justify-center sm:justify-between">
 
-            <div className="w-4/5 bg-zinc-800 rounded-full h-2.5 dark:bg-gray-700 mr-4">
-                <div className="bg-emerald-400 h-2.5 rounded-full" style={{ width: `${perc}%` }} ></div>
-            </div>
-            <div className='grid mb-0'>
+                <div className=" w-full bg-zinc-800 rounded-full h-2.5 dark:bg-gray-700 sm:mr-4 sm:mt-8">
+                <div className=" bg-emerald-400 h-2.5 rounded-full " style={{ width: `${perc}%` }} >
+                </div>
+                </div>
+            <div className='sm:flex sm:mb-0 mb-2'>
                 <Badge text={`Level ${parseInt(unlocksAtLevel) + 1}`} />
-            </div>
+           </div>
         </div>
     )
 }
@@ -158,22 +159,22 @@ const LensProfile = ({ profile }) => {
     }, [])
 
     return (
-        <div className="w-full md:w-3/5 p-4">
-            <div className="w-full rounded-lg p-2">
+        <div className="w-full sm:w-3/5 p-2 border-white border-2 bg-slate-800 rounded-lg">
+            <div className="w-full rounded-lg ">
                 {/* Header */}
-                <div className="w-full md:flex p-2 mb-6 md:items-center">
+                <div className="profile-div w-full grid grid-cols-1 sm:flex p-2 sm:p-4 sm:mb-4 mb-4 sm:items-center ">
                     {/* Profile Image */}
                     <img
-                        className="rounded-lg  w-26 h-24 border border-white mr-2"
+                        className="profile-div rounded-lg md:mx-auto mx-auto justify-center items-center w-26 h-24 border border-white sm:mr-2"
                         src={fixUrl(profile.picture.original.url)}
                         alt="profile-image"
                     />
                     {/* Names */}
-                    <div className="text-left w-full pt-8">
+                    <div className="sm:text-left w-full pt-2 mx-auto justify-center items-center sm:pt-8">
                         {/* Lens Name */}
-                        <h2 className='text-xl text-white mb-3 bolded'>@{profile.handle}</h2>
+                        <h2 className='sm:pl-2 text-xl text-white bolded'>@{profile.handle}</h2>
                         {/* Address */}
-                        <p className='text-sm text-white'>{profile.ownedBy.slice(0, 6)}...{profile.ownedBy.slice(-6)}</p>
+                        <p className='sm:pl-2 text-sm text-white'>{profile.ownedBy.slice(0, 6)}...{profile.ownedBy.slice(-6)}</p>
 
                         {loadingStats ? (
                             <p>Loading...</p>
@@ -181,10 +182,11 @@ const LensProfile = ({ profile }) => {
                             <>
                                 {LEVEL !== null && XP !== null && (
                                     <>
+                                    <div className='sm:pt-0 pt-2'>
                                         <NextExpProgress unlocksAtLevel={profile.attributes[0].value} xpNeededToUnlock={LEVEL.experienceToNextLevel} myTotalXp={XP} />
-
-                                        <div className="text-white flex justify-center">
-                                            <p className='text-sm'>{XP} / {LEVEL.experienceToNextLevel + XP}</p>
+                                    </div>
+                                        <div className="text-white flex justify-center mt-1 sm:pt-0">
+                                            <p className='text-sm sm:text-lg'>{XP} / {LEVEL.experienceToNextLevel + XP} XP</p>
                                         </div>
                                     </>
                                 )}
@@ -192,16 +194,16 @@ const LensProfile = ({ profile }) => {
                         )}
                     </div>
                 </div>
+                <div className="card-seperator sm:border-0 border-2 sm:mt-0 mt-4 sm:hidden border-green-500"></div>
 
-
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
 
                     <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                         <div className='nft bg-[#14243d] w-full h-full rounded-lg pb-4'>
                             <div className="flex w-full justify-center py-8 mb-2 m-auto bg-transparent rounded-t-lg	" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
-                                <SlUserFollowing className='h-8 w-8 text-white' />
+                                <SlUserFollowing className='sm:h-8 sm:w-8 text-white' />
                             </div>
-                            <h2 className='text-lg text-white mb-2'>Following</h2>
+                            <h2 className='sm:text-lg text-sm text-white mb-2'>Following</h2>
                             <Badge text={profile.stats.totalFollowing} /> <br />
                             <Badge text={`${profile.stats.totalFollowing * 10} XP`} />
                         </div>
@@ -210,9 +212,9 @@ const LensProfile = ({ profile }) => {
                     <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg  text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                         <div className='nft bg-[#14243d] w-full h-full rounded-lg pb-4'>
                             <div className="flex w-full justify-center py-8 rounded-t-lg mb-2 m-auto bg-transparent" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
-                                <BiGroup className='h-8 w-8 text-white' />
+                                <BiGroup className='sm:h-8 sm:w-8 text-white' />
                             </div>
-                            <h2 className='text-lg text-white mb-2'>Followers</h2>
+                            <h2 className='sm:text-lg text-sm text-white mb-2'>Followers</h2>
                             <Badge text={profile.stats.totalFollowers} /> <br />
                             <Badge text={`${profile.stats.totalFollowers * 50} XP`} />
 
@@ -222,9 +224,9 @@ const LensProfile = ({ profile }) => {
                     <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg  text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                         <div className='nft bg-[#14243d] w-full h-full rounded-lg pb-4'>
                             <div className="flex w-full justify-center rounded-t-lg	py-8 mb-2 m-auto bg-transparent" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
-                                <FiSend className='h-8 w-8 text-white' />
+                                <FiSend className='sm:h-8 sm:w-8 text-white' />
                             </div>
-                            <h2 className='text-lg text-white mb-2'>Posts</h2>
+                            <h2 className='sm:text-lg text-sm text-white mb-2'>Posts</h2>
                             <Badge text={profile.stats.totalPosts} /> <br />
                             <Badge text={`${profile.stats.totalPosts * 30} XP`} />
 
@@ -234,9 +236,9 @@ const LensProfile = ({ profile }) => {
                     <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg  text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                         <div className='nft bg-[#14243d] w-full h-full rounded-lg pb-4'>
                             <div className="flex w-full justify-center rounded-t-lg	py-8 mb-2 m-auto bg-transparent" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
-                                <BiCommentDots className='h-8 w-8 text-white' />
+                                <BiCommentDots className='sm:h-8 sm:w-8 text-white' />
                             </div>
-                            <h2 className='text-lg text-white mb-2'>Comments</h2>
+                            <h2 className='sm:text-lg text-sm text-white mb-2'>Comments</h2>
                             <Badge text={profile.stats.totalComments} /> <br />
                             <Badge text={`${profile.stats.totalComments * 20} XP`} />
 
@@ -246,9 +248,9 @@ const LensProfile = ({ profile }) => {
                     <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                         <div className='nft bg-[#14243d] w-full h-full rounded-lg pb-4'>
                             <div className="flex w-full justify-center rounded-t-lg	py-8 mb-2 m-auto bg-transparent" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
-                                <BiCollection className='h-8 w-8 text-white' />
+                                <BiCollection className='sm:h-8 sm:w-8 text-white' />
                             </div>
-                            <h2 className='text-lg text-white mb-2'>Collects</h2>
+                            <h2 className='sm:text-lg text-sm text-white mb-2'>Collects</h2>
                             <Badge text={profile.stats.totalCollects} /> <br />
                             <Badge text={`${profile.stats.totalCollects * 20} XP`} />
 
@@ -259,9 +261,9 @@ const LensProfile = ({ profile }) => {
                     <div className='bg-emerald-500 border border-gray-300 rounded-lg cursor-pointer transition-all hover:shadow-lg text-center flex justify-center place-items-center bg-cover bg-center' style={{ backgroundImage: 'url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                         <div className='nft bg-[#14243d] w-full h-full rounded-lg pb-4'>
                             <div className="flex w-full justify-center rounded-t-lg	py-8 mb-2 m-auto bg-transparent" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
-                                <VscMirror className='h-8 w-8 text-white' />
+                                <VscMirror className='sm:h-8 sm:w-8 text-white' />
                             </div>
-                            <h2 className='text-lg text-white mb-2'>Mirrors</h2>
+                            <h2 className='sm:text-lg text-sm text-white mb-2'>Mirrors</h2>
                             <Badge text={profile.stats.totalMirrors} /> <br />
                             <Badge text={`${profile.stats.totalMirrors * 30} XP`} />
 
@@ -269,6 +271,7 @@ const LensProfile = ({ profile }) => {
                     </div>
 
                 </div>
+                <div className="card-seperator sm:border-0 border-2 sm:mt-0 mt-8 sm:hidden border-green-500"></div>
             </div>
         </div>
     )

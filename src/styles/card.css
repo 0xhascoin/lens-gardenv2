@@ -30,7 +30,7 @@ body {
 }
 
 .card {
-    width: 310px;
+    width: full;
     height: 530px;
     background: var(--card-bg-blue);
     padding: 24px;
@@ -40,13 +40,10 @@ body {
 
 .card-img {
     
-    margin-bottom: 24px;
     position: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 260px;
-    height: 260px;
 }
 
 .card-img:hover {
@@ -236,4 +233,8 @@ body {
   }
   
       
-  
+  @media screen and (max-width: 767px) {
+    .legend {
+      font-size: 8px;
+    }
+  }
