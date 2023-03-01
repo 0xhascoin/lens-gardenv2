@@ -9,10 +9,10 @@ import Points from './points';
 
 const LensProfileStats = ({ profile }) => {
     return (
-            <div className='nft m-auto w-11/12 shadow-xl shadow-black/80 text-center rounded-lg bg-cover bg-center mt-10' style={{ backgroundImage: `linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url('https://cdn.midjourney.com/3540c85d-5da6-4d20-9594-b1287dce1807/grid_0.png')` }}>
+            <div className='nft m-auto w-11/12 text-center rounded-lg bg-cover bg-center mt-10'>
                 {/* <h1 className="text-2xl">{profile.handle} Profile Stats</h1> */}
 
-                <div className="grid-cols-2 bg-slate-800 shadow-xl  shadow-black/80 rounded-lg md:flex md:justify-between md:items-start h-full w-full">
+                <div className="grid-cols-2 bg-transparent rounded-lg sm:flex sm:justify-between sm:items-start h-full w-full">
                     {/* Profile */}
                     <LensProfile profile={profile} />
                     {/* Pie chart */}

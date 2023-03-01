@@ -22,20 +22,21 @@ export const options = {
   titleTextStyle: {
    
     fontSize:20,
-    color: '#388E3C'
+    color: '#ffffff'
   },
   legend: {
     textStyle: {
-      fontSize: 11,
+      fontSize: 10,
      
       color: '#ffffff'
     }
   },
   backgroundColor: "#1e293b",
- 
   colors: ['#9f19d7', '#388E3C', '#e5de00', '#3b82f6', '#df2c14', '#df2c14', '#3B3EAC', '#0099C6', '#DD4477', '#66AA00', '#B82E2E', '#316395', '#994499', '#22AA99', '#AAAA11', '#6633CC', '#E67300', '#8B0707', '#329262', '#5574A6', '#3B3EAC']
 
 };
+
+
 
 const LensChart = ({ stats }) => {
   
@@ -52,8 +53,10 @@ const LensChart = ({ stats }) => {
   
   // console.log("Stats: ", stats);
   return (
-    <div className="w-full md:w-1/2 h-full rounded-lg sm:pt-32 ">
-      <div className="chart font-semibold w-full flex justify-end mx-auto p-4 rounded-lg ">
+    <div className="w-full sm:w-1/2 mt-2 sm:mt-0 border-white bg-slate-800 border-2 sm:ml-2 rounded-lg ">
+      <div className='font pt-5 sm:pt-14 sm:text-2xl text-lg px-2 sm:px-0 relative text-white'>The following statistics and XP calculations apply to Tier 1.</div>
+      <div className="sm:w-3/4 w-10/12 flex mx-auto border-2  sm:mt-4 mt-6 border-green-500"></div>
+      <div className="chart font-semibold sm:pt-4 w-full mx-auto p-2 rounded-lg ">
         <Chart
         
           chartType="PieChart"
