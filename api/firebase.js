@@ -3,12 +3,13 @@ import { getFirestore, collection, setDoc, getDoc, doc } from 'firebase/firestor
 import { images, names } from "../constants/nftMetadata";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDFnbhZ2njAHiBrS0UtEOXxBxJJvRXo-nI",
-    authDomain: "lens-garden.firebaseapp.com",
-    projectId: "lens-garden",
-    storageBucket: "lens-garden.appspot.com",
-    messagingSenderId: "1045737166163",
-    appId: "1:1045737166163:web:e2eeed7d4b84864084fda6"
+  apiKey: "AIzaSyB6a0hKdb-EsRCiQLEVRXv_Tn3-bKe0TCU",
+  authDomain: "lens-garden-testing.firebaseapp.com",
+  projectId: "lens-garden-testing",
+  storageBucket: "lens-garden-testing.appspot.com",
+  messagingSenderId: "325123165127",
+  appId: "1:325123165127:web:ed4dba9f10e068528ea7e2",
+  measurementId: "G-VNCJ5G7QTL"
 };
 
 // Initialize Firebase
@@ -54,7 +55,7 @@ export const checkIfUserExists = async (address, obj) => {
     } else {
         // Doesn't exist in DB
         // Create it and set alreadyMinted to false
-        let data = { ...obj, alreadyMinted: false, startingSnapshot: { ...obj.stats } };
+        let data = { ...obj, alreadyMinted: false, startingSnapshot: { ...obj.stats, date: new Date().toLocaleDateString() } };
         console.log("Doesn't exist.")
         console.log("Obj Data: ", data);
 
