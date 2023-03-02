@@ -31,8 +31,8 @@ const Home = () => {
       if (items[0] == undefined) {
         setProfileFound(false);
       } else {
-        // setProfile(items[0]);
-        await setupProfileInDB(items[0].ownedBy, items[0]);
+        setProfile(items[0]);
+        // await setupProfileInDB(items[0].ownedBy, items[0]);
         // console.log("Found Profile.")
         setProfileFound(true);
       }

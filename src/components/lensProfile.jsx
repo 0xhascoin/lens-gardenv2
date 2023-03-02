@@ -18,11 +18,13 @@ const Badge = ({ text }) => {
 }
 
 
-const NextExpProgress = ({ unlocksAtLevel, xpNeededToUnlock, myTotalXp }) => {
+const NextExpProgress = ({ unlocksAtLevel, xpNeededToUnlock, myTotalXp, LEVEL }) => {
     // console.log(unlocksAtLevel, xpNeededToUnlock, myTotalXp)
 
     // const total = LEVEL.experienceToNextLevel + XP;
     const perc = Math.floor((myTotalXp / (xpNeededToUnlock + myTotalXp)) * 100);
+    
+    console.log(LEVEL.level + 1)
     return (
         <div className="w-full sm:ml-2 gap-y-2 grid grid-cols-1 sm:flex items-center justify-center sm:justify-between">
 
@@ -31,7 +33,7 @@ const NextExpProgress = ({ unlocksAtLevel, xpNeededToUnlock, myTotalXp }) => {
                 </div>
                 </div>
             <div className='sm:flex sm:mb-0 mb-2'>
-                <Badge text={`Level ${parseInt(unlocksAtLevel) + 1}`} />
+                <Badge text={`Level ${LEVEL.level + 1}`} />
            </div>
         </div>
     )
@@ -148,8 +150,9 @@ const LensProfile = ({ profile }) => {
             setNextNFT(nftData[8]);
         }
 
-        const data = await getUser(profile.ownedBy, obj);
-        setData(data);
+        // const data = await getUser(profile.ownedBy, obj);
+        console.log(obj)
+        setData(obj);
         setUpdatedDB(true);
 
     }
@@ -183,7 +186,7 @@ const LensProfile = ({ profile }) => {
                                 {LEVEL !== null && XP !== null && (
                                     <>
                                     <div className='sm:pt-0 pt-2'>
-                                        <NextExpProgress unlocksAtLevel={profile.attributes[0].value} xpNeededToUnlock={LEVEL.experienceToNextLevel} myTotalXp={XP} />
+                                        <NextExpProgress LEVEL={LEVEL} unlocksAtLevel={profile.attributes[0].value} xpNeededToUnlock={LEVEL.experienceToNextLevel} myTotalXp={XP} />
                                     </div>
                                         <div className="text-white flex justify-center mt-1 sm:pt-0">
                                             <p className='text-sm sm:text-lg'>{XP} / {LEVEL.experienceToNextLevel + XP} XP</p>

@@ -139,8 +139,8 @@ const GardenStats = ({ profile }) => {
         }
 
 
-        const data = await getUser(profile.ownedBy, obj);
-        setData(data);
+        // const data = await getUser(profile.ownedBy, obj);
+        setData(obj);
         setUpdatedDB(true);
 
     }

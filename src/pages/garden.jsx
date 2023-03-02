@@ -56,8 +56,8 @@ const Garden = () => {
       if (items[0] == undefined) {
         setProfileFound(false);
       } else {
-        // setProfile(items[0]);
-        await setupProfileInDB(items[0].ownedBy, items[0]);
+        setProfile(items[0]);
+        // await setupProfileInDB(items[0].ownedBy, items[0]);
         // console.log("Found Profile.")
         setProfileFound(true);
       }
@@ -174,19 +174,17 @@ const Garden = () => {
               profileFound={profileFound}
               profile={profile}
             />
-            {!profile.alreadyMinted && (
+            {/* {!profile.alreadyMinted && (
               <MintNft address={profile.ownedBy} />
-            )}
+            )} */}
 
             <LensProfileStats
               profile={profile}
             />
 
-            {profile.alreadyMinted && (
               <GardenStats
                 profile={profile}
               />
-            )}
 
 
             <Footer />

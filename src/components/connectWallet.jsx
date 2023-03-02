@@ -13,6 +13,23 @@ const Badge = ({ text }) => {
 const ConnectWallet = ({ connecting, currentAccount, connectWallet, loadingProfile, profileFound, profile }) => {
   const startUrl = 'https://lens.infura-ipfs.io/ipfs/';
 
+
+  const calculateLevel = (following, followers, posts, collects, mirrors, comments) => {
+    let experience =  (following * 10) + (followers * 50) + (posts * 30) + (collects * 20) + (mirrors * 30) + (comments * 20);
+    let level = 1;
+    let threshold = 100;
+    let experienceToNextLevel = threshold;
+    while (experience >= threshold) {
+        level += 1;
+        threshold *= 1.5;
+    }
+    experienceToNextLevel = Math.floor(threshold - experience);
+
+    console.log("Level: ", level)
+
+    return level;
+}
+
   const fixUrl = (url) => {
     let start = url.slice(5)
     let final;
@@ -51,6 +68,7 @@ const ConnectWallet = ({ connecting, currentAccount, connectWallet, loadingProfi
       } else {
         return (
           <div className="flex bg-transparent rounded-lg">
+            {console.log(profile)}
             <img
               className="rounded-lg w-12 sm:w-16 ml-auto mr-2"
               src={fixUrl(profile.picture.original.url)}
@@ -58,7 +76,7 @@ const ConnectWallet = ({ connecting, currentAccount, connectWallet, loadingProfi
             />
             <div className="sm:grid sm:grid-cols-1 sm:gap-y-4">
               <p className='text-white flex-col text-sm sm:text-l items-center flex'>{profile.handle}</p>
-              <Badge text={`Level ${profile.attributes[0].value}`} />
+              <Badge text={`Level ${calculateLevel(profile.stats.totalFollowing, profile.stats.totalFollowers, profile.stats.totalPosts, profile.stats.totalCollects, profile.stats.totalMirrors, profile.stats.totalComments)}`} />
             </div>
           </div>
         );
