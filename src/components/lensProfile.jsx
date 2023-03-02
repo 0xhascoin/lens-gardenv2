@@ -172,9 +172,9 @@ const LensProfile = ({ profile }) => {
                     {/* Names */}
                     <div className="sm:text-left w-full pt-2 mx-auto justify-center items-center sm:pt-8">
                         {/* Lens Name */}
-                        <h2 className='sm:pl-2 text-xl text-white bolded'>@{profile.handle}</h2>
+                        <h2 className='sm:pl-2 text-xl text-white bolded center-text'>@{profile.handle}</h2>
                         {/* Address */}
-                        <p className='sm:pl-2 text-sm text-white'>{profile.ownedBy.slice(0, 6)}...{profile.ownedBy.slice(-6)}</p>
+                        <p className='sm:pl-2 text-sm text-white center-text'>{profile.ownedBy.slice(0, 6)}...{profile.ownedBy.slice(-6)}</p>
 
                         {loadingStats ? (
                             <p>Loading...</p>

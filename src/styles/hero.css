@@ -45,3 +45,9 @@
           grid-template-columns: 1fr;
         }
       }
+       
+      @media (max-width: 768px) {
+        .center-text {
+          text-align: center;
+        }
+      }

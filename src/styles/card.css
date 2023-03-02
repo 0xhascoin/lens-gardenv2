@@ -83,13 +83,7 @@ body {
     font-family: 'Outfit', sans-serif;
 }
 
-.card-details {
-    height: 52px;
-    width: 100%;
-    color: white;
-    font-size: 16px;
-    margin-bottom: 16px;
-}
+
 
 .card-meta {
     display: flex;
@@ -195,8 +189,6 @@ body {
     animation: pulse 2s ease-in-out infinite;
   }
   .nft {
-    
-   
     transition: .5s all;
   }
   
