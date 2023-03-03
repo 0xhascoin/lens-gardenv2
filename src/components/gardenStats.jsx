@@ -10,7 +10,7 @@ import '../styles/card.css'
 const Badge = ({ text }) => {
     // console.log("Text: ", text)
     return (
-        <span className="text-center bg-green-100 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-white text-white border border-white">
+        <span className="text-center bg-green-100 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-white text-emerald-700 border border-white">
             {text}
         </span>
     )
@@ -139,8 +139,8 @@ const GardenStats = ({ profile }) => {
         }
 
 
-        const data = await getUser(profile.ownedBy, obj);
-        setData(data);
+        // const data = await getUser(profile.ownedBy, obj);
+        setData(obj);
         setUpdatedDB(true);
 
     }

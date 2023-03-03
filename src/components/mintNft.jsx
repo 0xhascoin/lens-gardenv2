@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { ethers } from 'ethers';
 import { abi } from '../../constants/abi';
 import LoadingSpinner from './loadingSpinner';
-import { mintedNFT } from '../../api/firebase';
+// import { mintedNFT } from '../../api/firebase';
 
-const CONTRACT_ADDRESS = "0xb0C699F68b864EeC093b7709dB2b6d6C8ad00E58";
+const CONTRACT_ADDRESS = "0x405Acba3A944a550e2d4456c087eb3746C222541";
 
 
 const MintNft = ({ address }) => {
@@ -29,12 +29,15 @@ const MintNft = ({ address }) => {
 
                 // console.log("Mining...please wait.")
                 await nftTxn.wait();
-                
-                await mintedNFT(address);
+
+                // await mintedNFT(address);
+
+                console.log("Minting.")
+                localStorage.setItem('minted', true);
                 window.location.reload();
 
 
-                
+
 
                 // setLoadingMint(false);
                 // console.log(`Mined, see transaction: https://goerli.etherscan.io/tx/${nftTxn.hash}`);
@@ -64,12 +67,12 @@ const MintNft = ({ address }) => {
                 // THIS IS THE MAGIC SAUCE.
                 // This will essentially "capture" our event when our contract throws it.
                 // If you're familiar with webhooks, it's very similar to that!
-//                 connectedContract.on("NewNFTMinted", async (from, tokenId) => {
-//                     // console.log(from, tokenId.toNumber())
-//                     setMintedUrl(`https://testnets.opensea.io/assets/${CONTRACT_ADDRESS}/${tokenId.toNumber()}`);
-//                     setMinted(true);
-//                     setLoadingMint(false);
-//                 });
+                //                 connectedContract.on("NewNFTMinted", async (from, tokenId) => {
+                //                     // console.log(from, tokenId.toNumber())
+                //                     setMintedUrl(`https://testnets.opensea.io/assets/${CONTRACT_ADDRESS}/${tokenId.toNumber()}`);
+                //                     setMinted(true);
+                //                     setLoadingMint(false);
+                //                 });
 
                 // console.log("Setup event listener!")
 
@@ -83,7 +86,7 @@ const MintNft = ({ address }) => {
 
 
     useEffect(() => {
-        setupEventListener();
+        // setupEventListener();
     }, [])
 
     const renderMint = () => {

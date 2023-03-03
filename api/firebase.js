@@ -49,30 +49,30 @@ export const checkIfUserExists = async (address, obj) => {
         // Exists in DB already
         // console.log("Exists.")
         let data = { ...obj };
-        await setDoc(doc(db, "users", address), data, { merge: true });
+        // await setDoc(doc(db, "users", address), data, { merge: true });
 
     } else {
         // Doesn't exist in DB
         // Create it and set alreadyMinted to false
-        let data = { ...obj, alreadyMinted: false, startingSnapshot: { ...obj.stats } };
+        let data = { ...obj, alreadyMinted: false, startingSnapshot: { ...obj.stats, snapshotDate: new Date().toLocaleDateString() }, bonusXP: 0,  };
         console.log("Doesn't exist.")
         console.log("Obj Data: ", data);
 
         await setDoc(doc(db, "users", address), data, { merge: true });
     }
 
-    let ref = doc(db, "users", address);
-    let snap = await getDoc(ref);
+    // let ref = doc(db, "users", address);
+    // let snap = await getDoc(ref);
 
-    const data = snap.data();
-    const abc = await calculateStats(data);
+    // const data = snap.data();
+    // const abc = await calculateStats(data);
 
-    await setDoc(doc(db, "users", address), abc, { merge: true });
+    // await setDoc(doc(db, "users", address), abc, { merge: true });
 
-    ref = doc(db, "users", address);
-    snap = await getDoc(ref);
+    // ref = doc(db, "users", address);
+    // snap = await getDoc(ref);
 
-    return snap.data();
+    // return snap.data();
 }
 
 export const mintedNFT = async (address) => {

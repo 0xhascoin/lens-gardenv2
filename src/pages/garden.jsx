@@ -44,8 +44,25 @@ const Garden = () => {
   const [profile, setProfile] = useState(null);
   const [loadingProfile, setLoadingProfile] = useState(false);
   const [profileFound, setProfileFound] = useState(false);
+  const [minted, setMinted] = useState(false);
 
   const navigate = useNavigate();
+
+  const checkIfMinted = () => {
+    const alreadyMinted = localStorage.getItem('minted');
+
+    if (alreadyMinted === null) {
+      console.log("Not Minted.");
+      setMinted(false);
+      return
+    }
+
+    if (alreadyMinted === 'true') {
+      console.log("Minted.");
+      setMinted(true);
+    }
+  }
+
 
   const fetchLensProfile = async (address) => {
     try {
@@ -56,8 +73,8 @@ const Garden = () => {
       if (items[0] == undefined) {
         setProfileFound(false);
       } else {
-        // setProfile(items[0]);
-        await setupProfileInDB(items[0].ownedBy, items[0]);
+        setProfile(items[0]);
+        // await setupProfileInDB(items[0].ownedBy, items[0]);
         // console.log("Found Profile.")
         setProfileFound(true);
       }
@@ -74,9 +91,9 @@ const Garden = () => {
   const setupProfileInDB = async (address, obj) => {
     // console.log("Address: ", address);
     // console.log("obj: ", obj);
-    const user = await checkIfUserExists(address, obj);
+    // await checkIfUserExists(address, obj);
     // console.log("User in db: ", user);
-    setProfile(user);
+    // setProfile(user);
   }
 
 
@@ -141,7 +158,7 @@ const Garden = () => {
 
   useEffect(() => {
     checkIfWalletIsConnected();
-
+    checkIfMinted()
   }, []);
 
   const renderConnected = () => {
@@ -174,13 +191,14 @@ const Garden = () => {
               profileFound={profileFound}
               profile={profile}
             />
-
+            {!minted && (
               <MintNft address={profile.ownedBy} />
+            )}
 
             <LensProfileStats
               profile={profile}
             />
-
+            
               <GardenStats
                 profile={profile}
               />

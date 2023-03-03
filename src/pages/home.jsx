@@ -31,7 +31,7 @@ const Home = () => {
       if (items[0] == undefined) {
         setProfileFound(false);
       } else {
-        // setProfile(items[0]);
+        setProfile(items[0]);
         await setupProfileInDB(items[0].ownedBy, items[0]);
         // console.log("Found Profile.")
         setProfileFound(true);
@@ -49,9 +49,9 @@ const Home = () => {
   const setupProfileInDB = async (address, obj) => {
     // console.log("Address: ", address);
     // console.log("obj: ", obj);
-    const user = await checkIfUserExists(address, obj);
+    await checkIfUserExists(address, obj);
     // console.log("User in db: ", user);
-    setProfile(user);
+    // setProfile(user);
   }
 
 
