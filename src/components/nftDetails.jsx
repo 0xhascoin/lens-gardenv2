@@ -5,8 +5,8 @@ import ImageCard from './ImageCard';
 
 const NftDetails = () => {
     return (
-        <div className="nfts flex justify-center ">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 py-3">
+        <div className="nfts flex justify-center">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 py-3 sm:w-full">
            <ImageCard imageSrc={'https://cdn.midjourney.com/a89f296d-cfd2-4991-b2a1-17cf4ee45fe5/grid_0.png'} imageTitle={"Lens Garden NFT #1: Seed"} imageText={"Unlocks at level 0"} imageDesc={"0 XP points needed to unlock this"}/>
            <ImageCard imageSrc={'https://cdn.midjourney.com/e8da90a1-f4e6-469b-897c-6ed7fb6dbc93/grid_0.png'} imageTitle={"Lens Garden NFT #2: Seedling"} imageText={"Unlocks at level 7"} imageDesc={"1,139 XP points needed to unlock this"}/>
            <ImageCard imageSrc={'https://cdn.midjourney.com/1c2ee78c-0806-457e-9799-ff68cdcdad8b/grid_0.png'} imageTitle={"Lens Garden NFT #3: Sprout"} imageText={"Unlocks at level 12"} imageDesc={"5,766 XP points needed to unlock this"}/>

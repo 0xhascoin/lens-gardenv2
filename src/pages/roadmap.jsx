@@ -1,5 +1,6 @@
 import React from 'react'
 import Team from '../components/team'
+import rdmap from '../styles/images/rdmap.jpeg';
 
 import { useState, useEffect } from 'react';
 import { client, myStats } from '../../api/lensApi';
@@ -123,12 +124,14 @@ const Roadmap = () => {
             {/* About the project */}
 
             {/* About the team */}
-            <Team />
+           <div className='flex w-3/4 mx-auto'>
+                <img src={rdmap} className="h-1/2 rounded-lg mt-2" />
+           </div>
 
             {/* Roadmap */}
-
+<Footer />
             {/* Footer */}
-            <Footer />
+            
         </div>
     )
 }

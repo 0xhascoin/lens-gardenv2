@@ -4,7 +4,7 @@ import LoadingSpinner from './loadingSpinner';
 const Badge = ({ text }) => {
   // console.log("Text: ", text)
   return (
-      <span className="text-center bg-green-100 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-white text-white border border-white">
+      <span className="text-center sm:text-lg bg-green-100 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-white text-white border border-white">
           {text}
       </span>
   )
@@ -31,7 +31,7 @@ const ConnectWallet = ({ connecting, currentAccount, connectWallet, loadingProfi
       } else {
         return (
           
-            <button onClick={connectWallet} className="text-white focus:ring-4 focus:outline-none focus:ring-green-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 md:mr-0 bg-gradient-to-r from-emerald-600 to-teal-400 dark:bg-emeral-700 dark:hover:bg-green-600">
+            <button onClick={connectWallet} className="text-white sm:text-lg text-sm focus:ring-4 focus:outline-none focus:ring-green-500 font-medium rounded-lg px-5 py-2.5 text-center mr-2 md:mr-0 bg-gradient-to-r from-emerald-600 to-teal-400 dark:bg-emeral-700 dark:hover:bg-green-600">
               Connect Wallet
             </button>
           
@@ -52,12 +52,12 @@ const ConnectWallet = ({ connecting, currentAccount, connectWallet, loadingProfi
         return (
           <div className="flex bg-transparent rounded-lg">
             <img
-              className="rounded-lg w-12 sm:w-16 ml-auto mr-2"
+              className="rounded-lg w-12 sm:w-20 ml-auto mr-2 image-width"
               src={fixUrl(profile.picture.original.url)}
               alt="profile-image"
             />
             <div className="sm:grid sm:grid-cols-1 sm:gap-y-4">
-              <p className='text-white flex-col text-sm sm:text-l items-center flex'>{profile.handle}</p>
+              <p className='text-white flex-col text-sm sm:text-xl items-center flex'>{profile.handle}</p>
               <Badge text={`Level ${profile.attributes[0].value}`} />
             </div>
           </div>
