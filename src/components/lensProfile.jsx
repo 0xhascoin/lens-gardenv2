@@ -11,7 +11,7 @@ const startUrl = 'https://lens.infura-ipfs.io/ipfs/';
 const Badge = ({ text }) => {
     // console.log("Text: ", text)
     return (
-        <span className="text-center bg-green-100 text-xs font-medium p-1 rounded dark:bg-gray-700 text-emerald-700 border border-emerald-900">
+        <span className="text-center bg-green-100 text-xs font-medium p-1 rounded dark:bg-gray-700 text-white">
             {text}
         </span>
     )
