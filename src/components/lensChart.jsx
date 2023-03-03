@@ -53,15 +53,15 @@ const LensChart = ({ stats }) => {
   
   // console.log("Stats: ", stats);
   return (
-    <div className="w-full sm:w-1/2 mt-2 sm:mt-0 border-white bg-slate-800 border-2 sm:ml-2 rounded-lg ">
-      <div className='font pt-5 sm:pt-14 sm:text-2xl text-lg px-2 sm:px-0 relative text-white'>The following statistics and XP calculations apply to Tier 1.</div>
-      <div className="sm:w-3/4 w-10/12 flex mx-auto border-2  sm:mt-4 mt-6 border-green-500"></div>
-      <div className="chart font-semibold sm:pt-4 w-full mx-auto p-2 rounded-lg ">
+    <div className="w-full sm:w-1/2 mt-2 sm:mt-0 bg-slate-800 sm:ml-2 rounded-lg border-2 border-white">
+      <div className='font pt-5 sm:pt-14 sm:text-2xl text-lg px-2 sm:px-0 relative text-white'>The following statistics and XP calculations apply to Tier #1.</div>
+      <div className="sm:w-3/4 w-10/12 flex mx-auto border-2 sm:mt-4 mt-6 border-green-500"></div>
+      <div className="font-semibold pt-12 sm:mt-28 sm:pt-4 w-full mx-auto p-2 rounded-lg">
         <Chart
         
           chartType="PieChart"
           width="100%"
-          height="500px"
+          height="250px"
           data={statsData}
           options={options}
         />

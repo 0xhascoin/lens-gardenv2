@@ -9,10 +9,10 @@ import Points from './points';
 
 const LensProfileStats = ({ profile }) => {
     return (
-            <div className='w-full m-auto w-11/12 text-center rounded-lg bg-cover bg-center mt-10'>
+            <div className='w-full mx-auto text-center rounded-lg bg-cover bg-center mt-10 sm:pr-2 sm:pl-2'>
                 {/* <h1 className="text-2xl">{profile.handle} Profile Stats</h1> */}
 
-                <div className="grid-cols-2 bg-transparent rounded-lg sm:flex sm:justify-between sm:items-start h-full w-full">
+                <div className="grid-cols-2 bg-transparent rounded-lg sm:flex sm:justify-between w-full">
                     {/* Profile */}
                     <LensProfile profile={profile} />
                     {/* Pie chart */}

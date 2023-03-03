@@ -14,17 +14,17 @@ export default function Header({ currentAccount, connecting, connectWallet, load
 
   return (
 
-    <nav className={`font px-4 w-full`}>
-      <div className="container pt-2 flex sm:flex-wrap flex-wrap items-center justify-between bg-transparent mx-auto">
+    <nav className={`font w-full`}>
+      <div className="pt-2 flex sm:flex-wrap flex-wrap items-center justify-between bg-transparent mx-auto">
         <a href="/" className="flex items-center">
 
-          <img src={logo1} className="nft rounded shrink w-12 sm:w-16 object-contain" alt="Lens-garden logo" />
-          <span className="chart font hover:text-green-500 ml-4 text-white text-2xl hidden md:block element-to-hide">Lens Garden</span>
+          <img src={logo1} className="nft ml-2 rounded-lg shrink w-12 sm:w-16 object-contain" alt="Lens-garden logo" />
+          <span className="chart font hover:text-green-500 ml-4 text-white sm:text-2xl md:text-3xl hidden md:block element-to-hide">Lens Garden</span>
 
         </a>
      
 
-        <div className="flex md:order-2 right-0">
+        <div className="flex sm:mx-0 mx-auto sm:order-2 sm:mr-2 sm:right-0">
 
           <ConnectWallet
           
@@ -36,14 +36,17 @@ export default function Header({ currentAccount, connecting, connectWallet, load
             connecting={connecting}
           />
           
+        </div>
+        <div className="">
           <button
             data-collapse-toggle="navbar-sticky"
             type="button"
-            className="inline-flex items-center mx-2 p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-transparent dark:focus:ring-white-600"
+            className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-transparent dark:focus:ring-white-600"
             aria-controls="navbar-sticky"
             aria-expanded="false"
             onClick={toggleNavMenu}
           >
+            
             <svg
               className="w-6 h-6 text-white"
               aria-hidden="true"
@@ -56,9 +59,11 @@ export default function Header({ currentAccount, connecting, connectWallet, load
                 d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
                 clipRule="evenodd"
               ></path>
+             
             </svg>
+            
           </button>
-        </div>
+          </div>
         <div
           className={`items-center justify-center mx-auto w-full md:flex md:w-auto  md:order-1 ${navMenuVisible ? "block" : "hidden"
             }`}
@@ -69,7 +74,7 @@ export default function Header({ currentAccount, connecting, connectWallet, load
             <li>
               <a
                 href="/"
-                className="font chart block py-2 pl-3 pr-4 sm:text-2xl rounded md:p-0 text-white-400 hover:text-green-400 transition-all text-slate-50"
+                className="font chart block py-2 pl-3 pr-4 sm:text-2xl md:text-3xl rounded md:p-0 text-white-400 hover:text-green-500 transition-all text-slate-50"
               >
                 Home
               </a>
@@ -77,7 +82,7 @@ export default function Header({ currentAccount, connecting, connectWallet, load
             <li>
               <a
                 href="/garden"
-                className="font chart sm:text-2xl block py-2 pl-3 pr-4  rounded md:p-0 hover:text-green-400 transition-all text-slate-50"
+                className="font chart sm:text-2xl block py-2 pl-3 pr-4 md:text-3xl  rounded md:p-0 hover:text-green-500 transition-all text-slate-50"
               >
                 View Garden
               </a>
@@ -85,7 +90,7 @@ export default function Header({ currentAccount, connecting, connectWallet, load
             <li>
               <a
                 href="/roadmap"
-                className="font chart sm:text-2xl block py-2 pl-3 pr-4  rounded md:p-0 hover:text-green-400 transition-all text-slate-50"
+                className="font chart sm:text-2xl block py-2 pl-3 pr-4 md:text-3xl  rounded md:p-0 hover:text-green-500 transition-all text-slate-50"
               >
                 Roadmap
               </a>
