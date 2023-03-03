@@ -55,9 +55,7 @@ const Garden = () => {
       console.log("Not Minted.");
       setMinted(false);
       return
-    }
-
-    if (alreadyMinted === 'true') {
+    } else if(alreadyMinted === 'true') {
       console.log("Minted.");
       setMinted(true);
     }
@@ -72,14 +70,15 @@ const Garden = () => {
       // console.log("Data: ", items[0]);
       if (items[0] == undefined) {
         setProfileFound(false);
+        console.log("No profile found.")
       } else {
         setProfile(items[0]);
         // await setupProfileInDB(items[0].ownedBy, items[0]);
-        // console.log("Found Profile.")
+        console.log("Found Profile.")
         setProfileFound(true);
       }
       setLoadingProfile(false);
-      // console.log("Finished Loading Profile....")
+      console.log("Finished Loading Profile....")
 
     } catch (error) {
       console.log(error);
@@ -166,7 +165,9 @@ const Garden = () => {
       if (connecting) {
         return <Loading />
       } else {
-        navigate("/");
+        // alert("HERE")
+        // navigate("/");
+
       }
     } else {
       return <>{renderPage()}</>;

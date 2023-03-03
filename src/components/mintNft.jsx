@@ -4,13 +4,12 @@ import { abi } from '../../constants/abi';
 import LoadingSpinner from './loadingSpinner';
 // import { mintedNFT } from '../../api/firebase';
 
-const CONTRACT_ADDRESS = "0x405Acba3A944a550e2d4456c087eb3746C222541";
+const CONTRACT_ADDRESS = "0x4a0352B029936E9d235FA59451837caB3f5caD48";
 
 
 const MintNft = ({ address }) => {
 
     const [loadingMint, setLoadingMint] = useState(false);
-    const [minted, setMinted] = useState(false);
     const [mintedUrl, setMintedUrl] = useState(null);
 
     const askContractToMintNft = async () => {
@@ -29,10 +28,10 @@ const MintNft = ({ address }) => {
 
                 // console.log("Mining...please wait.")
                 await nftTxn.wait();
-
+                
                 // await mintedNFT(address);
-
-                console.log("Minting.")
+                
+                console.log("Minted.")
                 localStorage.setItem('minted', true);
                 window.location.reload();
 
@@ -85,9 +84,6 @@ const MintNft = ({ address }) => {
     }
 
 
-    useEffect(() => {
-        // setupEventListener();
-    }, [])
 
     const renderMint = () => {
         if (loadingMint) {
@@ -95,12 +91,10 @@ const MintNft = ({ address }) => {
                 <div className="flex justify-center my-3"><LoadingSpinner /></div>
             )
         } else {
-            if (!minted) {
-                return (
-                    <button onClick={askContractToMintNft} className='nft flex rounded-full text-l whitespace-nowrap my-3 flex-wrap border-2 border-emerald-600 min-w-1/6 py-2 px-4 justify-center mx-auto bg-emerald-600 text-white'>Mint an NFT</button>
+            return (
+                <button onClick={askContractToMintNft} className='nft flex rounded-full text-l whitespace-nowrap my-3 flex-wrap border-2 border-emerald-600 min-w-1/6 py-2 px-4 justify-center mx-auto bg-emerald-600 text-white'>Mint an NFT</button>
 
-                )
-            }
+            )
         }
     }
 
