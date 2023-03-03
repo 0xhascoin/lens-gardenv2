@@ -199,9 +199,11 @@ const Garden = () => {
               profile={profile}
             />
             
+            {minted && (
               <GardenStats
                 profile={profile}
               />
+            )}
 
             <Footer />
 
