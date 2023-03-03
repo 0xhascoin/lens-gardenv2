@@ -4,7 +4,7 @@ import { abi } from '../../constants/abi';
 import LoadingSpinner from './loadingSpinner';
 import { mintedNFT } from '../../api/firebase';
 
-const CONTRACT_ADDRESS = "0xc223b06640073904421854dfe228A629eBd9A443";
+const CONTRACT_ADDRESS = "0xb0C699F68b864EeC093b7709dB2b6d6C8ad00E58";
 
 
 const MintNft = ({ address }) => {
@@ -24,7 +24,7 @@ const MintNft = ({ address }) => {
 
                 setLoadingMint(true);
                 // console.log("Going to pop wallet now to pay gas...")
-                const uri = `https://lg-server.onrender.com/${address}`
+                const uri = `https://lens-garden-api.hasanelmi.repl.co/api/address/${address}`
                 let nftTxn = await connectedContract.makeAnEpicNFT(uri);
 
                 // console.log("Mining...please wait.")

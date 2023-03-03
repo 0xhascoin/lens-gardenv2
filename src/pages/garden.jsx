@@ -174,20 +174,16 @@ const Garden = () => {
               profileFound={profileFound}
               profile={profile}
             />
-            {!profile.alreadyMinted && (
+
               <MintNft address={profile.ownedBy} />
-            )}
 
             <LensProfileStats
               profile={profile}
             />
 
-            {profile.alreadyMinted && (
               <GardenStats
                 profile={profile}
               />
-            )}
-
 
             <Footer />
 

@@ -87,14 +87,14 @@ export default function Header({ currentAccount, connecting, connectWallet, load
                 View Garden
               </a>
             </li>
-            <li>
+            {/* <li>
               <a
                 href="/roadmap"
                 className="font chart sm:text-2xl block py-2 pl-3 pr-4 md:text-3xl  rounded md:p-0 hover:text-green-500 transition-all text-slate-50"
               >
                 Roadmap
               </a>
-            </li>
+            </li> */}
            
 
           </ul>
