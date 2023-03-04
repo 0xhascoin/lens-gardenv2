@@ -12,7 +12,7 @@ const Hero = () => {
         <p className='font sm:text-2xl text-lg font-sans font-light text-slate-50'>Your NFT is connected to your activity on the Lens Protocol ecosystem.</p>
         <p className='font sm:text-2xl text-lg font-sans font-light text-slate-50'>Level up your NFT by using the protocol.</p>
       
-            <div className="card-seperator border-2 mt-4 border-green-500"></div>
+            <div className="card-seperator border-2 rounded-lg mt-4 border-green-500"></div>
       </div>
       
     </div>

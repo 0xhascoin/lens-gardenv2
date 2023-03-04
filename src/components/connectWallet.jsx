@@ -4,7 +4,7 @@ import LoadingSpinner from './loadingSpinner';
 const Badge = ({ text }) => {
   // console.log("Text: ", text)
   return (
-      <span className="text-center sm:text-lg bg-green-100 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-white text-white border border-white">
+      <span className="text-center  hover:text-green-500 hover:border-green-500 sm:text-lg text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-slate-800 text-white border border-white">
           {text}
       </span>
   )
@@ -47,7 +47,7 @@ const ConnectWallet = ({ connecting, currentAccount, connectWallet, loadingProfi
       } else {
         return (
           
-            <button onClick={connectWallet} className="text-white sm:text-lg text-sm focus:ring-4 focus:outline-none focus:ring-green-500 font-medium rounded-lg px-5 py-2.5 text-center mr-2 md:mr-0 bg-gradient-to-r from-emerald-600 to-teal-400 dark:bg-emeral-700 dark:hover:bg-green-600">
+            <button onClick={connectWallet} className="font text-white sm:text-lg text-sm focus:ring-4 focus:outline-none focus:ring-green-500 font-medium rounded-lg px-5 py-2.5 text-center mr-2 md:mr-0 bg-gradient-to-r from-green-400 to-green-700 dark:bg-green-500 dark:hover:bg-green-500">
               Connect Wallet
             </button>
           
@@ -68,12 +68,12 @@ const ConnectWallet = ({ connecting, currentAccount, connectWallet, loadingProfi
         return (
           <div className="flex bg-transparent rounded-lg">
             <img
-              className="rounded-lg w-12 sm:w-20 ml-auto mr-2 image-width"
+              className="border-white border rounded-lg w-12 sm:w-20 ml-auto mr-2 image-width hover:border-green-500"
               src={fixUrl(profile.picture.original.url)}
               alt="profile-image"
             />
-            <div className="sm:grid sm:grid-cols-1 sm:gap-y-4">
-              <p className='text-white flex-col text-sm sm:text-xl items-center flex'>{profile.handle}</p>
+            <div className="sm:grid sm:grid-cols-1 sm:gap-y-6 grid grid-cols-1 gap-y-6">
+              <p className='text-white flex-col text-sm sm:text-xl items-center flex hover:text-green-500'>{profile.handle}</p>
               <Badge text={`Level ${calculateLevel(profile.stats.totalFollowing, profile.stats.totalFollowers, profile.stats.totalPosts, profile.stats.totalCollects, profile.stats.totalMirrors, profile.stats.totalComments)}`} />
             </div>
           </div>

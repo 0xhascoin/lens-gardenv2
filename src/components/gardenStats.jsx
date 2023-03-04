@@ -10,7 +10,7 @@ import '../styles/card.css'
 const Badge = ({ text }) => {
     // console.log("Text: ", text)
     return (
-        <span className="text-center bg-green-100 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-white text-white">
+        <span className="text-center border-white border text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 text-white">
             {text}
         </span>
     )
@@ -23,12 +23,12 @@ const NextExpProgress = ({ unlocksAtLevel, xpNeededToUnlock, myTotalXp }) => {
     // const total = LEVEL.experienceToNextLevel + XP;
     const perc = Math.floor((myTotalXp / xpNeededToUnlock) * 100);
     return (
-        <div className="flex items-center sm:pt-10 justify-between">
+        <div className="flex items-end sm:pt-4 justify-between">
             
             <div className="w-4/5 bg-zinc-800 rounded-full h-2.5 dark:bg-gray-700 mr-2">
                 <div className="bg-green-500 h-2.5 rounded-full" style={{ width: `${perc}%` }} ></div>
             </div>
-            <div className='grid mb-7'>
+            <div className='grid'>
                 <Badge text={`Level ${unlocksAtLevel}`} />
             </div>
         </div>
@@ -196,7 +196,7 @@ const GardenStats = ({ profile }) => {
                                     </div>
                                 
                             </div>
-                            <div className="border-2 sm:mt-12 sm:w-3/4 sm:mx-auto border-green-500"></div>
+                            <div className="control4 border-2 rounded-lg sm:mt-14 sm:w-3/4 sm:mx-auto border-green-500"></div>
 
                         </div>
                     </div>
@@ -217,16 +217,16 @@ const GardenStats = ({ profile }) => {
 
                                     <svg className='h-6 w-6 ml-2 mb-1' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect fill="none" /><circle cx="128" cy="140" r="20" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="12" /><line x1="128" y1="160" x2="128" y2="184" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="12" /><rect x="40" y="88" width="176" height="128" rx="8" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="12" /><path d="M92,88V52a36,36,0,0,1,72,0V88" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="12" /></svg>
                                 </div>
-                                <div className="font flex justify-center mx-auto items-center">
-                                    <p className='sm:text-lg text-sm lg:text-2xl text-white'>
-                                        Experience to unlock:
-                                         <p className='sm:text-lg sm:pt-8 text-sm flex justify-center'>{XP} / {nextNFT.xpNeededtoUnlock}</p>
-                                    </p>
+                                <div className="font grid grid-col-1 justify-center mx-auto items-center">
+                                    <p className='sm:text-lg flex justify-center text-center text-sm lg:text-2xl text-white'> Experience to unlock:</p>
+                                        
+                                         <h1 className='sm:text-lg text-sm text-white flex justify-center'>{XP} / {nextNFT.xpNeededtoUnlock}</h1>
+                                   
                                     </div>
                                    
-
+                                        <div className='sm:mt-16 control1 control3'>
                                         <NextExpProgress unlocksAtLevel={nextNFT.unlocksAtLevel} xpNeededToUnlock={nextNFT.xpNeededtoUnlock} myTotalXp={XP} />
-                                   
+                                        </div>
                                 
                                
                                 
@@ -240,19 +240,19 @@ const GardenStats = ({ profile }) => {
                         <div className="cursor-pointer flex mt-2 mb-2 justify-center items-center mx-auto nft rounded-lg">
                         <img src={data.image} className="rounded-lg sm:w-9/12 border-white border" alt="" aria-hidden="true" />
                         </div>
-                        <div className="sm:text-lg sm:pt-1 text-sm text-white w-1/2 mx-auto items-center justify-center flex">
+                        <div className="sm:text-lg sm:pt-3 sm:mb-6 text-sm text-white w-1/2 mx-auto items-center justify-center flex">
                                     <p>Locked
                                     </p>
 
                                     <svg className='h-6 w-6 ml-2 mb-1' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect fill="none" /><circle cx="128" cy="140" r="20" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="12" /><line x1="128" y1="160" x2="128" y2="184" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="12" /><rect x="40" y="88" width="176" height="128" rx="8" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="12" /><path d="M92,88V52a36,36,0,0,1,72,0V88" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="12" /></svg>
                                 </div>
-                        <div className="font flex mb-2 text-white mx-auto items-center justify-center">
+                        <div className="font flex mb-2 sm:mb-36 text-white mx-auto items-center justify-center">
                         <p className='sm:text-lg text-sm text-center'>
                        Finish all Levels to mint Tier #1 NFT
                         </p>
                         </div>
-                        <div className="border-2 sm:mt-12 sm:w-3/4 sm:mx-auto border-green-500"></div>
                         
+                        <div className="border-2 mb-1 rounded-lg flex justify-center sm:w-3/4 mx-auto border-green-500"></div>
                         </div>
                         
                     </div>
@@ -273,7 +273,7 @@ const GardenStats = ({ profile }) => {
     <div className='w-full text-white mb-4 border-2 border-white rounded-lg'>
         <div className="rounded-lg w-full bg-[#14243d] text-center pb-2">
                     <div className=' font pt-5 sm:text-2xl text-lg px-2 sm:px-0 relative text-white'>Points Calculation.
-                    <div className="sm:w-2/3 w-2/3 flex mx-auto border-2 sm:mt-2 mt-2 border-green-500"></div>
+                    <div className="sm:w-2/3 w-2/3 flex mx-auto border-2 rounded-lg sm:mt-2 mt-2 border-green-500"></div>
                     </div>
                     
                         <div className="grid grid-cols-2 mt-2 sm:justify-items-center sm:grid-cols-3 w-full sm:mt-3 gap-2 p-2">
@@ -311,7 +311,7 @@ const GardenStats = ({ profile }) => {
                                 <div className="h-full w-1/2 rounded-l-lg p-4 sm:p-2 bg-cover bg-center" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                                     <VscMirror className='text-white h-8 w-8 mx-auto mt-2 sm:h-14 sm:w-14 sm:mt-3 sm:mx-auto' />
                                 </div>
-                                <h2 className='sm:text-xl text-lg text-gray-800 text-center w-1/2'>+30 XP</h2>
+                                <h2 className='sm:text-xl text-lg text-gray-800 text-center sm:w-3/4'>+30 XP</h2>
                             </div>
                         </div>
                     </div>
