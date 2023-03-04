@@ -1,6 +1,7 @@
 import React from 'react'
 import Team from '../components/team'
-import rdmap from '../styles/images/rdmap.jpeg';
+import rmhor from '../styles/images/rmhor.jpeg';
+import rmver from "../styles/images/rmver.jpeg"
 
 import { useState, useEffect } from 'react';
 import { client, myStats } from '../../api/lensApi';
@@ -124,9 +125,14 @@ const Roadmap = () => {
             {/* About the project */}
 
             {/* About the team */}
-           <div className='flex w-3/4 mx-auto'>
-                <img src={rdmap} className="h-1/2 rounded-lg mt-2" />
+           <div className='flex sm:w-3/4 w-full justify-center items-center mx-auto'>
+                <img src={rmhor} className="dont-displaysm border-2 border-white rounded-lg mt-2" />
+                <img src={rmver} className="dont-displaymd border-2 border-white rounded-lg mt-2" />
            </div>
+
+          
+            <Team />
+         
 
             {/* Roadmap */}
 <Footer />

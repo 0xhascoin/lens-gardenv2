@@ -92,7 +92,7 @@ const MintNft = ({ address }) => {
             )
         } else {
             return (
-                <button onClick={askContractToMintNft} className='nft flex rounded-full text-l whitespace-nowrap my-3 flex-wrap border-2 border-emerald-600 min-w-1/6 py-2 px-4 justify-center mx-auto bg-emerald-600 text-white'>Mint an NFT</button>
+                <button onClick={askContractToMintNft} className='nft flex rounded-full text-l whitespace-nowrap my-3 flex-wrap border-2 border-green-500 min-w-1/6 py-2 px-4 justify-center mx-auto bg-emerald-600 text-white'>Mint an NFT</button>
 
             )
         }

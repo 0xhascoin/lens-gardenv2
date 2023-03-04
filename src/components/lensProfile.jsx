@@ -11,7 +11,7 @@ const startUrl = 'https://lens.infura-ipfs.io/ipfs/';
 const Badge = ({ text }) => {
     // console.log("Text: ", text)
     return (
-        <span className="text-center bg-green-100 text-xs font-medium p-1 rounded dark:bg-gray-700 text-white">
+        <span className="text-center sm:text-sm border border-white text-xs font-medium p-1 rounded dark:bg-gray-700 text-white">
             {text}
         </span>
     )
@@ -27,7 +27,7 @@ const NextExpProgress = ({ unlocksAtLevel, xpNeededToUnlock, myTotalXp, LEVEL })
         <div className="w-full sm:ml-2 gap-y-2 grid grid-cols-1 sm:flex items-center justify-center sm:justify-between">
 
                 <div className=" w-full bg-zinc-800 rounded-full h-2.5 dark:bg-gray-700 sm:mr-4 sm:mt-8">
-                <div className=" bg-emerald-400 h-2.5 rounded-full " style={{ width: `${perc}%` }} >
+                <div className=" bg-green-500 h-2.5 rounded-full " style={{ width: `${perc}%` }} >
                 </div>
                 </div>
             <div className='sm:flex sm:mb-0 mb-2'>
@@ -172,9 +172,9 @@ const LensProfile = ({ profile }) => {
                     {/* Names */}
                     <div className="sm:text-left w-full pt-2 mx-auto justify-center items-center sm:pt-8">
                         {/* Lens Name */}
-                        <h2 className='sm:pl-2 text-xl text-white bolded center-text'>@{profile.handle}</h2>
+                        <h2 className='sm:pl-2 text-xl sm:text-2xl text-white bolded center-text hover:text-green-500 cursor-pointer'>{profile.handle}</h2>
                         {/* Address */}
-                        <p className='sm:pl-2 text-sm text-white center-text'>{profile.ownedBy.slice(0, 6)}...{profile.ownedBy.slice(-6)}</p>
+                        <p className='sm:pl-2 text-sm sm:text-2xl text-white center-text hover:text-green-500 cursor-pointer'>{profile.ownedBy.slice(0, 6)}...{profile.ownedBy.slice(-6)}</p>
 
                         {loadingStats ? (
                             <p>Loading...</p>
@@ -185,7 +185,7 @@ const LensProfile = ({ profile }) => {
                                     <div className='sm:pt-0 pt-2'>
                                     <NextExpProgress LEVEL={LEVEL} unlocksAtLevel={profile.attributes[0].value} xpNeededToUnlock={LEVEL.experienceToNextLevel} myTotalXp={XP} />                                    </div>
                                         <div className="text-white flex justify-center mt-1 sm:pt-0">
-                                            <p className='text-sm sm:text-lg'>{XP} / {LEVEL.experienceToNextLevel + XP} XP</p>
+                                            <p className='text-sm sm:text-2xl cursor-pointer hover:text-green-500'>{XP} / {LEVEL.experienceToNextLevel + XP} XP</p>
                                         </div>
                                     </>
                                 )}
@@ -193,7 +193,7 @@ const LensProfile = ({ profile }) => {
                         )}
                     </div>
                 </div>
-                <div className="card-seperator sm:border-0 border-2 sm:mt-0 mt-4 sm:hidden border-green-500"></div>
+                <div className="card-seperator sm:border-0 border-2 rounded-lg sm:mt-0 mt-4 sm:hidden border-green-500"></div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
 
@@ -202,7 +202,7 @@ const LensProfile = ({ profile }) => {
                             <div className="flex w-full justify-center py-8 mb-2 m-auto bg-transparent rounded-t-lg	" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                                 <SlUserFollowing className='sm:h-8 sm:w-8 text-white' />
                             </div>
-                            <h2 className='sm:text-lg text-sm text-white mb-2'>Following</h2>
+                            <h2 className='sm:text-lg text-sm  text-white mb-2'>Following</h2>
                             <Badge text={profile.stats.totalFollowing} /> <br />
                             <Badge text={`${profile.stats.totalFollowing * 10} XP`} />
                         </div>
@@ -270,7 +270,7 @@ const LensProfile = ({ profile }) => {
                     </div>
 
                 </div>
-                <div className="card-seperator sm:border-0 border-2 sm:mt-0 mt-8 sm:hidden border-green-500"></div>
+                <div className="card-seperator sm:border-0 rounded-lg border-2 sm:mt-0 mt-8 sm:hidden border-green-500"></div>
             </div>
         </div>
     )

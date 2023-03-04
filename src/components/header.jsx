@@ -41,7 +41,7 @@ export default function Header({ currentAccount, connecting, connectWallet, load
           <button
             data-collapse-toggle="navbar-sticky"
             type="button"
-            className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-transparent dark:focus:ring-white-600"
+            className="inline-flex items-center p-1 mr-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-transparent dark:focus:ring-white-600"
             aria-controls="navbar-sticky"
             aria-expanded="false"
             onClick={toggleNavMenu}
@@ -69,7 +69,7 @@ export default function Header({ currentAccount, connecting, connectWallet, load
             }`}
           id="navbar-sticky"
         >
-          <ul className="bg-slate-800 flex flex-col p-4 py-3 mt-4 border border-black-100 rounded-xl  md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:dark:bg-transparent dark:border-green-400">
+          <ul className="bg-slate-800 sm:bg-transparent flex flex-col sm:flex-row p-4 py-3 mt-4 sm:mt-0 border sm:border-none rounded-xl  sm:space-x-8 border-green-500">
 
             <li>
               <a
@@ -82,19 +82,22 @@ export default function Header({ currentAccount, connecting, connectWallet, load
             <li>
               <a
                 href="/garden"
-                className="font chart sm:text-2xl block py-2 pl-3 pr-4 md:text-3xl  rounded md:p-0 hover:text-green-500 transition-all text-slate-50"
+                className="font chart sm:text-2xl block py-2 pl-3 pr-4 md:text-3xl rounded md:p-0 hover:text-green-500 transition-all text-slate-50"
               >
                 View Garden
               </a>
             </li>
-            {/* <li>
+            
+             {/* <li>
               <a
                 href="/roadmap"
-                className="font chart sm:text-2xl block py-2 pl-3 pr-4 md:text-3xl  rounded md:p-0 hover:text-green-500 transition-all text-slate-50"
+                className="font chart sm:text-2xl block py-2 pl-3 pr-4 md:text-3xl rounded md:p-0 hover:text-green-500 transition-all text-slate-50"
               >
                 Roadmap
               </a>
-            </li> */}
+          </li> */}
+            
+            
            
 
           </ul>
