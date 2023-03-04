@@ -20,20 +20,20 @@ const db = getFirestore(firebaseApp);
 // If they don't, create them in the db and then return the data
 
 export const getUser = async (address, obj) => {
-    const docRef = doc(db, "users", address);
-    const docSnap = await getDoc(docRef);
+    // const docRef = doc(db, "users", address);
+    // const docSnap = await getDoc(docRef);
 
-    if (docSnap.exists()) {
-        await setDoc(doc(db, "users", address), obj, { merge: true });
-    } else {
-        await setDoc(doc(db, "users", address), obj, { merge: true });
-    }
+    // if (docSnap.exists()) {
+    //     await setDoc(doc(db, "users", address), obj, { merge: true });
+    // } else {
+    //     await setDoc(doc(db, "users", address), obj, { merge: true });
+    // }
 
     const ref = doc(db, "users", address);
     const snap = await getDoc(ref);
 
 
-    // console.log("DATATATATTATA: ", snap.data())
+    console.log("DATATATATTATA: ", snap.data())
 
     return snap.data();
 }
@@ -42,6 +42,7 @@ export const getUser = async (address, obj) => {
 // Check if the user exists in the db
 
 export const checkIfUserExists = async (address, obj) => {
+    address = address.toUpperCase();
     const docRef = doc(db, "users", address);
     const docSnap = await getDoc(docRef);
 
@@ -60,41 +61,41 @@ export const checkIfUserExists = async (address, obj) => {
 
         await setDoc(doc(db, "users", address), data, { merge: true });
     }
-
-    // let ref = doc(db, "users", address);
-    // let snap = await getDoc(ref);
-
-    // const data = snap.data();
-    // const abc = await calculateStats(data);
-
-    // await setDoc(doc(db, "users", address), abc, { merge: true });
-
-    // ref = doc(db, "users", address);
-    // snap = await getDoc(ref);
-
-    // return snap.data();
 }
 
-export const mintedNFT = async (address) => {
+export const checkIfUserMinted = async (address) => {
+
+    // const docRef = doc(db, "users", address);
+    // const docSnap = await getDoc(docRef);
+    
+    // if(docSnap.exists()) {
+    //     console.log(docSnap.data(), "SNAP");
+    // }
+
+    console.log("checkIfUserMinted: ", address)
+    address = address.toUpperCase()
+
+    console.log("Address: ", address);
+    console.log("typeof: ", typeof(address));
+    const ref = doc(db, "users", address);
+    const snap = await getDoc(ref);
+    const { alreadyMinted } = snap.data();
+
+
+    console.log("DATATATATTATA: ", alreadyMinted)
+
+    return alreadyMinted;
+
+}
+
+export const mintNFT = async (address) => {
+    address = address.toUpperCase();
     const docRef = doc(db, "users", address);
     const docSnap = await getDoc(docRef);
     
     if(docSnap.exists()) {
         await setDoc(doc(db, "users", address), {alreadyMinted: true}, { merge: true });
     }
-
-    let ref = doc(db, "users", address);
-    let snap = await getDoc(ref);
-
-    const data = snap.data();
-    const abc = await calculateStats(data);
-
-    await setDoc(doc(db, "users", address), abc, { merge: true });
-
-    ref = doc(db, "users", address);
-    snap = await getDoc(ref);
-
-    return snap.data();
 }
 
 const calculateExperience = (following, followers, posts, collects, mirrors, comments) => {

@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { ethers } from 'ethers';
 import { abi } from '../../constants/abi';
 import LoadingSpinner from './loadingSpinner';
+import { mintNFT } from '../../api/firebase';
 // import { mintedNFT } from '../../api/firebase';
 
-const CONTRACT_ADDRESS = "0x4a0352B029936E9d235FA59451837caB3f5caD48";
+const CONTRACT_ADDRESS = "0xd97Be3C7d4213DdeE741c02792B2fd9efb49C846";
 
 
-const MintNft = ({ address }) => {
+const MintNft = ({ address, setMinted }) => {
 
     const [loadingMint, setLoadingMint] = useState(false);
     const [mintedUrl, setMintedUrl] = useState(null);
@@ -28,12 +29,10 @@ const MintNft = ({ address }) => {
 
                 // console.log("Mining...please wait.")
                 await nftTxn.wait();
-                
-                // await mintedNFT(address);
-                
+                                
                 console.log("Minted.")
-                localStorage.setItem('minted', true);
-                window.location.reload();
+                await mintNFT(address);
+                setMinted(true);
 
 
 

@@ -19,7 +19,7 @@ import Footer from '../components/footer';
 import GardenStats from '../components/gardenStats';
 import { useNavigate } from 'react-router-dom';
 import MintNft from "../components/mintNft";
-import { checkIfUserExists } from "../../api/firebase";
+import { checkIfUserExists, checkIfUserMinted, getUser } from "../../api/firebase";
 
 
 
@@ -48,17 +48,16 @@ const Garden = () => {
 
   const navigate = useNavigate();
 
-  const checkIfMinted = () => {
-    const alreadyMinted = localStorage.getItem('minted');
-
-    if (alreadyMinted === null) {
-      console.log("Not Minted.");
-      setMinted(false);
-      return
-    } else if(alreadyMinted === 'true') {
-      console.log("Minted.");
+  const checkIfMinted = async (address) => {
+    console.log("Address MINT: ", address)
+    const hasMinted = await checkIfUserMinted(address);
+    if (hasMinted) {
       setMinted(true);
+    } else {
+      setMinted(false);
     }
+    console.log("hasMinted: ", hasMinted);
+
   }
 
 
@@ -76,6 +75,9 @@ const Garden = () => {
         // await setupProfileInDB(items[0].ownedBy, items[0]);
         console.log("Found Profile.")
         setProfileFound(true);
+        console.log("HERE ADDRSS: ", address)
+        // await getUser(address, items[0]);
+
       }
       setLoadingProfile(false);
       console.log("Finished Loading Profile....")
@@ -122,10 +124,11 @@ const Garden = () => {
 
     if (accounts.length !== 0) {
       const account = accounts[0];
-      // console.log("Found an authorized account:", account);
+      console.log("Found an authorized account:", account);
       setCurrentAccount(account);
       await fetchLensProfile(account);
       setConnecting(false)
+      await checkIfMinted(account);
     } else {
       // console.log("No authorized account found");
       setConnecting(false);
@@ -157,7 +160,6 @@ const Garden = () => {
 
   useEffect(() => {
     checkIfWalletIsConnected();
-    checkIfMinted()
   }, []);
 
   const renderConnected = () => {
@@ -166,7 +168,7 @@ const Garden = () => {
         return <Loading />
       } else {
         // alert("HERE")
-        // navigate("/");
+        navigate("/");
 
       }
     } else {
@@ -193,13 +195,13 @@ const Garden = () => {
               profile={profile}
             />
             {!minted && (
-              <MintNft address={profile.ownedBy} />
+              <MintNft address={profile.ownedBy} setMinted={setMinted} />
             )}
 
             <LensProfileStats
               profile={profile}
             />
-            
+
             {minted && (
               <GardenStats
                 profile={profile}

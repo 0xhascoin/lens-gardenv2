@@ -149,7 +149,7 @@ const LensProfile = ({ profile }) => {
         }
 
         // const data = await getUser(profile.ownedBy, obj);
-        setData(obj);
+        // setData(obj);
         setUpdatedDB(true);
 
     }
