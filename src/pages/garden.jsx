@@ -48,37 +48,40 @@ const Garden = () => {
 
   const navigate = useNavigate();
 
+  // Check if already minted
   const checkIfMinted = async (address) => {
-    console.log("Address MINT: ", address)
+    // Check if minted using firebase DB
     const hasMinted = await checkIfUserMinted(address);
+
+    // Set state based on if minted
     if (hasMinted) {
       setMinted(true);
     } else {
       setMinted(false);
     }
-    console.log("hasMinted: ", hasMinted);
-
   }
 
 
   const fetchLensProfile = async (address) => {
     try {
+      // Start loading profile
       setLoadingProfile(true);
-      // console.log("Loading Profile....")
+      console.log("Loading Profile....");
+
       const { data: { profiles: { items } } } = await client.query(myStats, { "address": address }).toPromise();
-      // console.log("Data: ", items[0]);
+
+      // No profile found
       if (items[0] == undefined) {
         setProfileFound(false);
-        console.log("No profile found.")
+        console.log("No profile found.");
       } else {
+        // Profile found
         setProfile(items[0]);
-        // await setupProfileInDB(items[0].ownedBy, items[0]);
-        console.log("Found Profile.")
+        console.log("Found Profile.");
         setProfileFound(true);
-        console.log("HERE ADDRSS: ", address)
-        // await getUser(address, items[0]);
-
       }
+
+      // Finished loading profile
       setLoadingProfile(false);
       console.log("Finished Loading Profile....")
 
@@ -89,30 +92,26 @@ const Garden = () => {
     }
   };
 
-  const setupProfileInDB = async (address, obj) => {
-    // console.log("Address: ", address);
-    // console.log("obj: ", obj);
-    // await checkIfUserExists(address, obj);
-    // console.log("User in db: ", user);
-    // setProfile(user);
-  }
-
 
   const checkIfWalletIsConnected = async () => {
     const { ethereum } = window;
 
+    // Metamask is not installed
     if (!ethereum) {
-      // console.log("Make sure you have metamask!");
+      console.log("Make sure you have metamask!");
       return;
     } else {
-      // console.log("We have the ethereum object", ethereum);
+      console.log("We have the ethereum object", ethereum);
     }
 
+    // Get the current collected chain
     let chainId = await ethereum.request({ method: 'eth_chainId' });
-    // console.log("Connected to chain " + chainId);
+    console.log("Connected to chain " + chainId);
 
     // String, hex code of the chainId of the Goerli test network
     const goerliChainId = "0x5";
+
+    // Not connected to goerli, redirect to home page
     if (chainId !== goerliChainId) {
       alert("You are not connected to the Goerli Test Network!");
       navigate("/");
@@ -123,14 +122,18 @@ const Garden = () => {
     const accounts = await ethereum.request({ method: 'eth_accounts' });
 
     if (accounts.length !== 0) {
-      const account = accounts[0];
+      const account = accounts[0]; // Get the first connected account
       console.log("Found an authorized account:", account);
       setCurrentAccount(account);
+
+      // Fetch the lens profile connected to that account
       await fetchLensProfile(account);
       setConnecting(false)
+
+      // Check if minted
       await checkIfMinted(account);
     } else {
-      // console.log("No authorized account found");
+      console.log("No authorized account found");
       setConnecting(false);
     }
   };
@@ -167,9 +170,7 @@ const Garden = () => {
       if (connecting) {
         return <Loading />
       } else {
-        // alert("HERE")
         navigate("/");
-
       }
     } else {
       return <>{renderPage()}</>;
