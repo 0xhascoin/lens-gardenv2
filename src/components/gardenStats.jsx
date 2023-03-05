@@ -248,7 +248,7 @@ const GardenStats = ({ profile }) => {
                                 </div>
                         <div className="font flex mb-2 sm:mb-36 text-white mx-auto items-center justify-center">
                         <p className='sm:text-lg text-sm text-center'>
-                       Finish all Levels to mint Tier #1 NFT
+                       Finish all Levels to mint Tier #1 NFT.
                         </p>
                         </div>
                         
@@ -311,7 +311,7 @@ const GardenStats = ({ profile }) => {
                                 <div className="h-full w-1/2 rounded-l-lg p-4 sm:p-2 bg-cover bg-center" style={{ background: 'linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/791cbcd1-0b9d-4ba9-bdaa-c3606a59d90e/grid_0.png)' }}>
                                     <VscMirror className='text-white h-8 w-8 mx-auto mt-2 sm:h-14 sm:w-14 sm:mt-3 sm:mx-auto' />
                                 </div>
-                                <h2 className='sm:text-xl text-lg text-gray-800 text-center sm:w-3/4'>+30 XP</h2>
+                                <h2 className='sm:text-xl text-lg text-gray-800 text-center w-1/2'>+30 XP</h2>
                             </div>
                         </div>
                     </div>

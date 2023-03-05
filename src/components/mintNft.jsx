@@ -91,7 +91,7 @@ const MintNft = ({ address, setMinted }) => {
             )
         } else {
             return (
-                <button onClick={askContractToMintNft} className='nft flex rounded-full text-l whitespace-nowrap my-3 flex-wrap border-2 border-green-500 min-w-1/6 py-2 px-4 justify-center mx-auto bg-emerald-600 text-white'>Mint an NFT</button>
+                <button onClick={askContractToMintNft} className='font flex rounded-full text-lg whitespace-nowrap my-3 flex-wrap w-1/2 sm:w-1/6 py-2 px-4 justify-center mx-auto text-white focus:ring-4 focus:outline-none focus:ring-green-500 bg-gradient-to-r from-green-400 to-green-700  hover:bg-green-500'>Mint NFT</button>
 
             )
         }
@@ -100,7 +100,7 @@ const MintNft = ({ address, setMinted }) => {
     return (
         <div className='py-6'>
             <div className="text-center mt-6">
-                <h2 className='text-white text-2xl mb-3'>Mint your Lens Garden NFT Here</h2>
+                <h2 className='font text-white text-2xl mb-3'>Mint your Lens Garden NFT here</h2>
             </div>
             {renderMint()}
         </div>

@@ -194,9 +194,9 @@ const Garden = () => {
               profileFound={profileFound}
               profile={profile}
             />
-            {!minted && (
+           { !minted && (
               <MintNft address={profile.ownedBy} setMinted={setMinted} />
-            )}
+         )} 
 
             <LensProfileStats
               profile={profile}

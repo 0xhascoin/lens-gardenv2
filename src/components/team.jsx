@@ -2,7 +2,7 @@ import React from 'react'
 
 const Card = ({ image, name, description, twitter, lens }) => {
     return (
-        <div className=' p-4 rounded-lg py-8 shadow-xl shadow-black/40 bg-slate-800 border border-white cursor-pointer'>
+        <div className='p-4 rounded-lg py-8 shadow-xl shadow-black/40 bg-slate-800 border border-white cursor-pointer'>
             <div className="shadow-xl h-36 w-36 rounded-lg m-auto">
                 <img src={image} alt="" className='rounded-lg border-white border' />
             </div>

@@ -47,7 +47,7 @@ const ConnectWallet = ({ connecting, currentAccount, connectWallet, loadingProfi
       } else {
         return (
           
-            <button onClick={connectWallet} className="font text-white sm:text-lg text-sm focus:ring-4 focus:outline-none focus:ring-green-500 font-medium rounded-lg px-5 py-2.5 text-center mr-2 md:mr-0 bg-gradient-to-r from-green-400 to-green-700 dark:bg-green-500 dark:hover:bg-green-500">
+            <button onClick={connectWallet} className="font text-white sm:text-lg text-sm focus:ring-4 focus:outline-none focus:ring-green-500 rounded-lg px-5 py-2.5 text-center mr-2 md:mr-0 bg-gradient-to-r from-green-400 to-green-700 dark:bg-green-500 dark:hover:bg-green-500">
               Connect Wallet
             </button>
           
