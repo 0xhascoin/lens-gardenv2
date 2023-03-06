@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import logo1 from "../styles/images/logo1.png";
-import ConnectWallet from "./connectWallet";
 
+// Components
 import Navbar from './Navbar'
 
 
@@ -25,16 +25,6 @@ export default function Header() {
      
 
         <div className="flex sm:mx-0 mx-auto sm:order-2 sm:mr-2 sm:right-0">
-
-          {/* <ConnectWallet
-          
-            connectWallet={connectWallet}
-            currentAccount={currentAccount}
-            loadingProfile={loadingProfile}
-            profileFound={profileFound}
-            profile={profile}
-            connecting={connecting}
-          /> */}
           <Navbar />
           
         </div>
@@ -72,14 +62,14 @@ export default function Header() {
         >
           <ul className="bg-slate-800 sm:bg-transparent flex flex-col sm:flex-row p-4 py-3 mt-4 sm:mt-0 border sm:border-none rounded-xl  sm:space-x-8 border-green-500">
 
-            <li>
+            {/* <li>
               <a
                 href="/"
                 className="font chart block py-2 pl-3 pr-4 sm:text-2xl md:text-3xl rounded md:p-0 text-white-400 hover:text-green-500 transition-all text-slate-50"
               >
                 Home
               </a>
-            </li>
+            </li> */}
             <li>
               <a
                 href="/garden"

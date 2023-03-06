@@ -1,33 +1,21 @@
 
-import React from "react";
-import Header from "../components/header";
-import bggarden2 from "../styles/images/bggarden2.jpeg"
-import ProfileDetails from '../components/profileDetails';
-import PointsCalculation from '../components/pointsCalculation';
-import Points from '../components/points';
-import followings from '../styles/images/stats/followings.png';
-import followers from '../styles/images/stats/followers.png';
-import posts from '../styles/images/stats/posts.png';
-import comments from '../styles/images/stats/comments.png';
-import collects from '../styles/images/stats/collects.png';
-import mirrors from '../styles/images/stats/mirrors.png';
-
-import { client, myStats } from '../../api/lensApi';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAccount } from 'wagmi'
 
-import LensProfileStats from '../components/lensProfileStats';
-import Footer from '../components/footer';
-import GardenStats from '../components/gardenStats';
+import { client, myStats } from '../../api/lensApi';
+import { checkIfUserMinted } from "../../api/firebase";
+
+// Components
 import MintNft from "../components/mintNft";
-import { checkIfUserExists, checkIfUserMinted, getUser } from "../../api/firebase";
+import LensProfileStats from '../components/lensProfileStats';
+import GardenStats from '../components/gardenStats';
+import Footer from '../components/footer';
 
 
-
+// Full Page Loading Spinner
 const Loading = () => (
   <div className="h-screen w-full flex justify-center place-items-center	">
-
     <div role="status">
       <svg aria-hidden="true" className="w-16 h-16 mr-2 text-zinc-800 animate-spin dark:text-gray-600 fill-white" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
@@ -37,15 +25,31 @@ const Loading = () => (
     </div>
   </div>
 
-)
+);
 
 const Garden = () => {
   const navigate = useNavigate()
-   const [profile, setProfile] = useState(null);
+  const { address } = useAccount()
+
+  const [profile, setProfile] = useState(null);
   const [loadingProfile, setLoadingProfile] = useState(false);
   const [profileFound, setProfileFound] = useState(false);
+  const [minted, setMinted] = useState(false);
 
-   const fetchLensProfile = async (address) => {
+  // Check if already minted
+  const checkIfMinted = async (address) => {
+    // Check if minted using firebase DB
+    const hasMinted = await checkIfUserMinted(address);
+
+    // Set state based on if minted
+    if (hasMinted) {
+      setMinted(true);
+    } else {
+      setMinted(false);
+    }
+  }
+
+  const fetchLensProfile = async (address) => {
     try {
       // Start Loading Profile from Lens API
       setLoadingProfile(true);
@@ -53,10 +57,11 @@ const Garden = () => {
 
       // Destructure the object
       const { data: { profiles: { items } } } = await client.query(myStats, { "address": address }).toPromise();
-      
+
       // Profile not found / doesn't exist
       if (items[0] == undefined) {
         setProfileFound(false);
+        console.log("Profile not found.")
       } else {
         // Profile found
         setProfile(items[0]);
@@ -75,22 +80,20 @@ const Garden = () => {
       setLoadingProfile(false);
     }
   };
-    const { address, isConnecting, isDisconnected } = useAccount()
+
 
   const checkIfConnected = async () => {
     try {
-      console.log("isConnecting: ", isConnecting);
-      console.log("address: ", address);
-      
-      if((address == undefined || address == null)) {
+      if ((address == undefined || address == null)) {
         console.log("Not connected")
         navigate("/")
       } else {
         console.log("connected");
 
         await fetchLensProfile(address);
+        await checkIfMinted(address);
       }
-      
+
     } catch (error) {
       console.log("Error: ", error);
     }
@@ -99,12 +102,8 @@ const Garden = () => {
   useEffect(() => {
     checkIfConnected();
   }, [address])
-  
-  useEffect(() => {
-    console.log("HELLOOOOO")
-  }, [])
 
-   const renderPage = () => {
+  const renderPage = () => {
     if (loadingProfile) {
       return <Loading />;
     } else {
@@ -114,16 +113,30 @@ const Garden = () => {
         return (
 
           <>
-            <h1>Connected</h1>
+            {!minted && (
+              <MintNft address={profile.ownedBy} setMinted={setMinted} />
+            )}
+
+            <LensProfileStats
+              profile={profile}
+            />
+
+            {minted && (
+              <GardenStats
+                profile={profile}
+              />
+            )}
+
+            <Footer />
           </>
         );
       }
     }
   };
-  
+
   return (
-    <div className="border border-white">
-        {renderPage()}
+    <div>
+      {renderPage()}
     </div>
   )
 }

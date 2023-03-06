@@ -3,7 +3,6 @@ import { ethers } from 'ethers';
 import { abi } from '../../constants/abi';
 import LoadingSpinner from './loadingSpinner';
 import { mintNFT } from '../../api/firebase';
-// import { mintedNFT } from '../../api/firebase';
 
 const CONTRACT_ADDRESS = "0xd97Be3C7d4213DdeE741c02792B2fd9efb49C846";
 

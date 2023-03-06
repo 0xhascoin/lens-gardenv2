@@ -1,5 +1,7 @@
 import { Web3Button, useWeb3ModalTheme } from "@web3modal/react";
 import { useAccount } from 'wagmi'
+
+// Components
 import Connected from './Connected'
 
 
@@ -8,7 +10,7 @@ const Navbar = () => {
 
   setTheme({
     themeMode: "light",
-    themeColor: "blackWhite",
+    themeColor: "teal",
     themeBackground: "themeColor",
   });
 
@@ -22,16 +24,6 @@ const Navbar = () => {
     
   }
 
-  // useEffect(() => {
-    
-  // }, [address])
-
-
-
-  
-
-
-  
   return (
     <div className="flex items-center justify-end">
       { renderConnect() }

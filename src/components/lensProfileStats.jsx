@@ -1,10 +1,9 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
+
+// Components
 import LensChart from './lensChart';
 import LensProfile from './lensProfile'
-import LoadingSpinner from './loadingSpinner';
-import bggarden2 from "../styles/images/bggarden2.jpeg"
-import Points from './points';
+
 
 
 const LensProfileStats = ({ profile }) => {

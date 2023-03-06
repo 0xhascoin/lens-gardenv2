@@ -77,8 +77,6 @@ const GardenStats = ({ profile }) => {
         setLEVEL(level);
         setLoadingStats(false);
 
-        // profile.ownedBy, profile, level
-        // let obj = {...profile, NFT: { xp: exp, ...level, name: "Lens Garden NFT"}};
         let obj = {
             ...profile,
             attributes: [
