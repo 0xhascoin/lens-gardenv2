@@ -16,7 +16,7 @@ export const data = [
 
 export const options = {
   
-  title: "Total Lens Stats",
+  title: "Total Lens Stats:",
   pieHole: 0.5,
   is3D: true,
   titleTextStyle: {
@@ -54,9 +54,9 @@ const LensChart = ({ stats }) => {
   // console.log("Stats: ", stats);
   return (
     <div className="w-full sm:w-1/2 mt-2 sm:mt-0 bg-slate-800 sm:ml-2 rounded-lg border-2 border-white">
-      <div className='font pt-5 sm:pt-14 sm:text-2xl text-lg px-2 sm:px-0 relative text-white hover:text-green-500'>The following statistics and XP calculations apply to Tier #1.</div>
+      <div className='font pt-5 sm:pt-14 sm:text-2xl text-lg px-2 sm:px-2 relative text-white hover:text-green-500'>The following statistics and XP calculations apply to Tier #1.</div>
       <div className="sm:w-3/4 w-10/12 flex mx-auto rounded-lg border-2 sm:mt-4 mt-6 border-green-500"></div>
-      <div className="font-semibold pt-12 sm:mt-28 sm:pt-4 w-full mx-auto p-2 rounded-lg">
+      <div className="font-semibold pt-12 sm:mt-32 sm:pt-4 w-full mx-auto p-2 rounded-lg cursor-pointer">
         <Chart
         
           chartType="PieChart"

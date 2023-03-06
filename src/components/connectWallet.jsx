@@ -4,7 +4,7 @@ import LoadingSpinner from './loadingSpinner';
 const Badge = ({ text }) => {
   // console.log("Text: ", text)
   return (
-      <span className="text-center  hover:text-green-500 hover:border-green-500 sm:text-lg text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-slate-800 text-white border border-white">
+      <span className="text-center  hover:text-green-500 hover:border-green-500 sm:text-lg text-xs font-medium mr-2 px-2.5 py-0.5 rounded bg-slate-800 text-white border border-white">
           {text}
       </span>
   )
