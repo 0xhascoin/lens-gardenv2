@@ -16,15 +16,12 @@ import {
 } from "react-router-dom";
 
 // Pages
-import Home from './pages/Home';
-import Garden from './pages/Garden';
+import Home from './pages/home';
+import Garden from './pages/garden';
 import Roadmap from './pages/roadmap';
 
 // Components
-import Header from './components/Header';
-import Navbar from './components/Navbar';
-
-
+import Header from './components/header';
 
 export default function App() {
   const projectId = "8abf723f4951e5e53259ff993a3fccb0"
