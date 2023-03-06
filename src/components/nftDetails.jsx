@@ -1,6 +1,6 @@
 import React from 'react'
-// import '../styles/nftDetails.css'
-import Tree from '../styles/images/Tree.jpg';
+
+// Components
 import ImageCard from './ImageCard';
 
 const NftDetails = () => {

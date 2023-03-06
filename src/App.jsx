@@ -1,107 +1,77 @@
-// import './App.css'
-// import { useState, useEffect } from 'react';
-// import GetLensProfile from './components/getLensProfile';
-// import LoadingSpinner from './components/loadingSpinner';
-// import Header from './components/header';
+// import './App.css';
 
-// function App() {
-//   const [connecting, setConnecting] = useState(false);
-//   const [currentAccount, setCurrentAccount] = useState("");
-//   const [profile, setProfile] = useState(null);
-//   const [loadingProfile, setLoadingProfile] = useState(false);
-//   const [profileFound, setProfileFound] = useState(false);
+import {
+  EthereumClient,
+  modalConnectors,
+  walletConnectProvider,
+} from "@web3modal/ethereum";
+import { Web3Modal } from "@web3modal/react";
+import { configureChains, createClient, WagmiConfig } from "wagmi";
+import { goerli } from "wagmi/chains";
 
-//   const checkIfWalletIsConnected = async () => {
-//     const { ethereum } = window;
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
 
-//     if (!ethereum) {
-//       console.log("Make sure you have metamask!");
-//       return;
-//     } else {
-//       console.log("We have the ethereum object", ethereum);
-//     }
+// Pages
+import Home from './pages/Home';
+import Garden from './pages/Garden';
+import Roadmap from './pages/roadmap';
 
-//     let chainId = await ethereum.request({ method: 'eth_chainId' });
-//     console.log("Connected to chain " + chainId);
+// Components
+import Header from './components/Header';
+import Navbar from './components/Navbar';
 
-//     // String, hex code of the chainId of the Goerli test network
-//     const goerliChainId = "0x5";
-//     if (chainId !== goerliChainId) {
-//       alert("You are not connected to the Goerli Test Network!");
-//     }
 
-//     setConnecting(true);
 
-//     const accounts = await ethereum.request({ method: 'eth_accounts' });
+export default function App() {
+  const projectId = "8abf723f4951e5e53259ff993a3fccb0"
 
-//     if (accounts.length !== 0) {
-//       const account = accounts[0];
-//       console.log("Found an authorized account:", account);
-//       setCurrentAccount(account);
-//       setConnecting(false)
-//     } else {
-//       console.log("No authorized account found");
-//       setConnecting(false);
-//     }
-//   };
 
-//   const connectWallet = async () => {
-//     try {
-//       const { ethereum } = window;
 
-//       if (!ethereum) {
-//         alert("Get MetaMask!");
-//         return;
-//       }
+  const chains = [goerli];
 
-//       setConnecting(true);
-//       const accounts = await ethereum.request({ method: "eth_requestAccounts" });
+  // Wagmi client
+  const { provider } = configureChains(chains, [
+    walletConnectProvider({ projectId: projectId }),
+  ]);
+  
+  const wagmiClient = createClient({
+    autoConnect: true,
+    connectors: modalConnectors({
+      projectId: projectId,
+      version: "1", // or "2"
+      appName: "web3Modal",
+      chains,
+    }),
+    provider,
+  });
 
-//       console.log("Connected", accounts[0]);
-//       setCurrentAccount(accounts[0]);
-//       setConnecting(false);
 
-//     } catch (error) {
-//       console.log(error);
-//       setConnecting(false);
-//     }
-//   };
+  
+  // Web3Modal Ethereum Client
+  const ethereumClient = new EthereumClient(wagmiClient, chains);
 
-//   useEffect(() => {
-//     checkIfWalletIsConnected();
-//   }, []);
-
-//   const renderConnected = () => {
-//     if (connecting) {
-//       return <LoadingSpinner />
-//     } else {
-//       if (currentAccount === "") {
-//         return <button onClick={connectWallet} className="bg-zinc-800	text-white outline-none focus:outline-red-400 transition-all">Connect Wallet</button>
-//       } else {
-//         return (
-//           <GetLensProfile
-//             currentAccount={currentAccount}
-//             setProfile={setProfile}
-//             profile={profile}
-//             setLoadingProfile={setLoadingProfile}
-//             loadingProfile={loadingProfile}
-//             setProfileFound={setProfileFound}
-//             profileFound={profileFound}
-
-//           />
-//         )
-//       }
-//     }
-//   }
-
-//   return (
-//     <div className='App'>
-//       <Header />
-//       <div className="content">
-//         {renderConnected()}
-//       </div>
-//     </div>
-//   )
-// }
-
-// export default App
+     
+  return (
+    <Router>
+      <WagmiConfig client={wagmiClient}>
+        <div className="font relative min-h-screen min-w-screen bg-cover bg-center" style={{ backgroundImage: 'linear-gradient( rgba(0,0,0,.5), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/3439d6e8-9981-42a7-964f-a9e8ce18af84/grid_0.png)' }}>    
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/garden" element={<Garden />} /> 
+            <Route path="/roadmap" element={<Roadmap />} /> 
+          </Routes>
+        </div>
+      </WagmiConfig>
+      
+      <Web3Modal
+        projectId={projectId}
+        ethereumClient={ethereumClient}
+      />
+    </Router>
+  )
+}

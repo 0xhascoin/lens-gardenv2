@@ -2,10 +2,10 @@ import React, { useState, useRef } from "react";
 import logo1 from "../styles/images/logo1.png";
 import ConnectWallet from "./connectWallet";
 
+import Navbar from './Navbar'
 
 
-
-export default function Header({ currentAccount, connecting, connectWallet, loadingProfile, profileFound, profile }) {
+export default function Header() {
   const [navMenuVisible, setNavMenuVisible] = useState(false);
   // Define the toggleNavMenu function
   const toggleNavMenu = () => {
@@ -26,7 +26,7 @@ export default function Header({ currentAccount, connecting, connectWallet, load
 
         <div className="flex sm:mx-0 mx-auto sm:order-2 sm:mr-2 sm:right-0">
 
-          <ConnectWallet
+          {/* <ConnectWallet
           
             connectWallet={connectWallet}
             currentAccount={currentAccount}
@@ -34,7 +34,8 @@ export default function Header({ currentAccount, connecting, connectWallet, load
             profileFound={profileFound}
             profile={profile}
             connecting={connecting}
-          />
+          /> */}
+          <Navbar />
           
         </div>
         <div className="">

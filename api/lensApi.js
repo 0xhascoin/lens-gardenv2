@@ -98,3 +98,35 @@ query Profiles (
     }
   }
 `
+
+
+export const getLensProfile_Header = `
+query Profiles (
+    $address: EthereumAddress!
+  ){
+    profiles(request: { ownedBy: [$address] }) {
+      items {
+
+        picture {
+          ... on MediaSet {
+            original {
+              url
+              mimeType
+            }
+          }
+        }
+        handle
+        ownedBy
+        stats {
+          totalFollowers
+          totalFollowing
+          totalPosts
+          totalComments
+          totalMirrors
+          totalPublications
+          totalCollects
+        }
+      }
+    }
+  }
+`

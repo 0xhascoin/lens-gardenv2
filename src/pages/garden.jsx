@@ -12,12 +12,14 @@ import comments from '../styles/images/stats/comments.png';
 import collects from '../styles/images/stats/collects.png';
 import mirrors from '../styles/images/stats/mirrors.png';
 
-import { useState, useEffect } from 'react';
 import { client, myStats } from '../../api/lensApi';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAccount } from 'wagmi'
+
 import LensProfileStats from '../components/lensProfileStats';
 import Footer from '../components/footer';
 import GardenStats from '../components/gardenStats';
-import { useNavigate } from 'react-router-dom';
 import MintNft from "../components/mintNft";
 import { checkIfUserExists, checkIfUserMinted, getUser } from "../../api/firebase";
 
@@ -38,52 +40,34 @@ const Loading = () => (
 )
 
 const Garden = () => {
-
-  const [connecting, setConnecting] = useState(false);
-  const [currentAccount, setCurrentAccount] = useState("");
-  const [profile, setProfile] = useState(null);
+  const navigate = useNavigate()
+   const [profile, setProfile] = useState(null);
   const [loadingProfile, setLoadingProfile] = useState(false);
   const [profileFound, setProfileFound] = useState(false);
-  const [minted, setMinted] = useState(false);
 
-  const navigate = useNavigate();
-
-  // Check if already minted
-  const checkIfMinted = async (address) => {
-    // Check if minted using firebase DB
-    const hasMinted = await checkIfUserMinted(address);
-
-    // Set state based on if minted
-    if (hasMinted) {
-      setMinted(true);
-    } else {
-      setMinted(false);
-    }
-  }
-
-
-  const fetchLensProfile = async (address) => {
+   const fetchLensProfile = async (address) => {
     try {
-      // Start loading profile
+      // Start Loading Profile from Lens API
       setLoadingProfile(true);
       console.log("Loading Profile....");
 
+      // Destructure the object
       const { data: { profiles: { items } } } = await client.query(myStats, { "address": address }).toPromise();
-
-      // No profile found
+      
+      // Profile not found / doesn't exist
       if (items[0] == undefined) {
         setProfileFound(false);
-        console.log("No profile found.");
       } else {
         // Profile found
         setProfile(items[0]);
+
         console.log("Found Profile.");
         setProfileFound(true);
       }
 
-      // Finished loading profile
+      // Finished Loading Profile
       setLoadingProfile(false);
-      console.log("Finished Loading Profile....")
+      console.log("Finished Loading Profile....");
 
     } catch (error) {
       console.log(error);
@@ -91,93 +75,36 @@ const Garden = () => {
       setLoadingProfile(false);
     }
   };
+    const { address, isConnecting, isDisconnected } = useAccount()
 
-
-  const checkIfWalletIsConnected = async () => {
-    const { ethereum } = window;
-
-    // Metamask is not installed
-    if (!ethereum) {
-      console.log("Make sure you have metamask!");
-      return;
-    } else {
-      console.log("We have the ethereum object", ethereum);
-    }
-
-    // Get the current collected chain
-    let chainId = await ethereum.request({ method: 'eth_chainId' });
-    console.log("Connected to chain " + chainId);
-
-    // String, hex code of the chainId of the Goerli test network
-    const goerliChainId = "0x5";
-
-    // Not connected to goerli, redirect to home page
-    if (chainId !== goerliChainId) {
-      alert("You are not connected to the Goerli Test Network!");
-      navigate("/");
-    }
-
-    setConnecting(true);
-
-    const accounts = await ethereum.request({ method: 'eth_accounts' });
-
-    if (accounts.length !== 0) {
-      const account = accounts[0]; // Get the first connected account
-      console.log("Found an authorized account:", account);
-      setCurrentAccount(account);
-
-      // Fetch the lens profile connected to that account
-      await fetchLensProfile(account);
-      setConnecting(false)
-
-      // Check if minted
-      await checkIfMinted(account);
-    } else {
-      console.log("No authorized account found");
-      setConnecting(false);
-    }
-  };
-
-  const connectWallet = async () => {
+  const checkIfConnected = async () => {
     try {
-      const { ethereum } = window;
+      console.log("isConnecting: ", isConnecting);
+      console.log("address: ", address);
+      
+      if((address == undefined || address == null)) {
+        console.log("Not connected")
+        navigate("/")
+      } else {
+        console.log("connected");
 
-      if (!ethereum) {
-        alert("Get MetaMask!");
-        return;
+        await fetchLensProfile(address);
       }
-
-      setConnecting(true);
-      const accounts = await ethereum.request({ method: "eth_requestAccounts" });
-
-      // console.log("Connected", accounts[0]);
-      setCurrentAccount(accounts[0]);
-      await fetchLensProfile(accounts[0]);
-      setConnecting(false);
-
+      
     } catch (error) {
-      console.log(error);
-      setConnecting(false);
+      console.log("Error: ", error);
     }
-  };
+  }
 
   useEffect(() => {
-    checkIfWalletIsConnected();
-  }, []);
+    checkIfConnected();
+  }, [address])
+  
+  useEffect(() => {
+    console.log("HELLOOOOO")
+  }, [])
 
-  const renderConnected = () => {
-    if (currentAccount === '') {
-      if (connecting) {
-        return <Loading />
-      } else {
-        navigate("/");
-      }
-    } else {
-      return <>{renderPage()}</>;
-    }
-  };
-
-  const renderPage = () => {
+   const renderPage = () => {
     if (loadingProfile) {
       return <Loading />;
     } else {
@@ -187,41 +114,18 @@ const Garden = () => {
         return (
 
           <>
-            <Header
-              connectWallet={connectWallet}
-              connecting={connecting}
-              currentAccount={currentAccount}
-              loadingProfile={loadingProfile}
-              profileFound={profileFound}
-              profile={profile}
-            />
-           { !minted && (
-              <MintNft address={profile.ownedBy} setMinted={setMinted} />
-         )} 
-
-            <LensProfileStats
-              profile={profile}
-            />
-
-            {minted && (
-              <GardenStats
-                profile={profile}
-              />
-            )}
-
-            <Footer />
-
+            <h1>Connected</h1>
           </>
         );
       }
     }
   };
-
+  
   return (
-    <div className="font relative min-h-screen bg-cover bg-center" style={{ backgroundImage: 'linear-gradient( rgba(0,0,0,.5), rgba(0,0,0,.5) ), url(https://cdn.midjourney.com/3439d6e8-9981-42a7-964f-a9e8ce18af84/grid_0.png)' }}>
-      {renderConnected()}
+    <div className="border border-white">
+        {renderPage()}
     </div>
-  );
-};
+  )
+}
 
 export default Garden;

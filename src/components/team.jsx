@@ -29,7 +29,7 @@ const Team = () => {
     return (
         <div className='m-auto text-center p-2 mt-2 sm:mb-4'>
             <h1 className='font text-2xl text-bold text-white underline hover:text-green-500 cursor-pointer'>Our Team</h1>
-            <div class="grid grid-cols-1 sm:flex-row sm:flex sm:mx-auto sm:items-center sm:justify-between">
+            <div className="grid grid-cols-1 sm:flex-row sm:flex sm:mx-auto sm:items-center sm:justify-between">
                 <div className='sm:mx-auto'>
                 <Card image={'https://pbs.twimg.com/profile_images/1605723322653851650/eCaVdNx5_400x400.jpg'} name='Hascoin' description="Founder & Dev." twitter="https://twitter.com/0xHascoin" lens="https://lenster.xyz/u/hascoin" />
                 </div>
