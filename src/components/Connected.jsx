@@ -4,7 +4,8 @@ import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { useDisconnect, useAccount } from 'wagmi'
 import { useState, useEffect } from 'react';
-import { client, getLensProfile_Header } from '../../api/lensApi';
+import { client, myStats } from '../../api/lensApi';
+import { checkIfUserExists } from '../../api/firebase';
 
 // Components
 import LoadingSpinner from './loadingSpinner';
@@ -36,7 +37,7 @@ export default function Connected() {
       console.log("Loading Profile....");
 
       // Destructure the object
-      const { data: { profiles: { items } } } = await client.query(getLensProfile_Header, { "address": address }).toPromise();
+      const { data: { profiles: { items } } } = await client.query(myStats, { "address": address }).toPromise();
 
       // Profile not found / doesn't exist
       if (items[0] == undefined) {
@@ -44,6 +45,7 @@ export default function Connected() {
       } else {
         // Profile found
         setProfile(items[0]);
+        await setupProfileInDB(items[0].ownedBy, items[0]);
 
         console.log("Found Profile.");
         setProfileFound(true);
@@ -154,6 +156,9 @@ export default function Connected() {
     }
   };
 
+  const setupProfileInDB = async (address, obj) => {
+    await checkIfUserExists(address, obj);
+  }
   useEffect(() => {
     fetchLensProfile(address)
   }, [])
