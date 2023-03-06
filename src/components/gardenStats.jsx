@@ -10,11 +10,13 @@ import '../styles/card.css'
 const Badge = ({ text }) => {
     // console.log("Text: ", text)
     return (
-        <span className="text-center border-white border text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 text-white">
+        <span className="text-center border-white border text-xs font-medium mr-2 px-2.5 py-0.5 rounded bg-gray-700 text-white hover:text-green-500 hover:border-green-500">
             {text}
         </span>
     )
 }
+
+
 
 
 const NextExpProgress = ({ unlocksAtLevel, xpNeededToUnlock, myTotalXp }) => {
@@ -162,7 +164,7 @@ const GardenStats = ({ profile }) => {
                     <div className="p-1 sm:p-0 rounded-lg border-2 border-white bg-slate-800">
 
                         <div className=" sm:h-full p-2 mx-auto items-center justify-center rounded-lg">
-                            <div className='text-center text-white underline mx-auto text-xl'><p>{data.name}</p></div>
+                            <div className='text-center text-white underline mx-auto text-xl hover:text-green-500'><p>{data.name}</p></div>
                             <div className="cursor-pointer flex mt-2 mb-2 justify-center items-center mx-auto nft rounded-lg">
                                 <img src={data.image} className="border border-white rounded-lg sm:w-9/12" alt="" aria-hidden="true" />
                             </div>
@@ -176,10 +178,10 @@ const GardenStats = ({ profile }) => {
                             </div>
 
                             <div className="font grid grid-cols-1 sm:mb-4 mb-2 text-white mx-auto items-center justify-center">
-                                <p className='sm:text-lg text-sm text-center'>
+                                <p className='sm:text-lg text-sm text-center hover:text-green-500'>
                                     Our Equilibrium collection
                                 </p>
-                               <p className='sm:text-lg text-sm text-center'>promotes balance and calm.</p>
+                               <p className='sm:text-lg text-sm text-center hover:text-green-500'>promotes balance and calm.</p>
 
                             </div>
                             <div className="flex mx-auto justify-center pt-2">
@@ -190,7 +192,8 @@ const GardenStats = ({ profile }) => {
                                         </a>
                                     </span>
                                     <div className='flex'>
-                                        <a className="twitter-share-button" href="https://twitter.com/intent/tweet?text=🎉🎉🌿🌿I just unlocked and minted this one-of-a-kind%20 collectible on Lens Garden!!🎉🎉🌿🌿&url=https://mycoolapp.xyz&via=LensGardenNft built by: @0xHascoin @AZahredeen&hashtags=lensgarden,lens,web3,nft" target="_blank">
+                                    <a className="twitter-share-button" href="https://twitter.com/intent/tweet?text=🎉🎉🌿🌿I just unlocked and minted this one-of-a-kind%20 collectible on Lens Garden!!🎉🎉🌿🌿&url=https://mycoolapp.xyz&via=LensGardenNft built by: @0xHascoin @AZahredeen&hashtags=lensgarden,lens,web3,nft" target="_blank">
+
                                             <svg viewBox="0 0 24 24" width="30" height="36" aria-hidden="true" className=' fill-white'><g><path d="M23.643 4.937c-.835.37-1.732.62-2.675.733.962-.576 1.7-1.49 2.048-2.578-.9.534-1.897.922-2.958 1.13-.85-.904-2.06-1.47-3.4-1.47-2.572 0-4.658 2.086-4.658 4.66 0 .364.042.718.12 1.06-3.873-.195-7.304-2.05-9.602-4.868-.4.69-.63 1.49-.63 2.342 0 1.616.823 3.043 2.072 3.878-.764-.025-1.482-.234-2.11-.583v.06c0 2.257 1.605 4.14 3.737 4.568-.392.106-.803.162-1.227.162-.3 0-.593-.028-.877-.082.593 1.85 2.313 3.198 4.352 3.234-1.595 1.25-3.604 1.995-5.786 1.995-.376 0-.747-.022-1.112-.065 2.062 1.323 4.51 2.093 7.14 2.093 8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602.91-.658 1.7-1.477 2.323-2.41z"></path></g></svg>
                                         </a>
                                     </div>
@@ -207,7 +210,7 @@ const GardenStats = ({ profile }) => {
                     <div className="p-1 sm:p-0 rounded-lg border-2 border-white bg-slate-800">
 
                             <div className="sm:h-full p-2 mx-auto items-center justify-center rounded-lg">
-                                <div className='text-center text-white underline mx-auto text-xl'><p>{nextNFT.name}</p></div>
+                                <div className='text-center text-white underline mx-auto text-xl hover:text-green-500'><p>{nextNFT.name}</p></div>
                                 <div className="cursor-pointer flex mt-2 mb-2 justify-center items-center mx-auto nft rounded-lg">
                                     <img src={nextNFT.imageUrl} className="rounded-lg sm:w-9/12 border-white border" alt="" aria-hidden="true" />
                                 </div>
@@ -218,13 +221,13 @@ const GardenStats = ({ profile }) => {
                                     <svg className='h-6 w-6 ml-2 mb-1' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect fill="none" /><circle cx="128" cy="140" r="20" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="12" /><line x1="128" y1="160" x2="128" y2="184" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="12" /><rect x="40" y="88" width="176" height="128" rx="8" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="12" /><path d="M92,88V52a36,36,0,0,1,72,0V88" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="12" /></svg>
                                 </div>
                                 <div className="font grid grid-col-1 justify-center mx-auto items-center">
-                                    <p className='sm:text-lg flex justify-center text-center text-sm lg:text-2xl text-white'> Experience to unlock:</p>
+                                    <p className='control6 sm:text-lg flex justify-center text-center text-sm lg:text-2xl text-white hover:text-green-500'> Experience to unlock:</p>
                                         
-                                         <h1 className='sm:text-lg text-sm text-white flex justify-center'>{XP} / {nextNFT.xpNeededtoUnlock}</h1>
+                                         <h1 className='sm:text-2xl text-sm text-white flex justify-center hover:text-green-500 '>{XP} / {nextNFT.xpNeededtoUnlock}</h1>
                                    
                                     </div>
                                    
-                                        <div className='sm:mt-16 control1 control3'>
+                                        <div className='sm:mt-14 control1 control3 '>
                                         <NextExpProgress unlocksAtLevel={nextNFT.unlocksAtLevel} xpNeededToUnlock={nextNFT.xpNeededtoUnlock} myTotalXp={XP} />
                                         </div>
                                 
@@ -236,7 +239,7 @@ const GardenStats = ({ profile }) => {
 
                         <div className="p-1 sm:p-0 rounded-lg border-2 border-white bg-slate-800">
                         <div className="sm:h-full p-2 mx-auto items-center justify-center rounded-lg">
-                        <div className='text-center text-white underline mx-auto text-xl'><p>Tier: #1 NFT</p></div>
+                        <div className='text-center text-white underline mx-auto text-xl hover:text-green-500'><p>Tier: #1 NFT</p></div>
                         <div className="cursor-pointer flex mt-2 mb-2 justify-center items-center mx-auto nft rounded-lg">
                         <img src={data.image} className="rounded-lg sm:w-9/12 border-white border" alt="" aria-hidden="true" />
                         </div>
@@ -247,7 +250,7 @@ const GardenStats = ({ profile }) => {
                                     <svg className='h-6 w-6 ml-2 mb-1' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect fill="none" /><circle cx="128" cy="140" r="20" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="12" /><line x1="128" y1="160" x2="128" y2="184" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="12" /><rect x="40" y="88" width="176" height="128" rx="8" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="12" /><path d="M92,88V52a36,36,0,0,1,72,0V88" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="12" /></svg>
                                 </div>
                         <div className="font flex mb-2 sm:mb-36 text-white mx-auto items-center justify-center">
-                        <p className='sm:text-lg text-sm text-center'>
+                        <p className='control5 sm:text-lg text-sm text-center'>
                        Finish all Levels to mint Tier #1 NFT.
                         </p>
                         </div>

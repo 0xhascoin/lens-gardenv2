@@ -11,7 +11,7 @@ const startUrl = 'https://lens.infura-ipfs.io/ipfs/';
 const Badge = ({ text }) => {
     // console.log("Text: ", text)
     return (
-        <span className="text-center sm:text-sm border border-white text-xs font-medium p-1 rounded dark:bg-gray-700 text-white">
+        <span className="text-center sm:text-sm border border-white text-xs font-medium p-1 rounded bg-gray-700 hover:text-green-500 hover:border-green-500 text-white">
             {text}
         </span>
     )
@@ -162,7 +162,7 @@ const LensProfile = ({ profile }) => {
         <div className="w-full sm:w-3/5 p-2 border-white border-2 bg-slate-800 rounded-lg">
             <div className="w-full rounded-lg ">
                 {/* Header */}
-                <div className="profile-div w-full grid grid-cols-1 sm:flex p-2 sm:p-4 sm:mb-4 mb-4 sm:items-center ">
+                <div className="profile-div w-full grid grid-cols-1 sm:flex p-2 sm:p-4 sm:mb-4 mb-4 sm:items-center">
                     {/* Profile Image */}
                     <img
                         className="profile-div rounded-lg md:mx-auto mx-auto justify-center items-center w-26 h-24 border border-white sm:mr-2"
@@ -172,10 +172,11 @@ const LensProfile = ({ profile }) => {
                     {/* Names */}
                     <div className="sm:text-left w-full pt-2 mx-auto justify-center items-center sm:pt-8">
                         {/* Lens Name */}
+                  
                         <h2 className='sm:pl-2 text-xl sm:text-2xl text-white bolded center-text hover:text-green-500 cursor-pointer'>{profile.handle}</h2>
                         {/* Address */}
                         <p className='sm:pl-2 text-sm sm:text-2xl text-white center-text hover:text-green-500 cursor-pointer'>{profile.ownedBy.slice(0, 6)}...{profile.ownedBy.slice(-6)}</p>
-
+                  
                         {loadingStats ? (
                             <p>Loading...</p>
                         ) : (

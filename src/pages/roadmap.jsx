@@ -1,7 +1,8 @@
-import React from 'react'
-import Team from '../components/team'
+import React from 'react';
+import Team from '../components/team';
 import rmhor from '../styles/images/rmhor.jpeg';
-import rmver from "../styles/images/rmver.jpeg"
+import rmver from "../styles/images/rmver.jpeg";
+import '../styles/home.css';
 
 import { useState, useEffect } from 'react';
 import { client, myStats } from '../../api/lensApi';
@@ -125,8 +126,8 @@ const Roadmap = () => {
             {/* About the project */}
 
             {/* About the team */}
-           <div className='flex sm:w-3/4 w-full justify-center items-center mx-auto'>
-                <img src={rmhor} className="dont-displaysm border-2 border-white rounded-lg mt-2" />
+           <div className='flex sm:w-3/4 w-full justify-center items-center mx-auto mt-4 px-2 sm:px-0'>
+                <img src={rmhor} className="dont-displaysm border-2 border-white rounded-lg mt-2 hover:border-green-500 cursor-pointer" />
                 <img src={rmver} className="dont-displaymd border-2 border-white rounded-lg mt-2" />
            </div>
 
