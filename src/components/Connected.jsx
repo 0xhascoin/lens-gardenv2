@@ -105,7 +105,7 @@ export default function Connected() {
               <Menu.Button className="flex w-full items-center border-none justify-between gap-x-1.5 rounded-md bg-transparent text-sm font-semibold text-gray-900">
                 {/* Image */}
                 <div className="rounded-lg">
-                  <img className="h-14 rounded-lg" src={fixUrl(profile.picture.original.url)} />
+                  <img className="border-white border rounded-lg image-width sm:w-20 ml-auto mr-2 hover:border-green-500" src={fixUrl(profile.picture.original.url)} />
 
                 </div>
                 {/* Handle */}
