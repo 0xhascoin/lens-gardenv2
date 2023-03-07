@@ -157,7 +157,7 @@ const GardenStats = ({ profile }) => {
         if (updatedDB) {
             return (
 
-                <div className='sm:pl-2 sm:pr-2 sm:flex-nowrap sm:inline-flex sm:gap-x-4 mt-2 sm:mt-4 gap-y-4 grid grid-cols-1 sm:w-full sm:justify-between rounded-lg bg-transparent'>
+                <div className='sm:pl-2 sm:pr-2 px-2 sm:flex-nowrap sm:inline-flex sm:gap-x-4 mt-2 sm:mt-4 gap-y-4 grid grid-cols-1 sm:w-full sm:justify-between rounded-lg bg-transparent'>
                     {/* Points calculation */}
                    
                     {/* NFT Image */}
@@ -178,10 +178,10 @@ const GardenStats = ({ profile }) => {
                             </div>
 
                             <div className="font grid grid-cols-1 sm:mb-4 mb-2 text-white mx-auto items-center justify-center">
-                                <p className='sm:text-lg text-sm text-center hover:text-green-500'>
+                                <p className='sm:text-lg text-sm text-center lg:text-2xl hover:text-green-500'>
                                     Our Equilibrium collection
                                 </p>
-                               <p className='sm:text-lg text-sm text-center hover:text-green-500'>promotes balance and calm.</p>
+                               <p className='sm:text-lg text-sm text-center hover:text-green-500 lg:text-2xl'>promotes balance and calm.</p>
 
                             </div>
                             <div className="flex mx-auto justify-center pt-2">
@@ -250,7 +250,7 @@ const GardenStats = ({ profile }) => {
                                     <svg className='h-6 w-6 ml-2 mb-1' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect fill="none" /><circle cx="128" cy="140" r="20" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="12" /><line x1="128" y1="160" x2="128" y2="184" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="12" /><rect x="40" y="88" width="176" height="128" rx="8" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="12" /><path d="M92,88V52a36,36,0,0,1,72,0V88" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="12" /></svg>
                                 </div>
                         <div className="font flex mb-2 sm:mb-36 text-white mx-auto items-center justify-center">
-                        <p className='control5 sm:text-lg text-sm text-center'>
+                        <p className='control5 sm:text-lg text-sm text-center lg:text-2xl'>
                        Finish all Levels to mint Tier #1 NFT.
                         </p>
                         </div>
@@ -272,7 +272,7 @@ const GardenStats = ({ profile }) => {
         <div className='mx-auto items-center w-full bg-transparent flex justify-center mb-4 rounded'>
             {renderNFTGarden()}
         </div>
-        <div className='sm:pl-2 sm:pr-2'>
+        <div className='sm:pl-2 sm:pr-2 px-2'>
     <div className='w-full text-white mb-4 border-2 border-white rounded-lg'>
         <div className="rounded-lg w-full bg-[#14243d] text-center pb-2">
                     <div className=' font pt-5 sm:text-2xl text-lg px-2 sm:px-0 relative text-white'>Points Calculation.

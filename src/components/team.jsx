@@ -8,10 +8,10 @@ const Card = ({ image, name, description, twitter, lens }) => {
                 <img src={image} alt="" className='flex mx-auto rounded-lg border-white border hover:border-green-500' />
             </div>
             <div className="mt-8 sm:mt-0 w-1/2 sm:w-1/3 mx-auto flex justify-center sm:pt-2">
-                <p className='font text-2xl font-semibold text-white hover:text-green-500 underline'>{name}</p>
+                <p className='font text-2xl font-semibold text-white hover:text-green-500 underline  flex mx-auto'>{name}</p>
             </div>
-            <div className="mt-4 sm:mt-2 sm:w-1/2 sm:flex sm:mx-auto">
-                <p className='font text-white hover:text-green-500 text-xl sm:w-1/2 mx-auto'>{description}</p>
+            <div className="mt-4 sm:mt-2 sm:w-1/2 sm:flex sm:mx-auto ">
+                <p className='font text-white hover:text-green-500 text-xl sm:w-1/2 mx-auto  lg:text-xl'>{description}</p>
             </div>
             <div className="flex justify-center mt-6 sm:mt-2 sm:w-1/3 mx-auto">
                 <a href={twitter} target="_blank" className='bg-transparent rounded-full border border-slate-800 mr-4 sm:mr-0 p-3'>
@@ -28,7 +28,7 @@ const Card = ({ image, name, description, twitter, lens }) => {
 const Team = () => {
     return (
         <div className='m-auto text-center p-2 mt-2 sm:mb-4'>
-            <h1 className='font text-2xl text-bold text-white underline hover:text-green-500 cursor-pointer'>Our Team</h1>
+            <h1 className='font text-2xl text-bold text-white underline hover:text-green-500 cursor-pointe w-1/2 mx-auto lg:text-3xl mb-2'>Our Team</h1>
             <div class="grid grid-cols-1 sm:flex-row sm:flex sm:mx-auto sm:items-center sm:justify-between">
                 <div className='sm:mx-auto'>
                 <Card image={'https://pbs.twimg.com/profile_images/1605723322653851650/eCaVdNx5_400x400.jpg'} name='Hascoin' description="Founder & Dev." twitter="https://twitter.com/0xHascoin" lens="https://lenster.xyz/u/hascoin" />
