@@ -55,7 +55,7 @@ export default function App() {
   return (
     <Router>
       <WagmiConfig client={wagmiClient}>
-        <div className="page">    
+        <div className="page min-h-screen">    
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />

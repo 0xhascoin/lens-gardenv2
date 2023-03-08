@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import logo1 from "../styles/images/logo1.png";
-
+import '../styles/card.css'
 // Components
 import Navbar from './Navbar'
 

@@ -188,21 +188,22 @@ body {
   .card-img:hover .card-img-top {
     animation: pulse 2s ease-in-out infinite;
   }
+  
   .nft {
-    transition: .5s all;
+    transition: .5s all !important;
   }
   
   .nft:hover {
    
     
-    transform: scale(1.015);
-    filter: brightness(1.3);
+    transform: scale(1.015) !important;
+    filter: brightness(1.3) important;
   }
   
   .nft:hover::before {
-    filter: brightness(.5);
-    top: -100%;
-    left: 200%;
+    filter: brightness(.5) !important;
+    top: -100% !important;
+    left: 200% !important;
   }
 
   .chart {

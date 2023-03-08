@@ -15,8 +15,8 @@ const Roadmap = () => {
 
             {/* Roadmap */}
             <div className='flex sm:w-3/4 w-full justify-center items-center mx-auto mt-4 px-2 sm:px-0 control7'>
-                <img src={rmhor} className="dont-displaysm border-2 border-white rounded-lg mt-2 hover:border-green-500 cursor-pointer" />
-                <img src={rmver} className="dont-displaymd border-2 border-white rounded-lg mt-2" />
+                <img src={rmhor} className="border-2 border-white rounded-lg mt-2 hover:border-green-500 cursor-pointer dont-displaysm" />
+                <img src={rmver} className="border-2 border-white rounded-lg mt-2 dont-displaymd " />
             </div>
 
             {/* About the team */}

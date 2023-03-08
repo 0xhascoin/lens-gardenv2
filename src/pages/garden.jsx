@@ -135,7 +135,7 @@ const Garden = () => {
   };
 
   return (
-    <div>
+    <div className="min-h-screen">
       {renderPage()}
     </div>
   )

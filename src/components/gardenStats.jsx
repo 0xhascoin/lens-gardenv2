@@ -155,7 +155,7 @@ const GardenStats = ({ profile }) => {
         if (updatedDB) {
             return (
 
-                <div className='sm:pl-2 sm:pr-2 sm:flex-nowrap sm:inline-flex sm:gap-x-4 mt-2 sm:mt-4 gap-y-4 grid grid-cols-1 sm:w-full sm:justify-between rounded-lg bg-transparent px-2'>
+                <div className='font sm:pl-2 sm:pr-2 sm:flex-nowrap sm:inline-flex sm:gap-x-4 mt-2 sm:mt-4 gap-y-4 grid grid-cols-1 sm:w-full sm:justify-between rounded-lg bg-transparent px-2'>
                     {/* Points calculation */}
 
                     {/* NFT Image */}
@@ -270,7 +270,7 @@ const GardenStats = ({ profile }) => {
             <div className='mx-auto items-center w-full bg-transparent flex justify-center mb-4 rounded'>
                 {renderNFTGarden()}
             </div>
-            <div className='sm:pl-2 sm:pr-2 px-2'>
+            <div className='sm:pl-2 sm:pr-2 px-2 font'>
                 <div className='w-full text-white mb-4 border-2 border-white rounded-lg'>
                     <div className="rounded-lg w-full bg-[#14243d] text-center pb-2">
                         <div className=' font pt-5 sm:text-2xl text-lg px-2 sm:px-0 relative text-white'>Points Calculation.

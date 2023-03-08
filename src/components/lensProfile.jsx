@@ -5,6 +5,7 @@ import { FiSend } from 'react-icons/fi'
 import { VscMirror } from 'react-icons/vsc'
 import { getUser } from '../../api/firebase';
 import { images, names, nftData } from '../../constants/nftMetadata';
+// import '../styles/hero.css';
 
 const startUrl = 'https://lens.infura-ipfs.io/ipfs/';
 
@@ -159,13 +160,13 @@ const LensProfile = ({ profile }) => {
     }, [])
 
     return (
-        <div className="w-full sm:w-3/5 p-2 border-white border-2 bg-slate-800 rounded-lg">
+        <div className="w-full sm:w-3/5 p-2 border-white border-2 bg-slate-800 rounded-lg font">
             <div className="w-full rounded-lg ">
                 {/* Header */}
-                <div className="profile-div w-full grid grid-cols-1 sm:flex p-2 sm:p-4 sm:mb-4 mb-4 sm:items-center">
+                <div className="w-full grid grid-cols-1 sm:flex p-2 sm:p-4 sm:mb-4 mb-4 sm:items-center profile-div ">
                     {/* Profile Image */}
                     <img
-                        className="profile-div rounded-lg md:mx-auto mx-auto justify-center items-center w-26 h-24 border border-white sm:mr-2"
+                        className="rounded-lg md:mx-auto mx-auto justify-center items-center w-26 h-24 border border-white sm:mr-2 profile-div "
                         src={fixUrl(profile.picture.original.url)}
                         alt="profile-image"
                     />

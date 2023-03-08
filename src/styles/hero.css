@@ -35,7 +35,7 @@
   
     @media only screen and (max-width: 768px) and (min-width: 768px) {
         .element-to-hide {
-          display: none;
+          display: none !important;
         }
       }
 
@@ -48,18 +48,18 @@
        
       @media (max-width: 768px) {
         .center-text {
-          text-align: center;
+          text-align: center !important;
         }
       }
 
       @media (max-width: 768px) {
         .image-width {
-          width: 67px;
+          width: 67px !important;
         }
       }
 
       .bg-transparents {
-        background-color: transparent;
+        background-color: transparent !important;
       }
 
       @media (max-width: 767px) {
