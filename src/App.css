@@ -9,53 +9,13 @@
   /* justify-content: center; */
   /* min-width: 320px; */
   min-height: 100vh; 
-  border: 1px solid black;
+  /* border: 5px solid red !important; */
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-.App {
-  /* border: 1px solid black; */
-  width: 100%;
-}
-
-.App .content {
-  /* border: 1px solid red; */
-  margin: auto;
-  width: 90%;
-  margin-top: 2rem;
+.page {
+  /* border: 3px solid red; */
+  /* background-color: black; */
+  background: linear-gradient( rgba(0,0,0,.5), rgba(0,0,0,.5) ), url('https://cdn.midjourney.com/3439d6e8-9981-42a7-964f-a9e8ce18af84/grid_0.png');
+  background-size: cover;
+  background-repeat: no-repeat;
 }

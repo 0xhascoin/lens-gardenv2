@@ -25,9 +25,9 @@ const Navbar = () => {
   }
 
   return (
-    <div className="flex items-center justify-end">
+    <>
       { renderConnect() }
-    </div>
+    </>
   )
 }
 

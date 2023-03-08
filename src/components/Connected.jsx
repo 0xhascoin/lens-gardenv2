@@ -10,6 +10,14 @@ import { checkIfUserExists } from '../../api/firebase';
 // Components
 import LoadingSpinner from './loadingSpinner';
 
+const Badge = ({ text }) => {
+  // console.log("Text: ", text)
+  return (
+      <span className="text-center  hover:text-green-500 hover:border-green-500 sm:text-lg text-xs font-medium mr-2 px-2.5 py-0.5 rounded bg-slate-800 text-white border border-white">
+          {text}
+      </span>
+  )
+}
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -100,26 +108,27 @@ export default function Connected() {
       } else {
         return (
 
-          <Menu as="div" className="relative inline-block text-left">
-            <div>
-              <Menu.Button className="flex w-full items-center border-none justify-between gap-x-1.5 rounded-md bg-transparent text-sm font-semibold text-gray-900">
-                {/* Image */}
-                <div className="rounded-lg">
-                  <img className="border-white border rounded-lg image-width sm:w-20 ml-auto mr-2 hover:border-green-500" src={fixUrl(profile.picture.original.url)} />
+          <Menu as="div" className="">
 
-                </div>
-                {/* Handle */}
-                <div className="text-left text-sm p-2 text-white">
-                  <div>
-                    {profile.handle}
-                  </div>
-                  <div className="mt-2">
-                    <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">{`Level ${calculateLevel(profile.stats.totalFollowing, profile.stats.totalFollowers, profile.stats.totalPosts, profile.stats.totalCollects, profile.stats.totalMirrors, profile.stats.totalComments)}`}</span>
-                  </div>
-                </div>
-                <ChevronDownIcon className="-mr-1 h-8 w-8 text-white" aria-hidden="true" />
-              </Menu.Button>
+
+          <Menu.Button>
+            <div className="flex bg-transparent rounded-lg">
+            <img
+              className="border-white border rounded-lg image-width sm:w-20 ml-auto mr-2  hover:border-green-500"
+              src={fixUrl(profile.picture.original.url)}
+              alt="profile-image"
+            />
+            <div className="sm:grid sm:grid-cols-1 sm:gap-y-6 grid grid-cols-1 gap-y-6">
+              <p className='text-white flex-col text-sm sm:text-xl items-center flex hover:text-green-500'>{profile.handle}</p>
+              <Badge text={`Level ${calculateLevel(profile.stats.totalFollowing, profile.stats.totalFollowers, profile.stats.totalPosts, profile.stats.totalCollects, profile.stats.totalMirrors, profile.stats.totalComments)}`} />
             </div>
+            <div className="flex items-center">
+
+              <ChevronDownIcon className="mr-1 h-8 w-8 text-white" aria-hidden="true" />
+            </div>
+
+          </div>
+          </Menu.Button>
 
             <Transition
               as={Fragment}
