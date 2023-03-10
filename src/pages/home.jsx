@@ -30,7 +30,7 @@ const Home = () => {
 
       // Destructure the object
       const { data: { profiles: { items } } } = await client.query(myStats, { "address": address }).toPromise();
-      
+
       // Profile not found / doesn't exist
       if (items[0] == undefined) {
         setProfileFound(false);
@@ -79,10 +79,17 @@ const Home = () => {
 
     // String, hex code of the chainId of the Goerli test network
     const goerliChainId = "0x5";
+    const mumbaiChainId = "0x13881";
 
-    // Not connected to goerli
-    if (chainId !== goerliChainId) {
-      alert("You are not connected to the Goerli Test Network!");
+    // Not connected to goerli, redirect to home page
+    if (chainId !== mumbaiChainId) {
+      alert("You are not connected to the Mumbai Test Network!");
+      ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: mumbaiChainId }], // chainId must be in hexadecimal numbers
+      });
+    } else {
+      // alert("Connected to mumbai")
     }
 
     setConnecting(true);
@@ -114,6 +121,20 @@ const Home = () => {
       if (!ethereum) {
         alert("Get MetaMask!");
         return;
+      }
+
+      const goerliChainId = "0x5";
+      const mumbaiChainId = "0x13881";
+
+      // Not connected to goerli, redirect to home page
+      if (chainId !== mumbaiChainId) {
+        alert("You are not connected to the Mumbai Test Network!");
+        ethereum.request({
+          method: 'wallet_switchEthereumChain',
+          params: [{ chainId: mumbaiChainId }], // chainId must be in hexadecimal numbers
+        });
+      } else {
+        // alert("Connected to mumbai")
       }
 
       setConnecting(true);

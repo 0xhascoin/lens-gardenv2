@@ -24,24 +24,25 @@ contract LensGardenNFT is ERC721URIStorage {
 
     // A function our user will hit to get their NFT.
     function makeAnEpicNFT(string memory _uri) public {
-        if(!minted[msg.sender]) {
-            // Get the current tokenId, this starts at 0.
-            uint256 newItemId = _tokenIds.current();
-    
-            // Actually mint the NFT to the sender using msg.sender.
-            _safeMint(msg.sender, newItemId);
-    
-            // Return the NFT's metadata
-            _setTokenURI(newItemId, _uri);
+        require(
+            !minted[msg.sender],
+            "Address has already minted an NFT of this type"
+        );
 
-            minted[msg.sender] = true;
-    
-            // Increment the counter for when the next NFT is minted.
-            _tokenIds.increment();
-    
-            emit NewNFTMinted(msg.sender, newItemId);
-        }
+        // Get the current tokenId, this starts at 0.
+        uint256 newItemId = _tokenIds.current();
+
+        // Actually mint the NFT to the sender using msg.sender.
+        _safeMint(msg.sender, newItemId);
+
+        // Return the NFT's metadata
+        _setTokenURI(newItemId, _uri);
+
+        minted[msg.sender] = true;
+
+        // Increment the counter for when the next NFT is minted.
+        _tokenIds.increment();
+
+        emit NewNFTMinted(msg.sender, newItemId);
     }
-
-
 }

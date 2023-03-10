@@ -110,11 +110,18 @@ const Garden = () => {
 
     // String, hex code of the chainId of the Goerli test network
     const goerliChainId = "0x5";
+    const mumbaiChainId = "0x13881";
 
     // Not connected to goerli, redirect to home page
-    if (chainId !== goerliChainId) {
-      alert("You are not connected to the Goerli Test Network!");
+    if (chainId !== mumbaiChainId) {
+      alert("You are not connected to the Mumbai Test Network!");
       navigate("/");
+      ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: mumbaiChainId }], // chainId must be in hexadecimal numbers
+      });
+    } else {
+      // alert("COnnected to mumbai")
     }
 
     setConnecting(true);

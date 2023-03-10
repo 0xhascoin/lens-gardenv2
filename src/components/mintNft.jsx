@@ -5,7 +5,7 @@ import LoadingSpinner from './loadingSpinner';
 import { mintNFT } from '../../api/firebase';
 // import { mintedNFT } from '../../api/firebase';
 
-const CONTRACT_ADDRESS = "0xd97Be3C7d4213DdeE741c02792B2fd9efb49C846";
+const CONTRACT_ADDRESS = "0x0AF125138Bfaf8202D6F4335eABa1aA9b7cF0dFE";
 
 
 const MintNft = ({ address, setMinted }) => {
