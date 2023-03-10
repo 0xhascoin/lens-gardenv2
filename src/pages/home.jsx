@@ -123,6 +123,10 @@ const Home = () => {
         return;
       }
 
+       // Get the current collected chain
+    let chainId = await ethereum.request({ method: 'eth_chainId' });
+    console.log("Connected to chain " + chainId);
+      
       const goerliChainId = "0x5";
       const mumbaiChainId = "0x13881";
 
