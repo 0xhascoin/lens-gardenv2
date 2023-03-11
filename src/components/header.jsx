@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import logo1 from "../styles/images/logo1.png";
 import ConnectWallet from "./connectWallet";
 
 
@@ -18,7 +17,7 @@ export default function Header({ currentAccount, connecting, connectWallet, load
       <div className="pt-2 flex sm:flex-wrap flex-wrap items-center justify-between bg-transparent mx-auto">
         <a href="/" className="flex items-center">
 
-          <img src={logo1} className="nft ml-2 rounded-lg shrink w-12 sm:w-16 object-contain" alt="Lens-garden logo" />
+          <img src={'https://cdn.midjourney.com/dd997338-04a4-46ce-942b-e08375c0d595/grid_0.png'} className="ml-2 rounded-3xl shrink w-12 sm:w-16 object-contain" alt="Lens-garden logo" />
           <span className="chart font hover:text-green-500 ml-4 text-white sm:text-2xl md:text-3xl hidden md:block element-to-hide">Lens Garden</span>
 
         </a>
