@@ -37,6 +37,7 @@ const Home = () => {
       } else {
         // Profile found
         setProfile(items[0]);
+        console.log("Profile: ", items[0])
 
         // Add the profile to the firebase DB
         await setupProfileInDB(items[0].ownedBy, items[0]);

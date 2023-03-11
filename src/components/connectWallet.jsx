@@ -72,7 +72,7 @@ const ConnectWallet = ({ connecting, currentAccount, connectWallet, loadingProfi
           <div className="flex bg-transparent rounded-lg">
             <img
               className="border-white border rounded-lg image-width sm:w-20 ml-auto mr-2  hover:border-green-500"
-              src={fixUrl(profile.picture.original.url)}
+              src={fixUrl(profile.picture.uri ? profile.picture.uri : profile.picture.original.url)}
               alt="profile-image"
             />
             <div className="sm:grid sm:grid-cols-1 sm:gap-y-6 grid grid-cols-1 gap-y-6">
