@@ -27,7 +27,7 @@ const NextExpProgress = ({ unlocksAtLevel, xpNeededToUnlock, myTotalXp }) => {
     return (
         <div className="flex items-end sm:pt-4 justify-between">
             
-            <div className="w-4/5 bg-zinc-800 rounded-full h-2.5 dark:bg-gray-700 mr-2">
+            <div className="w-4/5 bg-zinc-800 rounded-full h-2.5 dark:bg-gray-700 mr-2 ml-2">
                 <div className="bg-green-500 h-2.5 rounded-full" style={{ width: `${perc}%` }} ></div>
             </div>
             <div className='grid'>
@@ -161,9 +161,9 @@ const GardenStats = ({ profile }) => {
                     {/* Points calculation */}
                    
                     {/* NFT Image */}
-                    <div className="p-1 sm:p-0 rounded-lg border-2 border-white bg-slate-800">
+                    <div className="p-1 sm:p-0 rounded-lg border-2 border-white bg-slate-800 grid grid-cols-1">
 
-                        <div className=" sm:h-full p-2 mx-auto items-center justify-center rounded-lg">
+                        <div className="sm:h-full p-2 mx-auto items-center justify-center rounded-lg">
                             <div className='text-center text-white underline mx-auto text-xl hover:text-green-500'><p>{data.name}</p></div>
                             <div className="cursor-pointer flex mt-2 mb-2 justify-center items-center mx-auto nft rounded-lg">
                                 <img src={data.image} className="border border-white rounded-lg sm:w-9/12" alt="" aria-hidden="true" />
@@ -207,7 +207,7 @@ const GardenStats = ({ profile }) => {
 
                     {/* NFT Details */}
                     
-                    <div className="p-1 sm:p-0 rounded-lg border-2 border-white bg-slate-800">
+                    <div className="p-1 sm:p-0 rounded-lg border-2 border-white bg-slate-800 grid grid-cols-1">
 
                             <div className="sm:h-full p-2 mx-auto items-center justify-center rounded-lg">
                                 <div className='text-center text-white underline mx-auto text-xl hover:text-green-500'><p>{nextNFT.name}</p></div>
@@ -220,45 +220,47 @@ const GardenStats = ({ profile }) => {
 
                                     <svg className='h-6 w-6 ml-2 mb-1' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect fill="none" /><circle cx="128" cy="140" r="20" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="12" /><line x1="128" y1="160" x2="128" y2="184" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="12" /><rect x="40" y="88" width="176" height="128" rx="8" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="12" /><path d="M92,88V52a36,36,0,0,1,72,0V88" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="12" /></svg>
                                 </div>
-                                <div className="font grid grid-col-1 justify-center mx-auto items-center">
+                                <div className="font grid grid-cols-1 justify-center mx-auto items-center">
                                     <p className='control6 sm:text-lg flex justify-center text-center text-sm lg:text-2xl text-white hover:text-green-500'> Experience to unlock:</p>
                                         
-                                         <h1 className='sm:text-2xl text-sm text-white flex justify-center hover:text-green-500 '>{XP} / {nextNFT.xpNeededtoUnlock}</h1>
+                                         <h1 className='cursor-pointer sm:text-2xl text-sm text-white flex justify-center hover:text-green-500 '>{XP} / {nextNFT.xpNeededtoUnlock}</h1>
                                    
                                     </div>
                                    
-                                        <div className='sm:mt-24 control1 control3 '>
-                                        <NextExpProgress unlocksAtLevel={nextNFT.unlocksAtLevel} xpNeededToUnlock={nextNFT.xpNeededtoUnlock} myTotalXp={XP} />
-                                        </div>
+                                   <div></div>
+                                      
                                 
                                
                                 
                             </div>
+                            <div className='pb-2 sm:pb-2 sm:grid sm:grid-cols-1'>
+                                        <NextExpProgress unlocksAtLevel={nextNFT.unlocksAtLevel} xpNeededToUnlock={nextNFT.xpNeededtoUnlock} myTotalXp={XP} />
+                                        </div>
                         </div>
 
 
-                        <div className="p-1 sm:p-0 rounded-lg border-2 border-white bg-slate-800">
-                        <div className="sm:h-full p-2 mx-auto items-center justify-center rounded-lg">
-                        <div className='text-center text-white underline mx-auto text-xl hover:text-green-500'><p>Tier: #1 NFT</p></div>
-                        <div className="cursor-pointer flex mt-2 mb-2 justify-center items-center mx-auto nft rounded-lg">
+         <div className="p-1 sm:p-0 rounded-lg border-2 border-white bg-slate-800 grid grid-cols-1">
+            <div className="sm:h-full p-2 mx-auto items-center justify-center rounded-lg">
+                <div className='text-center text-white underline mx-auto text-xl hover:text-green-500'><p>Tier: #1 NFT</p></div>
+                    <div className="cursor-pointer flex mt-2 mb-2 justify-center items-center mx-auto nft rounded-lg">
                         <img src={data.image} className="rounded-lg sm:w-9/12 border-white border" alt="" aria-hidden="true" />
-                        </div>
-                        <div className="sm:text-lg sm:pt-3 sm:mb-6 text-sm text-white w-1/2 mx-auto items-center justify-center flex">
+                    </div>
+                    <div className="sm:text-lg sm:pt-3 sm:mb-6 text-sm text-white w-1/2 mx-auto items-center justify-center flex">
                                     <p>Locked
                                     </p>
 
                                     <svg className='h-6 w-6 ml-2 mb-1' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect fill="none" /><circle cx="128" cy="140" r="20" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="12" /><line x1="128" y1="160" x2="128" y2="184" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="12" /><rect x="40" y="88" width="176" height="128" rx="8" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="12" /><path d="M92,88V52a36,36,0,0,1,72,0V88" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="12" /></svg>
-                                </div>
-                        <div className="font flex mb-2 sm:mb-36 text-white mx-auto items-center justify-center">
-                        <p className='control5 sm:text-lg text-sm text-center lg:text-2xl'>
+                        </div>
+                        <div className="font flex mb-2 text-white mx-auto items-center justify-center">
+                        <p className='sm:text-lg text-sm text-center lg:text-2xl hover:text-green-500 sm:mb-4'>
                        Finish all Levels to mint Tier #1 NFT.
                         </p>
-                        </div>
-                        
-                        <div className="border-2 mb-1 rounded-lg flex justify-center sm:w-3/4 mx-auto border-green-500"></div>
-                        </div>
-                        
                     </div>
+                        
+                   
+            </div>
+            
+         </div>
 
                     
                 </div>
