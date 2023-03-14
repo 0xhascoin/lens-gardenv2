@@ -104,6 +104,17 @@ export const mintNFT = async (address) => {
         console.log("Set AlreadyMinted TO TRUE")
     }
 }
+export const mintLevelNFT = async (address, index) => {
+    address = address.toUpperCase();
+
+    const ref = doc(db, "users", address);
+    const snap = await getDoc(ref);
+    const { mintedLevelNFTs } = snap.data();
+    mintedLevelNFTs[index] = true;
+
+    await setDoc(doc(db, "users", address), {mintedLevelNFTs}, { merge: true });
+
+}
 
 const calculateExperience = (following, followers, posts, collects, mirrors, comments) => {
     // Following, Followers, Posts, Collects, Mirrors, Comments

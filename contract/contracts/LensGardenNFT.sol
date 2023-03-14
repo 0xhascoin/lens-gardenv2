@@ -14,6 +14,7 @@ contract LensGardenNFT is ERC721URIStorage {
     Counters.Counter private _tokenIds;
 
     mapping(address => bool) private minted;
+    mapping(address => mapping(uint256 => bool)) private mintedNFTs;
 
     // We need to pass the name of our NFTs token and its symbol.
     constructor() ERC721("LensGarden", "LG") {
@@ -44,5 +45,20 @@ contract LensGardenNFT is ERC721URIStorage {
         _tokenIds.increment();
 
         emit NewNFTMinted(msg.sender, newItemId);
+    }
+
+    function mintLevelNFT(string memory _uri, uint256 _typeId) public {
+        require(_typeId <= 9, "must not be greater than 9");
+        require(![mintedNFTs[msg.sender][_typeId]], "Address has already minted this level nft");
+
+        uint256 newItemId = _tokenIds.current();
+
+        _safeMint(msg.sender, newItemId);
+
+        _setTokenURI(newItemId, _uri);
+
+        mintedNFTs[msg.sender][_typeId] = true;
+
+        _tokenIds.increment();
     }
 }

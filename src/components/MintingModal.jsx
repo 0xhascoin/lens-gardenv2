@@ -2,6 +2,7 @@ import { nftData } from '../../constants/nftMetadata';
 import { useState } from 'react';
 
 import LoadingSpinner from './loadingSpinner';
+import { mintLevelNFT } from '../../api/firebase';
 
 const Tabs = ({ setTab, tab }) => {
     const styles = {
@@ -28,7 +29,7 @@ const Tabs = ({ setTab, tab }) => {
     )
 }
 
-const Item = ({ imgUrl, tab, nft }) => {
+const Item = ({ imgUrl, tab, nft, address }) => {
     console.log("ITEM NFT: ", nft.index);
     const [loadingMint, setLoadingMint] = useState(false);
 
@@ -45,10 +46,48 @@ const Item = ({ imgUrl, tab, nft }) => {
         }
     }
 
-    const mintLevelNft = () => {
+    const mintLevelNft = async () => {
         setLoadingMint(true);
+        console.log("mintLevelNft", address)
+        await mintLevelNFT(address, nft.index)
     };
 
+    // const mintSetup = async () => {
+    //     try {
+    //         const { ethereum } = window;
+
+    //         if (ethereum) {
+    //             const provider = new ethers.providers.Web3Provider(ethereum);
+    //             const signer = provider.getSigner();
+    //             const connectedContract = new ethers.Contract(CONTRACT_ADDRESS, abi, signer);
+
+    //             setLoadingMint(true);
+    //             // console.log("Going to pop wallet now to pay gas...")
+    //             const uri = `https://lens-garden-api.hasanelmi.repl.co/api/nft/${nft.index+1}`
+    //             let nftTxn = await connectedContract.mintLevelNFT(uri, nft.index+1);
+
+    //             // console.log("Mining...please wait.")
+    //             await nftTxn.wait();
+                                
+    //             console.log("Minted.")
+    //             await mintNFT(address, nft.index);
+    //             setMinted(true);
+
+
+
+
+    //             // setLoadingMint(false);
+    //             // console.log(`Mined, see transaction: https://goerli.etherscan.io/tx/${nftTxn.hash}`);
+
+    //         } else {
+    //             // console.log("Ethereum object doesn't exist!");
+    //             setLoadingMint(false);
+    //         }
+    //     } catch (error) {
+    //         // console.log(error);
+    //         setLoadingMint(false);
+    //     }
+    // }
 
     return (
         <div>
@@ -69,7 +108,7 @@ const Item = ({ imgUrl, tab, nft }) => {
     )
 }
 
-const AvailableNFTsTab = ({ level, mintedLevels }) => {
+const AvailableNFTsTab = ({ level, mintedLevels, address }) => {
     let minted = mintedLevels;
     let availableNfts = [];
 
@@ -83,7 +122,7 @@ const AvailableNFTsTab = ({ level, mintedLevels }) => {
     return (
         <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-1 border border-white">
             {availableNfts.map((nft) => (
-                <Item imgUrl={nft.imageUrl} tab={0} nft={nft} />
+                <Item imgUrl={nft.imageUrl} tab={0} nft={nft} address={address} />
             ))}
 
         </div>
@@ -104,7 +143,7 @@ const MintedNFTsTab = ({ level, mintedLevels }) => {
     return (
         <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-1 border border-white">
             {availableNfts.map((nft) => (
-                <Item imgUrl={nft.imageUrl} tab={1} />
+                <Item imgUrl={nft.imageUrl} tab={1} nft={nft} />
             ))}
 
         </div>
@@ -113,6 +152,8 @@ const MintedNFTsTab = ({ level, mintedLevels }) => {
 
 export default function MintingModal({ setShowModal, profile, level, mintedLevels }) {
     const [tab, setTab] = useState(0);
+
+    console.log("Addres: ", profile.ownedBy)
 
     return (
         <div tabIndex="-1" aria-hidden="true" className="border border-red-700 fixed top-0 left-0 right-0 z-40 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full bg-black bg-opacity-70">
@@ -127,7 +168,7 @@ export default function MintingModal({ setShowModal, profile, level, mintedLevel
                     </div>
                     <div className="p-6 space-y-6">
                         {tab === 0 && (
-                            <AvailableNFTsTab level={level} mintedLevels={mintedLevels} />
+                            <AvailableNFTsTab level={level} mintedLevels={mintedLevels} address={profile.ownedBy} />
                         )}
                         {tab === 1 && (
                             <MintedNFTsTab level={level} mintedLevels={mintedLevels} />
