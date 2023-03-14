@@ -3,13 +3,14 @@ import { getFirestore, collection, setDoc, getDoc, doc } from 'firebase/firestor
 import { images, names } from "../constants/nftMetadata";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDFnbhZ2njAHiBrS0UtEOXxBxJJvRXo-nI",
-    authDomain: "lens-garden.firebaseapp.com",
-    projectId: "lens-garden",
-    storageBucket: "lens-garden.appspot.com",
-    messagingSenderId: "1045737166163",
-    appId: "1:1045737166163:web:e2eeed7d4b84864084fda6"
-};
+    apiKey: "AIzaSyCUl-hZ4c9KDVzDxNq2VG6i90nvw5xABuY",
+    authDomain: "lens-garden-t.firebaseapp.com",
+    projectId: "lens-garden-t",
+    storageBucket: "lens-garden-t.appspot.com",
+    messagingSenderId: "540800889238",
+    appId: "1:540800889238:web:fc36fc7bbf324c3b00edb7",
+    measurementId: "G-0NQF0QBLC5"
+  };
 
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);

@@ -1,7 +1,7 @@
 import { nftData } from '../../constants/nftMetadata';
 import { useState } from 'react';
 
-
+import LoadingSpinner from './loadingSpinner';
 
 const Tabs = ({ setTab, tab }) => {
     const styles = {
@@ -11,114 +11,107 @@ const Tabs = ({ setTab, tab }) => {
         notSelectedIcon: 'w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300',
     }
     return (
-    <div class="border-b border-gray-200 dark:border-gray-700">
-        <ul class="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400">
-            <li class="mr-2">
-                <a href="#" onClick={() => setTab(0)} className={tab === 0 ? styles.selected : styles.notSelected} aria-current="page">
-                    <svg aria-hidden="true" className={tab === 0 ? styles.selectedIcon : styles.notSelectedIcon} fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>Available NFTs
-                </a>
-            </li>
-            <li class="mr-2" onClick={() => setTab(1)}>
-                <a href="#" className={tab === 1 ? styles.selected : styles.notSelected}>
-                    <svg aria-hidden="true" className={tab === 1 ? styles.selectedIcon : styles.notSelectedIcon} fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z"></path></svg>Minted NFTs
-                </a>
-            </li>
-        </ul>
-    </div>
-)
+        <div class="border-b border-gray-200 dark:border-gray-700">
+            <ul class="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400">
+                <li class="mr-2">
+                    <a href="#" onClick={() => setTab(0)} className={tab === 0 ? styles.selected : styles.notSelected} aria-current="page">
+                        <svg aria-hidden="true" className={tab === 0 ? styles.selectedIcon : styles.notSelectedIcon} fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>Available NFTs
+                    </a>
+                </li>
+                <li class="mr-2" onClick={() => setTab(1)}>
+                    <a href="#" className={tab === 1 ? styles.selected : styles.notSelected}>
+                        <svg aria-hidden="true" className={tab === 1 ? styles.selectedIcon : styles.notSelectedIcon} fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z"></path></svg>Minted NFTs
+                    </a>
+                </li>
+            </ul>
+        </div>
+    )
+}
+
+const Item = ({ imgUrl, tab, nft }) => {
+    console.log("ITEM NFT: ", nft.index);
+    const [loadingMint, setLoadingMint] = useState(false);
+
+    const renderMint = () => {
+        if (loadingMint) {
+            return (
+                <LoadingSpinner />
+            )
+        } else {
+            return (
+                <button onClick={mintLevelNft} type="button" className="text-white p-1 px-4 text-xs bg-emerald-400 rounded-lg">Mint</button>
+
+            )
+        }
     }
 
-const Item = ({imgUrl, tab}) => {
+    const mintLevelNft = () => {
+        setLoadingMint(true);
+    };
+
+
     return (
-      <div>
-      <div className="border border-red-500 flex justify-center">
-        <img src={imgUrl} className="h-30 rounded-lg" />
-      </div>
-        <div className="border border-red-500 p-2 flex justify-center">
-            {tab == 0 && (
+        <div>
+            <div className="border border-red-500 flex justify-center">
+                <img src={imgUrl} className="h-30 rounded-lg" />
+            </div>
+            <div className="border border-red-500 p-2 flex justify-center">
+                {tab == 0 && (
+                    <>{renderMint()}</>
+                )}
+                {tab == 1 && (
 
-          <button type="button" className="text-white p-1 px-4 text-xs bg-emerald-400 rounded-lg">Mint</button>
-            )}
-            {tab == 1 && (
+                    <button type="button" className="text-white p-1 px-4 text-xs bg-blue-400 rounded-lg">Opensea</button>
+                )}
 
-          <button type="button" className="text-white p-1 px-4 text-xs bg-blue-400 rounded-lg">Opensea</button>
-            )}
+            </div>
+        </div>
+    )
+}
+
+const AvailableNFTsTab = ({ level, mintedLevels }) => {
+    let minted = mintedLevels;
+    let availableNfts = [];
+
+    for (let i = 0; i < minted.length; i++) {
+        if (!minted[i]) {
+            availableNfts.push(nftData[i])
+        }
+
+    }
+    availableNfts = availableNfts.filter(nft => nft.unlocksAtLevel <= level)
+    return (
+        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-1 border border-white">
+            {availableNfts.map((nft) => (
+                <Item imgUrl={nft.imageUrl} tab={0} nft={nft} />
+            ))}
 
         </div>
-      </div>
     )
-  }
-
-  const AvailableNFTsTab = ({ level }) => {
-    let minted = [
-        true,
-        false,
-        true,
-        false,
-        false,
-        false, 
-        false,
-        true, 
-        true, 
-    ]
+}
+const MintedNFTsTab = ({ level, mintedLevels }) => {
+    let minted = mintedLevels;
     let availableNfts = [];
-    console.log("nftData, ", nftData)
-    console.log("minted, ", minted)
     for (let i = 0; i < minted.length; i++) {
-        if(!minted[i]) {
-            console.log("nftData: ", nftData[i]);
-            console.log("minted: ", minted[i]);
+        if (minted[i]) {
             availableNfts.push(nftData[i])
         }
 
     }
+
+
     availableNfts = availableNfts.filter(nft => nft.unlocksAtLevel <= level)
     return (
-      <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-1 border border-white">
-        {availableNfts.map((nft) => (
-            <Item imgUrl={nft.imageUrl} tab={0} />
-        ))}
+        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-1 border border-white">
+            {availableNfts.map((nft) => (
+                <Item imgUrl={nft.imageUrl} tab={1} />
+            ))}
 
-      </div>
+        </div>
     )
-  }
-  const MintedNFTsTab = ({ level }) => {
-    let minted = [
-        true,
-        false,
-        true,
-        false,
-        false,
-        false, 
-        false,
-        true, 
-        true, 
-    ]
-    let availableNfts = [];
-    console.log("nftData, ", nftData)
-    console.log("minted, ", minted)
-    for (let i = 0; i < minted.length; i++) {
-        if(minted[i]) {
-            console.log("nftData: ", nftData[i]);
-            console.log("minted: ", minted[i]);
-            availableNfts.push(nftData[i])
-        }
+}
 
-    }
-    
-    
-    availableNfts = availableNfts.filter(nft => nft.unlocksAtLevel <= level)
-    return (
-      <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-1 border border-white">
-        {availableNfts.map((nft) => (
-            <Item imgUrl={nft.imageUrl} tab={1}/>
-        ))}
-
-      </div>
-    )
-  }
-
-export default function MintingModal({ setShowModal, profile, level }) {
+export default function MintingModal({ setShowModal, profile, level, mintedLevels }) {
     const [tab, setTab] = useState(0);
 
     return (
@@ -134,10 +127,10 @@ export default function MintingModal({ setShowModal, profile, level }) {
                     </div>
                     <div className="p-6 space-y-6">
                         {tab === 0 && (
-                            <AvailableNFTsTab level={level} />
+                            <AvailableNFTsTab level={level} mintedLevels={mintedLevels} />
                         )}
                         {tab === 1 && (
-                            <MintedNFTsTab level={level} />
+                            <MintedNFTsTab level={level} mintedLevels={mintedLevels} />
                         )}
                     </div>
                     <div className="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">

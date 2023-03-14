@@ -19,7 +19,7 @@ import Footer from '../components/footer';
 import GardenStats from '../components/gardenStats';
 import { useNavigate } from 'react-router-dom';
 import MintNft from "../components/mintNft";
-import { checkIfUserExists, checkIfUserMinted, getUser } from "../../api/firebase";
+import { checkIfUserExists, checkIfUserMinted, checkIfUserMintedLevelNFTs, getUser } from "../../api/firebase";
 
 
 
@@ -45,7 +45,7 @@ const Garden = () => {
   const [loadingProfile, setLoadingProfile] = useState(false);
   const [profileFound, setProfileFound] = useState(false);
   const [minted, setMinted] = useState(false);
-
+  const [mintedLevels, setMintedLevels] = useState([])
   const navigate = useNavigate();
 
   // Check if already minted
@@ -59,6 +59,13 @@ const Garden = () => {
     } else {
       setMinted(false);
     }
+  }
+  const checkIfMintedLevels = async (address) => {
+    // Check if minted using firebase DB
+    const hasMinted = await checkIfUserMintedLevelNFTs(address);
+
+    // Set state based on if minted
+    setMintedLevels(hasMinted)
   }
 
 
@@ -139,6 +146,7 @@ const Garden = () => {
 
       // Check if minted
       await checkIfMinted(account);
+      await checkIfMintedLevels(account);
     } else {
       console.log("No authorized account found");
       setConnecting(false);
@@ -208,6 +216,7 @@ const Garden = () => {
 
             <LensProfileStats
               profile={profile}
+              mintedLevels={mintedLevels}
             />
 
             {minted && (
