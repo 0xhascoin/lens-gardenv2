@@ -1,4 +1,4 @@
-export const abi = [
+export const abi =  [
   {
     "inputs": [],
     "stateMutability": "nonpayable",
@@ -52,25 +52,6 @@ export const abi = [
       }
     ],
     "name": "ApprovalForAll",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "sender",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      }
-    ],
-    "name": "NewNFTMinted",
     "type": "event"
   },
   {
@@ -186,7 +167,25 @@ export const abi = [
         "type": "string"
       }
     ],
-    "name": "makeAnEpicNFT",
+    "name": "mintDynamicNFT",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_uri",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_typeId",
+        "type": "uint256"
+      }
+    ],
+    "name": "mintLevelNFT",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

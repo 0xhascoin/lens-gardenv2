@@ -1,5 +1,7 @@
 import { nftData } from '../../constants/nftMetadata';
 import { useState } from 'react';
+import {abi} from '../../constants/abi'
+import { ethers } from 'ethers';
 
 import LoadingSpinner from './loadingSpinner';
 import { checkIfUserMintedLevelNFTs, mintLevelNFT } from '../../api/firebase';
@@ -49,56 +51,60 @@ const Item = ({ imgUrl, tab, nft, address, setMintedLevels }) => {
     const checkIfMintedLevels = async (address) => {
         // Check if minted using firebase DB
         const hasMinted = await checkIfUserMintedLevelNFTs(address);
-    
+
         // Set state based on if minted
         setMintedLevels(hasMinted)
-      }
+    }
+
+    // const mintLevelNft = async () => {
+    //     setLoadingMint(true);
+    //     console.log("mintLevelNft", address)
+    //     await mintLevelNFT(address, nft.index)
+    //     await checkIfMintedLevels(address)
+    //     setLoadingMint(false);
+
+    // };
 
     const mintLevelNft = async () => {
-        setLoadingMint(true);
-        console.log("mintLevelNft", address)
-        await mintLevelNFT(address, nft.index)
-        await checkIfMintedLevels(address)
-        setLoadingMint(false);
-        
-    };
+        console.log("BUTTON WORKING")
+        try {
+            const { ethereum } = window;
 
-    // const mintSetup = async () => {
-    //     try {
-    //         const { ethereum } = window;
+            if (ethereum) {
+                const provider = new ethers.providers.Web3Provider(ethereum);
+                const signer = provider.getSigner();
+                const CONTRACT_ADDRESS = "0x8e5343652C47654e85b4648A425b8709261a8a6e";
 
-    //         if (ethereum) {
-    //             const provider = new ethers.providers.Web3Provider(ethereum);
-    //             const signer = provider.getSigner();
-    //             const connectedContract = new ethers.Contract(CONTRACT_ADDRESS, abi, signer);
+                const connectedContract = new ethers.Contract(CONTRACT_ADDRESS, abi, signer);
 
-    //             setLoadingMint(true);
-    //             // console.log("Going to pop wallet now to pay gas...")
-    //             const uri = `https://lens-garden-api.hasanelmi.repl.co/api/nft/${nft.index+1}`
-    //             let nftTxn = await connectedContract.mintLevelNFT(uri, nft.index+1);
+                setLoadingMint(true);
+                // console.log("Going to pop wallet now to pay gas...")
+                const uri = `https://lens-garden-api.hasanelmi.repl.co/api/nft/${nft.index + 1}`
+                console.log("connectedContract: ", connectedContract)
+                let nftTxn = await connectedContract.mintLevelNFT(uri, nft.index + 1);
 
-    //             // console.log("Mining...please wait.")
-    //             await nftTxn.wait();
-                                
-    //             console.log("Minted.")
-    //             await mintNFT(address, nft.index);
-    //             setMinted(true);
+                // // console.log("Mining...please wait.")
+                await nftTxn.wait();
+
+                // console.log("Minted.")
+                await mintLevelNFT(address, nft.index)
+                await checkIfMintedLevels(address)
 
 
 
 
-    //             // setLoadingMint(false);
-    //             // console.log(`Mined, see transaction: https://goerli.etherscan.io/tx/${nftTxn.hash}`);
+                setLoadingMint(false);
+                // console.log(`Mined, see transaction: https://goerli.etherscan.io/tx/${nftTxn.hash}`);
 
-    //         } else {
-    //             // console.log("Ethereum object doesn't exist!");
-    //             setLoadingMint(false);
-    //         }
-    //     } catch (error) {
-    //         // console.log(error);
-    //         setLoadingMint(false);
-    //     }
-    // }
+            } else {
+                // console.log("Ethereum object doesn't exist!");
+                setLoadingMint(false);
+            }
+        } catch (error) {
+            // console.log(error);
+            setLoadingMint(false);
+        }
+    }
 
     return (
         <div>
@@ -122,6 +128,7 @@ const Item = ({ imgUrl, tab, nft, address, setMintedLevels }) => {
 const AvailableNFTsTab = ({ level, mintedLevels, address, setMintedLevels }) => {
     let minted = mintedLevels;
     let availableNfts = [];
+    level = 50;
 
     for (let i = 0; i < minted.length; i++) {
         if (!minted[i]) {
@@ -142,6 +149,7 @@ const AvailableNFTsTab = ({ level, mintedLevels, address, setMintedLevels }) => 
 const MintedNFTsTab = ({ level, mintedLevels }) => {
     let minted = mintedLevels;
     let availableNfts = [];
+    level = 50;
     for (let i = 0; i < minted.length; i++) {
         if (minted[i]) {
             availableNfts.push(nftData[i])
