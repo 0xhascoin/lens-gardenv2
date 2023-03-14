@@ -13,12 +13,12 @@ export default function Header({ currentAccount, connecting, connectWallet, load
 
   return (
 
-    <nav className={`font w-full`}>
+    <nav className={`font w-full font-semibold`}>
       <div className="pt-2 flex sm:flex-wrap flex-wrap items-center justify-between bg-transparent mx-auto">
         <a href="/" className="flex items-center">
 
           <img src={'https://cdn.midjourney.com/dd997338-04a4-46ce-942b-e08375c0d595/grid_0.png'} className="ml-2 rounded-3xl shrink w-12 sm:w-16 object-contain" alt="Lens-garden logo" />
-          <span className="chart font hover:text-green-500 ml-4 text-white sm:text-2xl md:text-3xl hidden md:block element-to-hide">Lens Garden</span>
+          
 
         </a>
      
@@ -70,27 +70,29 @@ export default function Header({ currentAccount, connecting, connectWallet, load
         >
           <ul className="bg-slate-800 sm:bg-transparent flex flex-col sm:flex-row p-4 py-3 mt-4 sm:mt-0 border sm:border-none rounded-xl  sm:space-x-8 border-green-500">
 
-            <li>
-              <a
-                href="/"
-                className="font chart block py-2 pl-3 pr-4 sm:text-2xl md:text-3xl rounded md:p-0 text-white-400 hover:text-green-500 transition-all text-slate-50"
-              >
-                Home
-              </a>
-            </li>
+           
             <li>
               <a
                 href="/garden"
-                className="font chart sm:text-2xl block py-2 pl-3 pr-4 md:text-3xl rounded md:p-0 hover:text-green-500 transition-all text-slate-50"
+                className="font chart sm:text-xl lg:text-2xl block py-2  rounded md:p-0 hover:text-green-500 transition-all text-slate-50"
               >
-                View Garden
+               Garden
               </a>
             </li>
-            
+
+            <li>
+              <a
+                href="/"
+                className="font chart sm:text-xl lg:text-2xl block py-2 rounded md:p-0 hover:text-green-500 transition-all text-slate-50"
+              >
+               Dashboard
+              </a>
+            </li>
+
             <li>
               <a
                 href="/roadmap"
-                className="font chart sm:text-2xl block py-2 pl-3 pr-4 md:text-3xl rounded md:p-0 hover:text-green-500 transition-all text-slate-50"
+                className="font chart sm:text-xl lg:text-2xl block rounded md:p-0 hover:text-green-500 transition-all text-slate-50"
               >
                 Roadmap
               </a>
