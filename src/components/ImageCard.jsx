@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 // import flipSound from '../styles/sounds/flipsound.mp3';
 
-function ImageCard({ imageSrc, imageText, imageTitle, imageDesc, width, height }) {
+function ImageCard({ imageSrc, imageText, imageTitle, imageType, imageDesc, width, height }) {
   const audioRef = useRef(null);
 
   const playFlipSound = () => {
@@ -25,9 +25,11 @@ function ImageCard({ imageSrc, imageText, imageTitle, imageDesc, width, height }
         </div>
         <div className="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]" >
           <div className="flex min-h-full flex-col items-center justify-center">
-            <h1 className="text-3xl font-bold">{imageTitle}</h1>
-            <p className="text-lg">{imageText}</p>
-            <p className="text-base">{imageDesc}</p>
+            <h1 className="text-3xl font text-white pb-2">{imageTitle}</h1>
+            <h1 className="text-4xl font text-white pb-1">{imageType}</h1>
+            <div className='border-2 border-green-500 w-10/12 rounded-lg'></div>
+            <p className="text-lg pt-2">{imageText}</p>
+            <p className="text-base pt-2">{imageDesc}</p>
           </div>
         </div>
         {/* <audio ref={audioRef} src={flipSound} /> */}

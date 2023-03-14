@@ -162,10 +162,10 @@ const LensProfile = ({ profile }) => {
         <div className="w-full sm:w-3/5 p-2 border-white border-2 bg-slate-800 rounded-lg">
             <div className="w-full rounded-lg ">
                 {/* Header */}
-                <div className="profile-div w-full grid grid-cols-1 sm:flex p-2 sm:p-4 sm:mb-4 mb-4 sm:items-center">
+                <div className="w-full grid grid-cols-1 lg:flex p-2 sm:p-4 sm:mb-4 mb-4 sm:items-center">
                     {/* Profile Image */}
                     <img
-                        className="profile-div rounded-lg md:mx-auto mx-auto justify-center items-center w-26 h-24 border border-white sm:mr-2"
+                        className="profile-div rounded-lg md:mx-auto mx-auto justify-center items-center w-26 h-24 border border-white sm:mr-2 hover:border-green-500 cursor-pointer"
                         src={fixUrl(profile.picture.uri ? profile.picture.uri : profile.picture.original.url)}
                         alt="profile-image"
                     />
