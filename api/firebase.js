@@ -50,12 +50,12 @@ export const checkIfUserExists = async (address, obj) => {
         // Exists in DB already
         console.log("User already Exists Not creating them in DB.")
         let data = { ...obj };
-        // await setDoc(doc(db, "users", address), data, { merge: true });
+        // await setDoc(doc(db, "users", address),  {mintedLevelNFTS: [false, false, true, true, false, false, false, false, false]}, { merge: true });
 
     } else {
         // Doesn't exist in DB
         // Create it and set alreadyMinted to false
-        let data = { ...obj, alreadyMinted: false, mintedLevelNFTS: { one: false, two: false, three: false, four: false, five: false, six: false, seven: false, eight: false, nine: false }, startingSnapshot: { ...obj.stats, snapshotDate: new Date().toLocaleDateString() }, bonusXP: 0,  };
+        let data = { ...obj, alreadyMinted: false, mintedLevelNFTs: [false, false, false, false, false, false, false, false, false], bonusXP: 0,  };
         console.log("Doesn't exist. Adding to DB.")
         console.log("Obj Data: ", data);
 
@@ -64,13 +64,6 @@ export const checkIfUserExists = async (address, obj) => {
 }
 
 export const checkIfUserMinted = async (address) => {
-
-    // const docRef = doc(db, "users", address);
-    // const docSnap = await getDoc(docRef);
-    
-    // if(docSnap.exists()) {
-    //     console.log(docSnap.data(), "SNAP");
-    // }
 
     address = address.toUpperCase()
 
@@ -82,6 +75,21 @@ export const checkIfUserMinted = async (address) => {
     console.log("checkIfUserMinted? : ", alreadyMinted)
 
     return alreadyMinted;
+
+}
+
+export const checkIfUserMintedLevelNFTs = async (address) => {
+
+    address = address.toUpperCase()
+
+    const ref = doc(db, "users", address);
+    const snap = await getDoc(ref);
+    const { mintedLevelNFTs } = snap.data();
+
+
+    console.log("mintedLevelNFTs? : ", mintedLevelNFTs)
+
+    return mintedLevelNFTs;
 
 }
 

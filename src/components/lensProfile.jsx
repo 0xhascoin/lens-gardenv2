@@ -5,6 +5,7 @@ import { FiSend } from 'react-icons/fi'
 import { VscMirror } from 'react-icons/vsc'
 import { getUser } from '../../api/firebase';
 import { images, names, nftData } from '../../constants/nftMetadata';
+import MintingModal from './MintingModal';
 
 const startUrl = 'https://lens.infura-ipfs.io/ipfs/';
 
@@ -39,6 +40,7 @@ const NextExpProgress = ({ unlocksAtLevel, xpNeededToUnlock, myTotalXp, LEVEL })
 
 
 const LensProfile = ({ profile }) => {
+    const [showModal, setShowModal] = useState(false);
 
     const [XP, setXP] = useState(null);
     const [LEVEL, setLEVEL] = useState(null);
@@ -161,6 +163,13 @@ const LensProfile = ({ profile }) => {
     return (
         <div className="w-full sm:w-3/5 p-2 border-white border-2 bg-slate-800 rounded-lg">
             <div className="w-full rounded-lg ">
+                {!showModal ? (
+                <div className="border border-white flex justify-end">
+                    <button type="button" onClick={() => setShowModal(true)} className="px-2 p-1 rounded-lg border border-white bg-emerald-400 text-xs text-white">View Gallery</button>
+                </div>
+                ) : (
+                    <MintingModal setShowModal={setShowModal} profile={profile} level={calculateLevel(calculateExperience(profile.stats.totalFollowing, profile.stats.totalFollowers, profile.stats.totalPosts, profile.stats.totalCollects, profile.stats.totalMirrors, profile.stats.totalComments)).level} />
+                )}
                 {/* Header */}
                 <div className="w-full grid grid-cols-1 lg:flex p-2 sm:p-4 sm:mb-4 mb-4 sm:items-center">
                     {/* Profile Image */}
