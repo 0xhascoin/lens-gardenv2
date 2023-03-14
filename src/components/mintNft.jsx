@@ -5,7 +5,7 @@ import LoadingSpinner from './loadingSpinner';
 import { mintNFT } from '../../api/firebase';
 // import { mintedNFT } from '../../api/firebase';
 
-const CONTRACT_ADDRESS = "0x0AF125138Bfaf8202D6F4335eABa1aA9b7cF0dFE";
+const CONTRACT_ADDRESS = "0x8e5343652C47654e85b4648A425b8709261a8a6e";
 
 
 const MintNft = ({ address, setMinted }) => {
@@ -24,6 +24,7 @@ const MintNft = ({ address, setMinted }) => {
 
                 setLoadingMint(true);
                 // console.log("Going to pop wallet now to pay gas...")
+                
                 const uri = `https://lens-garden-api.hasanelmi.repl.co/api/address/${address}`
                 let nftTxn = await connectedContract.makeAnEpicNFT(uri);
 
