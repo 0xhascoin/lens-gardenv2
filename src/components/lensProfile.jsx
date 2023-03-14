@@ -39,7 +39,7 @@ const NextExpProgress = ({ unlocksAtLevel, xpNeededToUnlock, myTotalXp, LEVEL })
 }
 
 
-const LensProfile = ({ profile, mintedLevels }) => {
+const LensProfile = ({ profile, mintedLevels, setMintedLevels }) => {
     const [showModal, setShowModal] = useState(false);
 
     const [XP, setXP] = useState(null);
@@ -168,7 +168,7 @@ const LensProfile = ({ profile, mintedLevels }) => {
                     <button type="button" onClick={() => setShowModal(true)} className="px-2 p-1 rounded-lg border border-white bg-emerald-400 text-xs text-white">View Gallery</button>
                 </div>
                 ) : (
-                    <MintingModal mintedLevels={mintedLevels} setShowModal={setShowModal} profile={profile} level={calculateLevel(calculateExperience(profile.stats.totalFollowing, profile.stats.totalFollowers, profile.stats.totalPosts, profile.stats.totalCollects, profile.stats.totalMirrors, profile.stats.totalComments)).level} />
+                    <MintingModal setMintedLevels={setMintedLevels} mintedLevels={mintedLevels} setShowModal={setShowModal} profile={profile} level={calculateLevel(calculateExperience(profile.stats.totalFollowing, profile.stats.totalFollowers, profile.stats.totalPosts, profile.stats.totalCollects, profile.stats.totalMirrors, profile.stats.totalComments)).level} />
                 )}
                 {/* Header */}
                 <div className="w-full grid grid-cols-1 lg:flex p-2 sm:p-4 sm:mb-4 mb-4 sm:items-center">

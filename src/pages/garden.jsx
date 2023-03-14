@@ -217,6 +217,7 @@ const Garden = () => {
             <LensProfileStats
               profile={profile}
               mintedLevels={mintedLevels}
+              setMintedLevels={setMintedLevels}
             />
 
             {minted && (

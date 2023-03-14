@@ -2,7 +2,7 @@ import { nftData } from '../../constants/nftMetadata';
 import { useState } from 'react';
 
 import LoadingSpinner from './loadingSpinner';
-import { mintLevelNFT } from '../../api/firebase';
+import { checkIfUserMintedLevelNFTs, mintLevelNFT } from '../../api/firebase';
 
 const Tabs = ({ setTab, tab }) => {
     const styles = {
@@ -29,7 +29,7 @@ const Tabs = ({ setTab, tab }) => {
     )
 }
 
-const Item = ({ imgUrl, tab, nft, address }) => {
+const Item = ({ imgUrl, tab, nft, address, setMintedLevels }) => {
     console.log("ITEM NFT: ", nft.index);
     const [loadingMint, setLoadingMint] = useState(false);
 
@@ -46,10 +46,21 @@ const Item = ({ imgUrl, tab, nft, address }) => {
         }
     }
 
+    const checkIfMintedLevels = async (address) => {
+        // Check if minted using firebase DB
+        const hasMinted = await checkIfUserMintedLevelNFTs(address);
+    
+        // Set state based on if minted
+        setMintedLevels(hasMinted)
+      }
+
     const mintLevelNft = async () => {
         setLoadingMint(true);
         console.log("mintLevelNft", address)
         await mintLevelNFT(address, nft.index)
+        await checkIfMintedLevels(address)
+        setLoadingMint(false);
+        
     };
 
     // const mintSetup = async () => {
@@ -108,7 +119,7 @@ const Item = ({ imgUrl, tab, nft, address }) => {
     )
 }
 
-const AvailableNFTsTab = ({ level, mintedLevels, address }) => {
+const AvailableNFTsTab = ({ level, mintedLevels, address, setMintedLevels }) => {
     let minted = mintedLevels;
     let availableNfts = [];
 
@@ -122,7 +133,7 @@ const AvailableNFTsTab = ({ level, mintedLevels, address }) => {
     return (
         <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-1 border border-white">
             {availableNfts.map((nft) => (
-                <Item imgUrl={nft.imageUrl} tab={0} nft={nft} address={address} />
+                <Item imgUrl={nft.imageUrl} tab={0} nft={nft} address={address} setMintedLevels={setMintedLevels} />
             ))}
 
         </div>
@@ -150,7 +161,7 @@ const MintedNFTsTab = ({ level, mintedLevels }) => {
     )
 }
 
-export default function MintingModal({ setShowModal, profile, level, mintedLevels }) {
+export default function MintingModal({ setShowModal, profile, level, mintedLevels, setMintedLevels }) {
     const [tab, setTab] = useState(0);
 
     console.log("Addres: ", profile.ownedBy)
@@ -168,7 +179,7 @@ export default function MintingModal({ setShowModal, profile, level, mintedLevel
                     </div>
                     <div className="p-6 space-y-6">
                         {tab === 0 && (
-                            <AvailableNFTsTab level={level} mintedLevels={mintedLevels} address={profile.ownedBy} />
+                            <AvailableNFTsTab level={level} mintedLevels={mintedLevels} setMintedLevels={setMintedLevels} address={profile.ownedBy} />
                         )}
                         {tab === 1 && (
                             <MintedNFTsTab level={level} mintedLevels={mintedLevels} />
